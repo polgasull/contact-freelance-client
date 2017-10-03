@@ -1,3 +1,37 @@
-<p>
-  signup works!
-</p>
+<form (ngSubmit)="submitSignup(mySignup)" #myForm="ngForm" novalidate>
+  <div class="form-group">
+    <label for="inputUsername">Username</label>
+    <input type="text" class="form-control" id="inputUsername" placeholder="Choose username" name="username" [(ngModel)]="username"
+      #myUsername="ngModel" minlength="6">
+    <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+      <p class="error" [hidden]="!myUsername.errors.minlength">
+        <small>Username must be at least 6 characters long.</small>
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Password</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password" name="username" [(ngModel)]="password"
+      #myPassword="ngModel" required>
+    <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+      <p class="error" [hidden]="!myPassword.errors.required">
+        <small>Password is required</small>
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name" [(ngModel)]="name" required>
+  </div>
+  <div class="form-group">
+    <label for="inputSurname">Surname</label>
+    <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="surname" required>
+  </div>
+  <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="Your Email" name="email" [(ngModel)]="email" required>
+    </div>
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
