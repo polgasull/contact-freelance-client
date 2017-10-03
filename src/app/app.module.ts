@@ -17,20 +17,28 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { PublicServicesComponent } from './components/public-services/public-services.component';
 import { PublicSectionsComponent } from './components/public-sections/public-sections.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'dashboard', component: DashboardComponent },  
-  { path: 'public-profile', component: PublicProfileComponent },
-  { path: 'public-services', component: PublicServicesComponent },
-  { path: 'public-sections', component: PublicSectionsComponent },
-  { path: 'search-list', component: SearchListComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'services', component: ServicesComponent },
-  { path: 'sections', component: SectionsComponent },
+  {
+    path: '', component: LayoutComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'logout', component: LogoutComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'public-profile', component: PublicProfileComponent },
+      { path: 'public-services', component: PublicServicesComponent },
+      { path: 'public-sections', component: PublicSectionsComponent },
+      { path: 'search-list', component: SearchListComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'services', component: ServicesComponent },
+      { path: 'sections', component: SectionsComponent },
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -48,7 +56,10 @@ export const routes: Routes = [
     LogoutComponent,
     PublicProfileComponent,
     PublicServicesComponent,
-    PublicSectionsComponent
+    PublicSectionsComponent,
+    LayoutComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
