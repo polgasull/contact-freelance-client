@@ -21,8 +21,12 @@ export class SessionService implements CanActivate {
 
 canActivate() {
   if (localStorage.getItem('token')) {
-    const headers = new Headers({ 'Authorization': 'Bearer' + localStorage.getItem('token') });
+    
+    const headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     const options = new RequestOptions({ headers: headers });
+    console.log(headers);
+    console.log(options);
+    
     return this.http.get(`${this.BASE_URL}/token`, options)
       .toPromise()
       .then((res) => res.json())
@@ -50,7 +54,6 @@ login(user) {
     .map((res) => res.json())
     .map((res) => {
       const { token, user } = res
-      console.log('token', token)
       if (token) {
         this.token = token;
         this.user = {

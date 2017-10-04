@@ -37,7 +37,7 @@ export const routes: Routes = [
       { path: 'public-services', component: PublicServicesComponent },
       { path: 'public-sections', component: PublicSectionsComponent },
       { path: 'search-list', component: SearchListComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent, canActivate: [SessionService]},
       { path: 'services', component: ServicesComponent },
       { path: 'sections', component: SectionsComponent },
     ]
