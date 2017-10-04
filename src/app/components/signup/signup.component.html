@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitSignup(myForm)" #myForm="ngForm" novalidate>
+<form (ngSubmit)="submitSignup(myForm)" #myForm="ngForm">
   <div class="form-group">
     <label for="inputEmail">Email</label>
     <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" ngModel [email]="true"

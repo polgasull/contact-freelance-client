@@ -3,6 +3,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class SessionService implements CanActivate {

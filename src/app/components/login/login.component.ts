@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user:any = {
-    email: '',
-    password: '',
+    email: 'jordipiellas@gmail.com',
+    password: '1234',
   }
   error = null;
   
