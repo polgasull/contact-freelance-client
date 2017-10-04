@@ -21,6 +21,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { SessionService } from './services/session.service';
+
+
 export const routes: Routes = [
   {
     path: '', component: LayoutComponent,
@@ -67,7 +70,7 @@ export const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

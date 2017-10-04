@@ -1,7 +1,7 @@
 <form (ngSubmit)="submitLogin()" #myForm="ngForm">
   <div class="form-group">
-    <label for="inputUsername">Username</label>
-    <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" name="username" [(ngModel)]="user.username">
+    <label for="inputEmail">Email</label>
+    <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" [(ngModel)]="user.email">
     <small id="usernameHelp" class="form-text text-muted">Don't troll or you will be banned.</small>
   </div>
   <div class="form-group">
