@@ -72,4 +72,28 @@ login(user) {
     })
 }
 
+signup(user) {
+  return this.http.post(`${this.BASE_URL}/user`, user)
+    .map((res) => res.json())
+    .map((res) => {
+      const { token, user } = res
+      if (token) {
+        this.token = token;
+        this.user = {
+          _id: user._id,
+          email: user.email,
+          name: user.name
+        }
+        this.isAuth = true;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(this.user));
+        
+        return true;
+      } else {
+        return false;
+      }
+    })
+}
+
 }

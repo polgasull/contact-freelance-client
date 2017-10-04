@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
+import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -7,22 +8,30 @@ import { EmailValidator } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user:any = {
+  user: any = {
     email: '',
     password: '',
-    name: '', 
+    name: '',
     surname: ''
   }
 
   error = null;
 
-  constructor() { }
+  constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
   }
 
   submitSignup(myForm) {
-    console.log(myForm)
+    this.session.signup(this.user)
+      .subscribe(
+      (data) => {
+        this.router.navigate(['/profile']);
+      },
+      (err) => {
+        this.error = err
+      }
+      )
   }
 
 }
