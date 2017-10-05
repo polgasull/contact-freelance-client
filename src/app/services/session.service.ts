@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SessionService implements CanActivate {
-  public token: String = '';
+  public token: string = '';
   public isAuth:  boolean = false;
   public user = {};
   
@@ -93,6 +93,12 @@ signup(user) {
         return false;
       }
     })
+}
+
+logout() {
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+  this.router.navigate(['/home']);
 }
 
 }
