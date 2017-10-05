@@ -32,14 +32,14 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService]},
       { path: 'public-profile', component: PublicProfileComponent },
       { path: 'public-services', component: PublicServicesComponent },
       { path: 'public-sections', component: PublicSectionsComponent },
       { path: 'search-list', component: SearchListComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [SessionService]},
-      { path: 'services', component: ServicesComponent },
-      { path: 'sections', component: SectionsComponent },
+      { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
+      { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
   { path: '**', redirectTo: '' }

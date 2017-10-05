@@ -81,8 +81,7 @@ signup(user) {
         this.token = token;
         this.user = {
           _id: user._id,
-          email: user.email,
-          name: user.name
+          email: user.email
         }
         this.isAuth = true;
 
