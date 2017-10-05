@@ -22,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { SessionService } from './services/session.service';
+import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
 
 
 export const routes: Routes = [
@@ -32,12 +33,12 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService]},
       { path: 'public-profile', component: PublicProfileComponent },
       { path: 'public-services', component: PublicServicesComponent },
       { path: 'public-sections', component: PublicSectionsComponent },
       { path: 'search-list', component: SearchListComponent },
-      { path: 'profile', component: ProfileComponent, canActivate: [SessionService]},
+      { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService]},
+      { path: 'profile', component: DashboardComponent},
       { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
       { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
@@ -62,7 +63,8 @@ export const routes: Routes = [
     PublicSectionsComponent,
     LayoutComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardMenuComponent
   ],
   imports: [
     BrowserModule,

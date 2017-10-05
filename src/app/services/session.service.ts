@@ -98,7 +98,7 @@ signup(user) {
 logout() {
   localStorage.removeItem('user');
   localStorage.removeItem('token');
-  this.router.navigate(['/home']);
+  this.router.navigate(['/dashboard']);
 }
 
 }
