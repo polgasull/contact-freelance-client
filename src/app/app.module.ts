@@ -37,10 +37,15 @@ export const routes: Routes = [
       { path: 'public-services', component: PublicServicesComponent },
       { path: 'public-sections', component: PublicSectionsComponent },
       { path: 'search-list', component: SearchListComponent },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService]},
-      { path: 'profile', component: DashboardComponent},
-      { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
-      { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
+      {
+        path: '', component: DashboardComponent, canActivate: [SessionService] ,
+        children: [
+          { path: 'profile', component: ProfileComponent, canActivate: [SessionService]  },
+          { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
+          { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
+        ]
+      },
+
     ]
   },
   { path: '**', redirectTo: '' }
