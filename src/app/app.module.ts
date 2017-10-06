@@ -20,9 +20,11 @@ import { PublicSectionsComponent } from './components/public-sections/public-sec
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-import { SessionService } from './services/session.service';
 import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
+
+import { FreelanceApiService } from './services/freelance-api.service';
+import { SessionService } from './services/session.service';
+
 
 
 export const routes: Routes = [
@@ -77,7 +79,7 @@ export const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, FreelanceApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
