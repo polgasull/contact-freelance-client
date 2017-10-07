@@ -9,7 +9,6 @@ export class FreelanceApiService {
 
   BASE_URL: string = environment.baseURL
   constructor(private http: Http, private session: SessionService) {
-    console.log(this.BASE_URL)
   }
 
   setOptionsApi() {
