@@ -4,7 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
 import { HttpModule } from '@angular/http';
 import { TagInputModule } from 'ngx-chips';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed! 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FileSelectDirective } from "ng2-file-upload";
+
+
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -65,6 +70,7 @@ export const routes: Routes = [
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
+    FileSelectDirective,
     DashboardMenuComponent
   ],
   imports: [

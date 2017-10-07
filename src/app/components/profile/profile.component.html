@@ -98,11 +98,13 @@
     </div>
     <div class="form-group">
         <label for="inputUserImage">User image</label>
-        <input type="text" class="form-control" id="inputUserImage" placeholder="Your User image" name="userImage" [(ngModel)]="user.userImage">
+
+        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="userImage" value="" name="userImage">
     </div>
+    {{feedback}}
     <div class="form-group">
         <label for="inputBigImage">BigImage</label>
-        <input type="text" class="form-control" id="inputBigImage" placeholder="BigImage" name="BigImage" [(ngModel)]="user.bigImage">
+        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="bigImage" value="" name="userImage">
     </div>
 
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
