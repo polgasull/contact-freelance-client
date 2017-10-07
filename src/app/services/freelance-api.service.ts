@@ -13,18 +13,24 @@ export class FreelanceApiService {
 
   setOptionsApi() {
     let headers = new Headers({'Authorization': 'Bearer ' + this.session.token });
-    return new RequestOptions({headers: headers});
+    return new RequestOptions({ headers });
   }
 
   getUserList() {
     return this.http.get(`${this.BASE_URL}/api/users`, this.setOptionsApi())
     .map((res) => res.json());
   }
-
-  get(id) {
+  //get user from your :id
+  getUser(id) {
     return this.http.get(`${this.BASE_URL}/api/user/${id}`, this.setOptionsApi())
       .map((res) => res.json());
   }
+  //put update user profile
+  editUserProfile(user){    
+    return this.http.put(`${this.BASE_URL}/api/user/${user._id}`, user, this.setOptionsApi())
+      .map((res)=> res.json());
+  }
+
 }
 
 

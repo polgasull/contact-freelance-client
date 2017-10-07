@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
 import { HttpModule } from '@angular/http';
+import { TagInputModule } from 'ng2-tag-input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed! 
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -72,6 +74,8 @@ export const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    TagInputModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [SessionService, FreelanceApiService],

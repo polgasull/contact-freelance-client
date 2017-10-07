@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelanceApiService } from '../../services/freelance-api.service'
+import { TagInputModule } from 'ng2-tag-input';
 
 @Component({
   selector: 'app-profile',
@@ -8,42 +9,35 @@ import { FreelanceApiService } from '../../services/freelance-api.service'
 })
 export class ProfileComponent implements OnInit {
   usersList: Array<any> = [];
-  userLocal: any;
-  idA:any;
-  user = {
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    phone: '',
-    city: '',
-    country: '',
-    klaim: '',
-    tags: [],
-    linkedin: '',
-    facebook: '',
-    google:'',
-    web:'',
-    userImage: '',
-    bigImage: '',
+  
+  userId:any;
+  user :any = {
   };
+ 
 
   constructor(private freelanceApi: FreelanceApiService) { }
 
   ngOnInit() {
-    this.userLocal= localStorage.getItem('user');
-    this.idA= JSON.parse(this.userLocal)._id
-    console.log(this.userLocal);
-    console.log(this.idA);
+    this.userId = JSON.parse(localStorage.getItem('user'))._id
     
-    this.freelanceApi.get(this.idA)
+    this.freelanceApi.getUser(this.userId)
     .subscribe((user) => {
-      this.user = user;
+      this.user = user;        
+    });
+  }
+
+  submitUpdates(myForm) {
+    this.freelanceApi.editUserProfile(this.user)
+    .subscribe((user)=>{
+      
+      
     })
   }
 
+  
+
  
-  }
+}
 
 
 
