@@ -27,26 +27,23 @@ import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-me
 import { FreelanceApiService } from './services/freelance-api.service';
 import { SessionService } from './services/session.service';
 
-
-
 export const routes: Routes = [
-    
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'signup', component: SignupComponent },
-      { path: 'logout', component: LogoutComponent },
-      { path: 'public-profile', component: PublicProfileComponent },
-      { path: 'public-services', component: PublicServicesComponent },
-      { path: 'public-sections', component: PublicSectionsComponent },
-      { path: 'search-list', component: SearchListComponent },
-      {
-        path: 'dashboard', component: DashboardComponent, canActivate: [SessionService] ,
-        children: [
-          { path: 'profile', component: ProfileComponent, canActivate: [SessionService]  },
-          { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
-          { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
-        ]
-      },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'logout', component: LogoutComponent },//delete
+  { path: 'public-profile', component: PublicProfileComponent },
+  { path: 'public-services', component: PublicServicesComponent },
+  { path: 'public-sections', component: PublicSectionsComponent },
+  { path: 'search-list', component: SearchListComponent },
+  { 
+    path: 'dashboard', component: DashboardComponent, canActivate: [SessionService],
+    children: [
+      { path: 'profile', component: ProfileComponent, canActivate: [SessionService] },
+      { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
+      { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
