@@ -7,7 +7,9 @@ import { FreelanceApiService } from '../../services/freelance-api.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  usersList = []
+  usersList: Array<any> = [];
+  userLocal: any;
+  idA:any;
   user = {
     name: '',
     surname: '',
@@ -24,24 +26,24 @@ export class ProfileComponent implements OnInit {
     web:'',
     userImage: '',
     bigImage: '',
-  }
+  };
 
   constructor(private freelanceApi: FreelanceApiService) { }
 
   ngOnInit() {
-    this.freelanceApi.getUserList()
-    .subscribe((users) => {
-      console.log(users);
-      this.usersList = users
+    this.userLocal= localStorage.getItem('user');
+    this.idA= JSON.parse(this.userLocal)._id
+    console.log(this.userLocal);
+    console.log(this.idA);
+    
+    this.freelanceApi.get(this.idA)
+    .subscribe((user) => {
+      this.user = user;
     })
   }
 
-  // getUserDetails(id) {
-  //   this.freelanceApi.get(id)
-  //     .subscribe((user) => {
-  //       this.user = user;
-  //     })
-  // }
+ 
+  }
 
 
-}
+

@@ -8,10 +8,12 @@ import { SessionService } from './session.service'
 export class FreelanceApiService {
 
   BASE_URL: string = environment.baseURL
-  constructor(private http: Http, private session: SessionService) { }
+  constructor(private http: Http, private session: SessionService) {
+    console.log(this.BASE_URL)
+  }
 
   setOptionsApi() {
-    let headers = new Headers({'Authorizarion': 'Bearer' + this.session.token });
+    let headers = new Headers({'Authorization': 'Bearer ' + this.session.token });
     return new RequestOptions({headers: headers});
   }
 

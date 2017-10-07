@@ -28,10 +28,8 @@ import { SessionService } from './services/session.service';
 
 
 export const routes: Routes = [
-  {
-    path: '', component: LayoutComponent,
-    children: [
-      { path: 'home', component: HomeComponent },
+    
+      { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'logout', component: LogoutComponent },
@@ -40,16 +38,13 @@ export const routes: Routes = [
       { path: 'public-sections', component: PublicSectionsComponent },
       { path: 'search-list', component: SearchListComponent },
       {
-        path: '', component: DashboardComponent, canActivate: [SessionService] ,
+        path: 'dashboard', component: DashboardComponent, canActivate: [SessionService] ,
         children: [
           { path: 'profile', component: ProfileComponent, canActivate: [SessionService]  },
           { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
           { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
         ]
       },
-
-    ]
-  },
   { path: '**', redirectTo: '' }
 ];
 

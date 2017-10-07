@@ -24,8 +24,6 @@ canActivate() {
     
     const headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     const options = new RequestOptions({ headers: headers });
-    console.log(headers);
-    console.log(options);
     
     return this.http.get(`${this.BASE_URL}/token`, options)
       .toPromise()
