@@ -31,6 +31,7 @@ import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-me
 
 import { FreelanceApiService } from './services/freelance-api.service';
 import { SessionService } from './services/session.service';
+import { FreelancePublicService } from './services/freelance-public.service';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -81,7 +82,7 @@ export const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService, FreelanceApiService],
+  providers: [SessionService, FreelanceApiService, FreelancePublicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

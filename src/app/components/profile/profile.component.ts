@@ -16,7 +16,7 @@ import { SessionService } from '../../services/session.service'
 export class ProfileComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
     url: `${environment.baseURL}/api/user/edit/${JSON.parse(localStorage.getItem('user'))._id}`,
-    authToken: "Bearer " + this.session.token,
+    authToken: "Bearer " + this.session.token
 
   });
 
@@ -62,9 +62,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  
-
- 
 }
 
 
