@@ -7,19 +7,26 @@
     <div class="row">
 
       <div class="col-sm">
-        <p> {{ user.userImage }} </p>
-        <p>{{user.linkedin}}</p>
-        <p>{{user.google}}</p>
-        <p>{{user.facebook}}</p>
+        <p>
+          <img src="{{ user.userImage }}" class="img-responsive" alt="User Image">
+        </p>
+        <a href="{{user.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;" target="_blank">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin </a>
+        <a href="{{user.facebook}}" class="btn btn-primary fbkBtn" style="border-radius: 0px;" target="_blank">
+          <i class="fa fa-facebook" aria-hidden="true"></i>Facebook </a>
+        <a href="{{user.google}}" class="btn btn-danger GoogleBtn" style="border-radius: 0px;" target="_blank">
+          <i class="fa fa-google-plus" aria-hidden="true"></i>Google </a>
       </div>
+      <p>{{user.web}}</p>
       <div class="col-sm">
         <span>{{user.name}} {{user.surname}}</span>
         <p>PRINCIPAL SERVICE</p>
         <span>{{user.city}} {{user.country}} {{user.tags}}</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, non veritatis, provident placeat quia impedit sunt
-            eum ea nobis inventore cumque qui dolorum, ullam saepe nulla natus, modi libero quos.</p>
-        <a><button class="btn btn-success">Contact</button></a>
-
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, non veritatis, provident placeat quia impedit
+          sunt eum ea nobis inventore cumque qui dolorum, ullam saepe nulla natus, modi libero quos.</p>
+        <a>
+          <button class="btn btn-success">Contact</button>
+        </a>
       </div>
 
 

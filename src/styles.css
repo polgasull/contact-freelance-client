@@ -3,3 +3,11 @@ body {
     height: 100vh;
     position: relative;
 }
+
+.fa {
+    padding-right: 25%;
+  }
+  
+  .fbkBtn, .GoogleBtn, .linkedinBtn {
+    padding-right: 5%;
+  }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FreelancePublicService } from '../../services/freelance-public.service'
+
 
 @Component({
   selector: 'app-public-services',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicServicesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private freelancePublic: FreelancePublicService) { }
+  serviceId: String;
+  servicesList: any =[];
 
   ngOnInit() {
-  }
+    this.freelancePublic.getPublicService(this.serviceId)
+    .subscribe((service) => {
+      this.servicesList = service;
+  })
+}
 
 }
