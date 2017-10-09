@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FreelanceApiService } from '../../services/freelance-api.service'
 import { TagInputModule } from 'ngx-chips';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
+import { HelpersService } from '../../services/helpers.service'
+
 
 @Component({
   selector: 'app-sections',
@@ -13,16 +16,13 @@ import { SessionService } from '../../services/session.service'
 export class SectionsComponent implements OnInit {
   feedback: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
-  serviceId: String;
-  servicesList: any = [];
-  newSection: any = {
-
-
-
-  };
+  serviceId: any;
+  serviceDetails: any = {};
+  sectionsList: any = [];
+  newSection: any = {};
   tags: string;
   uploader: FileUploader = new FileUploader({
-    url: `${environment.baseURL}/api/service/image`,
+    url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
 
   });
@@ -38,15 +38,26 @@ export class SectionsComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
+  constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    //Service List
-    this.freelanceApi.sectionsList(this.userId)
-      .subscribe((list) => {
-        this.servicesList = list;
+    //capture id from url
+    this.route.params
+      .subscribe((params) => {
+        this.serviceId = params['id'];
       });
+    //Service Details
+    this.freelanceApi.serviceDetails(this.serviceId)
+      .subscribe((details) => {
+        this.serviceDetails = details;
+    });
+    //SectionList
+    this.freelanceApi.sectionsList(this.serviceId)
+      .subscribe((details) => {
+        this.sectionsList = details;
+      });
+
+
     //uploader
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
@@ -57,32 +68,20 @@ export class SectionsComponent implements OnInit {
 
     };
   }
-  //función repetida en services.components.ts
-  formatTags(tags, cb) {
-    for (let i = 0; i < tags.length; i++) {
-      if (i == 0) {
-        this.tags = tags[i].value;
-      } else {
-        this.tags += ', ' + tags[i].value;
-      }
-    }
-    cb();
-  }
+  
 
   submitSection(myForm) {
-
-    this.formatTags(this.newSection.tags, (myForm) => {
+    this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
       this.uploader.onBuildItemForm = (item, form) => {
         item.withCredentials = false;
         form.append('name', this.newSection.name);
         form.append('description', this.newSection.description);
-        form.append('tags', this.tags);
+        form.append('tags', tags);
         form.append('user', this.userId);
+        form.append('service', this.serviceId);
       };
-
       this.uploader.uploadAll();
       this.newSection = {};
-
       // this.freelanceApi.editUserProfile(this.user)
       //   .subscribe((user) => {
       //   });

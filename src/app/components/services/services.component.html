@@ -37,10 +37,10 @@
    <h2>{{service.name}}</h2>
   <h2>{{service.description}}</h2>
   <span *ngFor="let tag of service.tags">
-  
     {{tag}}
-    </span>
- 
+  </span>
+  <a class="btn btn-primary" [routerLink]="['/dashboard/service/', service._id]">View Details</a>
+ <hr>
 </div>
 
 

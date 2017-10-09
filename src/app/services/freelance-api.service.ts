@@ -32,12 +32,17 @@ export class FreelanceApiService {
   }
   //get services user profile
   servicesList(user){
-    return this.http.get(`${this.BASE_URL}/api/service/${user}`, this.setOptionsApi())
+    return this.http.get(`${this.BASE_URL}/api/services/${user}`, this.setOptionsApi())
     .map((res)=>res.json());
   }
+  //get 1 service
+  serviceDetails(service) {
+    return this.http.get(`${this.BASE_URL}/api/service/${service}`, this.setOptionsApi())
+      .map((res) => res.json());
+  }
   //get sections user profile
-  sectionsList(user) {
-    return this.http.get(`${this.BASE_URL}/api/sections/${user}`, this.setOptionsApi())
+  sectionsList(service) {
+    return this.http.get(`${this.BASE_URL}/api/sections/${service}`, this.setOptionsApi())
       .map((res) => res.json());
   }
 

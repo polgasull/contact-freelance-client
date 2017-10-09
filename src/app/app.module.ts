@@ -31,6 +31,8 @@ import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-me
 
 import { FreelanceApiService } from './services/freelance-api.service';
 import { SessionService } from './services/session.service';
+import { HelpersService } from './services/helpers.service';
+
 import { FreelancePublicService } from './services/freelance-public.service';
 
 export const routes: Routes = [
@@ -47,7 +49,8 @@ export const routes: Routes = [
     children: [
       { path: 'profile', component: ProfileComponent, canActivate: [SessionService] },
       { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
-      { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
+      { path: 'service/:id', component: SectionsComponent, canActivate: [SessionService] }
+      // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
   { path: '**', redirectTo: '' }
@@ -82,7 +85,7 @@ export const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService, FreelanceApiService, FreelancePublicService],
+  providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

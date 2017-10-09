@@ -4,6 +4,7 @@ import { TagInputModule } from 'ngx-chips';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
+import { HelpersService } from '../../services/helpers.service'
 
 @Component({
   selector: 'app-services',
@@ -40,7 +41,7 @@ export class ServicesComponent implements OnInit {
   }
 
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
+  constructor(private freelanceApi: FreelanceApiService, private helpers: HelpersService, private session: SessionService) { }
 
   ngOnInit() {
     
@@ -59,32 +60,18 @@ export class ServicesComponent implements OnInit {
 
     };
   }
-  //Convertir en helper/servicio y hacer accesible 
-  formatTags(tags, cb){
-    for (let i = 0; i < tags.length; i++) {
-        if (i == 0) {
-          this.tags = tags[i].value;
-        } else {
-          this.tags += ', ' + tags[i].value;
-        }
-      }
-      cb();
-  }
   
   submitService(myForm){
-    
-    this.formatTags(this.newService.tags, (myForm)=>{
+    this.helpers.formatTags(this.newService.tags, (tags, myForm)=>{
       this.uploader.onBuildItemForm = (item, form) => {
         item.withCredentials = false;
         form.append('name', this.newService.name);
         form.append('description', this.newService.description);
-        form.append('tags', this.tags);
+        form.append('tags', tags);
         form.append('user', this.userId);
       };
-
       this.uploader.uploadAll();
       this.newService = {};
-
       // this.freelanceApi.editUserProfile(this.user)
       //   .subscribe((user) => {
       //   });
