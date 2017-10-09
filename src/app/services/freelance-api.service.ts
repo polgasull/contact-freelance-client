@@ -30,12 +30,16 @@ export class FreelanceApiService {
     return this.http.put(`${this.BASE_URL}/api/user/${user._id}`, user, this.setOptionsApi())
       .map((res)=> res.json());
   }
-  //Muestra la lista de servicios de un usuario concret
+  //get services user profile
   servicesList(user){
     return this.http.get(`${this.BASE_URL}/api/service/${user}`, this.setOptionsApi())
     .map((res)=>res.json());
   }
-  //crea un servicio para un usuario concreto
+  //get sections user profile
+  sectionsList(user) {
+    return this.http.get(`${this.BASE_URL}/api/sections/${user}`, this.setOptionsApi())
+      .map((res) => res.json());
+  }
 
 }
 

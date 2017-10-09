@@ -1,3 +1,51 @@
-<p>
-  sections works!
-</p>
+<form (ngSubmit)="submitSection(myForm)" #myForm="ngForm">
+  <div class="form-group">
+    <label for="inputName">Section</label>
+    <input type="text" class="form-control" id="inputservice" value="" placeholder="Your name" name="newSection.service" [(ngModel)]="newSection.service"
+      required>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" value="" placeholder="Your name" name="newSection.name" [(ngModel)]="newSection.name"
+      required>
+  </div>
+
+  <div class="form-group">
+    <label for="inputDescription">description</label>
+    <textarea class="form-control" id="inputDescription" name="newSection.description" [(ngModel)]="newSection.descritpion" required></textarea>
+  </div>
+
+  <!-- <div class="form-group">
+    <label for="inputTags">tags</label>
+    <tag-input [(ngModel)]='newService.tags' name="newSection.tags" required></tag-input>
+  </div> -->
+
+
+  
+  <div class="form-group">
+    <label for="inputBigImage">BigImage</label>
+    <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="sectionImage" value="" name="sectionImage"
+      required>
+  </div>
+
+  {{feedback}}
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+
+  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button>
+</form>
+
+
+<h2>Section list</h2>
+
+<div *ngFor="let service of servicesList">
+  <img src="{{service.bigImage}}" /> {{service.user}}
+  <h2>{{service.name}}</h2>
+  <h2>{{service.description}}</h2>
+  <span *ngFor="let tag of service.tags">
+
+    {{tag}}
+  </span>
+
+</div>

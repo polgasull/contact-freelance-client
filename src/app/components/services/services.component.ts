@@ -43,7 +43,7 @@ export class ServicesComponent implements OnInit {
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 
   ngOnInit() {
-    console.log(this.userId)
+    
     //Service List
     this.freelanceApi.servicesList(this.userId)
       .subscribe((list) => {
