@@ -11,6 +11,9 @@ export class PublicProfileComponent implements OnInit {
   publicUserId:any;
   user :any = {
   };
+  serviceId: any;
+  services: any = [];
+
 
   constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
 
@@ -20,10 +23,14 @@ export class PublicProfileComponent implements OnInit {
         this.publicUserId = params['id'];
       });
     
-    
     this.freelancePublic.getUserProfile(this.publicUserId)
     .subscribe((user) => {
       this.user = user;
+    })
+    this.freelancePublic.getPublicService(this.publicUserId)
+    .subscribe((service) => {
+      this.services = service;
+
     })
   }
 

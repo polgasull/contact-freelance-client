@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FreelancePublicService } from '../../services/freelance-public.service'
+
 
 
 @Component({
@@ -9,15 +9,11 @@ import { FreelancePublicService } from '../../services/freelance-public.service'
 })
 export class PublicServicesComponent implements OnInit {
 
-  constructor(private freelancePublic: FreelancePublicService) { }
-  serviceId: String;
-  servicesList: any =[];
+  constructor() { }
 
   ngOnInit() {
-    this.freelancePublic.getPublicService(this.serviceId)
-    .subscribe((service) => {
-      this.servicesList = service;
-  })
+  
+
 }
 
 }

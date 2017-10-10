@@ -16,6 +16,7 @@ export class FreelancePublicService {
   }
 
   getPublicService(id) {
+    console.log('entra', id)
     return this.http.get(`${this.BASE_URL}/public-service/${id}`,)
     .map((res) => res.json());
   }

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelanceApiService } from '../../services/freelance-api.service'
 import { TagInputModule } from 'ngx-chips';
-<<<<<<< HEAD
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
-=======
->>>>>>> commit before downloading jordi's profile changes
 
 @Component({
   selector: 'app-profile',
