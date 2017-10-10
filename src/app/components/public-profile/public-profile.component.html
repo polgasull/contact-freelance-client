@@ -21,12 +21,23 @@
       <div class="col-sm">
         <span>{{user.name}} {{user.surname}}</span>
         <p>PRINCIPAL SERVICE</p>
+<<<<<<< HEAD
         <span>{{user.city}} {{user.country}} {{user.tags}}</span>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, non veritatis, provident placeat quia impedit
           sunt eum ea nobis inventore cumque qui dolorum, ullam saepe nulla natus, modi libero quos.</p>
         <a>
           <button class="btn btn-success">Contact</button>
         </a>
+=======
+        <span>{{user.city}} {{user.country}}</span>
+        <div *ngFor="let tag of user.tags">
+          {{ tag.value  }}
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, non veritatis, provident placeat quia impedit sunt
+            eum ea nobis inventore cumque qui dolorum, ullam saepe nulla natus, modi libero quos.</p>
+        <a><button class="btn btn-success">Contact</button></a>
+
+>>>>>>> Minimal mods
       </div>
 
 

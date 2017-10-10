@@ -40,7 +40,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },//delete
-  { path: 'public-profile', component: PublicProfileComponent },
+  { path: 'p/:id', component: PublicProfileComponent },
   { path: 'public-services', component: PublicServicesComponent },
   { path: 'public-sections', component: PublicSectionsComponent },
   { path: 'search-list', component: SearchListComponent },

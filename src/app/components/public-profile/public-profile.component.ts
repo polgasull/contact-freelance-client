@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../services/freelance-public.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-profile',
@@ -7,16 +8,20 @@ import { FreelancePublicService } from '../../services/freelance-public.service'
   styleUrls: ['./public-profile.component.css']
 })
 export class PublicProfileComponent implements OnInit {
-  userId:any;
+  publicUserId:any;
   user :any = {
   };
 
-  constructor(private freelancePublic: FreelancePublicService) { }
+  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.userId = JSON.parse(localStorage.getItem('user'))._id
+    this.route.params
+      .subscribe((params) => {
+        this.publicUserId = params['id'];
+      });
     
-    this.freelancePublic.getUserProfile(this.userId)
+    
+    this.freelancePublic.getUserProfile(this.publicUserId)
     .subscribe((user) => {
       this.user = user;
     })

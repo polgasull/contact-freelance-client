@@ -104,7 +104,8 @@
     {{feedback}}
     <div class="form-group">
         <label for="inputBigImage">BigImage</label>
-        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="bigImage" value="" name="userImage">
+        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="bigImage" value="" name="bigImage">
+        {{bigImage}}
     </div>
 
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>

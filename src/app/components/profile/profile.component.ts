@@ -28,13 +28,14 @@ export class ProfileComponent implements OnInit {
   };
   newUser: any = {
   };
+  bigImage : any;
  
 
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 
   ngOnInit() {
     this.userId = JSON.parse(localStorage.getItem('user'))._id
-    
+    console.log('init',this.userId)
     this.freelanceApi.getUser(this.userId)
     .subscribe((user) => {
       this.user = user;        
@@ -52,6 +53,7 @@ export class ProfileComponent implements OnInit {
 
   submitUpdates(myForm) {
     this.uploader.onBuildItemForm = (item, form) => {
+      console.log('item',this.bigImage, form, item, myForm)
       item.withCredentials = false;
     };
 
