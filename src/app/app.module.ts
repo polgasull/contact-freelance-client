@@ -34,6 +34,7 @@ import { SessionService } from './services/session.service';
 import { HelpersService } from './services/helpers.service';
 
 import { FreelancePublicService } from './services/freelance-public.service';
+import { HeaderComponent } from './header/header.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -75,7 +76,8 @@ export const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     FileSelectDirective,
-    DashboardMenuComponent
+    DashboardMenuComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

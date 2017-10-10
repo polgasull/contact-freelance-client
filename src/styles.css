@@ -2,12 +2,31 @@
 body {
     height: 100vh;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
 }
-
-.fa {
-    padding-right: 25%;
-  }
-  
-  .fbkBtn, .GoogleBtn, .linkedinBtn {
-    padding-right: 5%;
-  }
+.gap-5 {
+    height: 5px;
+    width: 100%;
+}
+.gap-10 {
+    height: 10px;
+    width: 100%;
+}
+.gap-20 {
+    height: 20px;
+    width: 100%;
+}
+.gap-30 {
+    height: 30px;
+    width: 100%;
+}
+.gap-40 {
+    height: 40px;
+    width: 100%;
+}
+.gap-50 {
+    height: 50px;
+    width: 100%;
+}
