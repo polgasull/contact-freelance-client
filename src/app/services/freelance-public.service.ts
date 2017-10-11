@@ -21,4 +21,10 @@ export class FreelancePublicService {
     .map((res) => res.json());
   }
 
+  getPublicSection(id) {
+    console.log('section or user id?', id)
+    return this.http.get(`${this.BASE_URL}/public-section/${id}`,)
+    .map((res) => res.json());
+  }
+
 }

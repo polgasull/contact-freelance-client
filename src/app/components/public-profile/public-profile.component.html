@@ -3,12 +3,12 @@
 </p>
 
 <div class="container">
-  <div class="jumbotron">
-    <div class="row">
+  <div class="row">
+    <div class="jumbotron">
 
       <div class="col-sm">
         <p>
-          <img src="{{ user.userImage }}" class="img-responsive" alt="User Image">
+          <img [src]="url + user.userImage" class="img-responsive" alt="User Image">
         </p>
         <a href="{{user.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;" target="_blank">
           <i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin </a>
@@ -22,31 +22,61 @@
         <span>{{user.name}} {{user.surname}}</span>
         <p>PRINCIPAL SERVICE</p>
         <span>{{user.city}} {{user.country}}</span>
-        <div *ngFor="let tag of user.tags">
+        <div class="badge badge-primary" *ngFor="let tag of user.tags">
           {{ tag.value }}
         </div>
-        <p>{{user.klaim}}</p>
-        <a><button class="btn btn-success">Contact</button></a>
+        <div *ngFor="let service of user.services">
+          <p>{{service.name}}</p>
         </div>
-    </div>
-  </div>
-  <div class="jumbotron" *ngFor="let service of services">
-    <div class="row">
-      <div class="col-sm">
-          <div>
-             <p>{{ service.name }}</p> 
-             <p>{{ service.description }}</p> 
-             <p>{{ service.tags }}</p> 
-             <img src="{{ service.bigImage }}" class="img-responsive" alt="Service bigImage">
-            </div>
-        
-      <div class="col-sm">
-        
-        <a><button class="btn btn-success">Contact</button></a>
+        <p>{{user.klaim}}</p>
+        <a>
+          <button class="btn btn-success">Contact</button>
+        </a>
 
       </div>
     </div>
   </div>
+
+
+  <div class="row" *ngFor="let service of services">
+    <div class="jumbotron">
+      <div class="col-sm">
+        <div>
+          <h3>{{ service.name }}</h3>
+          <span class="badge badge-primary"> {{ service.tags }}</span>
+          <span>{{ service.description }}</span>
+
+          <img [src]="url + service.bigImage" class="service-bigImage img-responsive" alt="Service bigImage">
+        </div>
+
+        <div class="col-sm">
+
+          <a>
+            <button class="btn btn-success">Contact</button>
+          </a>
+          <a>
+            <button class="btn btn-success btn" [routerLink]="['service._id']" role="button">View</button>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let section of sections">
+    <div class="jumbotron">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" [src]="url + section.bigImage" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="card-title">{{section.name}}</h4>
+              <p>{{section.user}}</p>
+              <p>{{section.service }}</p>
+              <span class="badge badge-info" *ngFor="let tag of section.tags">
+                  {{tag}}
+                </span>
+              <p class="card-text">{{section.description}}</p>
+              <button class="btn btn-success btn" [routerLink]="['section._id']" role="button">View</button>
+            </div>
+          </div>
+    </div>
+  </div>
 </div>
-
-

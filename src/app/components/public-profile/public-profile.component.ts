@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../services/freelance-public.service'
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-public-profile',
@@ -8,11 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./public-profile.component.css']
 })
 export class PublicProfileComponent implements OnInit {
+  url = `${environment.baseURL}`;  
   publicUserId:any;
   user :any = {
   };
   serviceId: any;
   services: any = [];
+  sections: any = [];
 
 
   constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
@@ -30,8 +33,15 @@ export class PublicProfileComponent implements OnInit {
     this.freelancePublic.getPublicService(this.publicUserId)
     .subscribe((service) => {
       this.services = service;
+      console.log(this.services)
+    });
 
-    })
+    this.freelancePublic.getPublicSection(this.publicUserId)
+    .subscribe((section) => {
+      this.sections = section;
+      console.log(this.sections);
+    });
+
   }
 
 }

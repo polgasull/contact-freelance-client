@@ -31,16 +31,16 @@
 
 <h2>Services list</h2>
 
-<div *ngFor="let service of servicesList">
-  <img src="{{service.bigImage}}"/>
-   {{service.user}}
-   <h2>{{service.name}}</h2>
-  <h2>{{service.description}}</h2>
-  <span *ngFor="let tag of service.tags">
-    {{tag}}
-  </span>
-  <a class="btn btn-primary" [routerLink]="['/dashboard/service/', service._id]">View Details</a>
- <hr>
-</div>
-
+<div class="card" style="width: 20rem;" *ngFor="let service of servicesList">
+    <img class="card-img-top" [src]="url + service.bigImage" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{service.name}}</h4>
+      <p>{{service.user}}</p>
+      <span class="badge badge-info" *ngFor="let tag of service.tags">
+          {{tag}}
+        </span>
+      <p class="card-text">{{service.description}}</p>
+      <p><a class="btn btn-primary" [routerLink]="['/dashboard/service/', service._id]">View Details</a></p>
+    </div>
+  </div>
 

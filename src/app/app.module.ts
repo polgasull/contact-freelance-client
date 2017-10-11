@@ -41,8 +41,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },//delete
-  { path: 'p/:id', component: PublicProfileComponent },
-  { path: 'public-services', component: PublicServicesComponent },
+  { path: 'p/:id', component: PublicProfileComponent },  
   { path: 'public-sections', component: PublicSectionsComponent },
   { path: 'search-list', component: SearchListComponent },
   { 
@@ -54,6 +53,7 @@ export const routes: Routes = [
       // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
+  { path: ':id', component: PublicServicesComponent },
   { path: '**', redirectTo: '' }
 ];
 

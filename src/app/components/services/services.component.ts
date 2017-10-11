@@ -12,7 +12,7 @@ import { HelpersService } from '../../services/helpers.service'
   styleUrls: ['./services.component.css']
 })
 export class ServicesComponent implements OnInit {
-  
+  url = `${environment.baseURL}`; 
   feedback: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: String;
