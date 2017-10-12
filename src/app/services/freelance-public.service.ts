@@ -27,4 +27,9 @@ export class FreelancePublicService {
     .map((res) => res.json());
   }
 
+getServiceProfile(id) {
+ return this.http.get(`${this.BASE_URL}/public-service/${id}`,)
+ .map((res) => res.json());
+}
+
 }
