@@ -1,28 +1,43 @@
-<form (ngSubmit)="submitSignup(myForm)" #myForm="ngForm">
-  <div class="form-group">
-    <label for="inputEmail">Email</label>
-    <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" [(ngModel)]="user.email"
-      #myEmail="ngModel" ng-model="required">
-  </div>
-  <div class="form-group">
-    <label for="inputPassword">Password</label>
-    <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password" name="password" [(ngModel)]="user.password"
-      #myPassword="ngModel" minlength="6" ng-model="required">
-    <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-      <p class="error" [hidden]="!myPassword.errors.required" [hidden]="!myPassword.errors.minlength">
-        <small>Password must be at least 6 characters long.</small>
-      </p>
+<section>
+  <div class="container">
+    <div class="gap-50"></div>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <h1>Signup</h1>
+        <form (ngSubmit)="submitSignup(myForm)" #myForm="ngForm">
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" [(ngModel)]="user.email"
+              #myEmail="ngModel" ng-model="required">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password" name="password" [(ngModel)]="user.password"
+              #myPassword="ngModel" minlength="6" ng-model="required">
+            <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+              <p class="error" [hidden]="!myPassword.errors.required" [hidden]="!myPassword.errors.minlength">
+                <small>Password must be at least 6 characters long.</small>
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name" [(ngModel)]="user.name" ng-model="required">
+          </div>
+          <div class="form-group">
+            <label for="inputSurname">Surname</label>
+            <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname"
+              ng-model="required">
+          </div>
+        
+          <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+        
+      </div>
     </div>
+    <div class="gap-50"></div>
   </div>
-  <div class="form-group">
-    <label for="inputName">Name</label>
-    <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name" [(ngModel)]="user.name" ng-model="required">
-  </div>
-  <div class="form-group">
-    <label for="inputSurname">Surname</label>
-    <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname" ng-model="required">
-  </div>
-
-  <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</section>

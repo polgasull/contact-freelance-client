@@ -1,0 +1,32 @@
+.bk-home {
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(2,41,56, 1);
+    min-height: 60vh;
+}
+.c-w {
+    color: #fff;
+}
+.big {
+    font-family: 'SixCaps', Fallback, sans-serif;
+    letter-spacing: 0.2rem;
+    font-size:5.5rem;
+    line-height: 7rem;
+}
+.big span {
+    font-size:13.5rem;
+    display: block;
+    margin-left: -5px; 
+
+}
+ul li {
+    list-style-type: none;
+}
+ul li {
+    margin: 10px;
+}
+.search-query-link {
+    text-transform: uppercase;
+    color: #000000;
+    padding: 10px;
+}

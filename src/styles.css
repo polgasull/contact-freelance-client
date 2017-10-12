@@ -1,10 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    height: 100vh;
+@font-face {
+  font-family: 'SixCaps';
+  src: url('./assets/fonts/SixCaps.eot'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/SixCaps.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/SixCaps.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/SixCaps.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/SixCaps.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/SixCaps.svg#SixCaps') format('svg'); /* Legacy iOS */
+}
+html {
+
+    min-height: 100%;
     position: relative;
+}
+body {
+    
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 300;
+}
+h1, h2, h3 {
+    font-family: 'SixCaps', Fallback, sans-serif;
+    letter-spacing: 0.2rem;
+    font-size:2.5rem;
+}
+a:hover {
+    text-decoration: none;
+}
+.lead {
+    font-size: 1.15rem;
 }
 .gap-5 {
     height: 5px;
@@ -29,4 +53,39 @@ body {
 .gap-50 {
     height: 50px;
     width: 100%;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 1.2rem
+
+}
+.btn-primary:hover {
+    background-color: rgba(255,255,255, 0.05);
+    border: 1px solid #fff;
+}
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #022938;
+    color: #022938;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 1rem
+
+}
+.btn-secondary:hover {
+    background-color: #022938;
+    border: 1px solid #022938;
+    color: #fff;
+}
+.form-control {
+    border-radius: 0px;
+    height: 42px;
+    
+}
+.pointer {
+    cursor: pointer;
 }
