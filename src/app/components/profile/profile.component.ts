@@ -14,28 +14,27 @@ export class ProfileComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
     url: `${environment.baseURL}/api/user/edit/${JSON.parse(localStorage.getItem('user'))._id}`,
     authToken: "Bearer " + this.session.token
-
   });
-
   feedback: string;
   usersList: Array<any> = [];
-  
   userId:any;
-  user :any = {
-  };
-  newUser: any = {
-  };
+  user :any = {};
+  newUser: any = {};
   bigImage : any;
  
 
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 
   ngOnInit() {
+    this.user.klaim  = "demo"
     this.userId = JSON.parse(localStorage.getItem('user'))._id
-    console.log('init',this.userId)
+    
     this.freelanceApi.getUser(this.userId)
     .subscribe((user) => {
-      this.user = user;        
+      this.user = user;  
+      if (!this.user.klaim){
+        this.user.klaim = '';
+      }  
     });
 
     this.uploader.onSuccessItem = (item, response) => {
@@ -50,7 +49,6 @@ export class ProfileComponent implements OnInit {
 
   submitUpdates(myForm) {
     this.uploader.onBuildItemForm = (item, form) => {
-      console.log('item',this.bigImage, form, item, myForm)
       item.withCredentials = false;
     };
 

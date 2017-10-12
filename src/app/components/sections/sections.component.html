@@ -1,8 +1,23 @@
-<h3>Details service</h3>
-{{ serviceDetails.name }}<br>
-{{ serviceDetails.description }}<br>
-{{ serviceDetails.tags }}<br>
-{{ serviceDetails.bigImage }}
+<h1>Details service</h1>
+<div class="card" >
+   {{ serviceDetails.bigImage }}
+  <img class="card-img-top" [src]="url + serviceDetails.bigImage">
+  <div class="card-block">
+    <h4 class="card-title">{{ serviceDetails.name }}</h4>
+    <p>{{serviceDetails.user}}</p>
+    <span class="badge badge-pill badge-info" *ngFor="let tag of serviceDetails.tags">
+      {{tag}}
+    </span>
+    <p class="card-text">{{ serviceDetails.description }}</p>
+    <p>
+      <a class="btn btn-secondary" [routerLink]="['/', serviceDetails._id]">View public Service Page</a>
+    </p>
+  </div>
+</div>
+<div class="gap-50"></div>
+
+
+
 
 <h3>SectionsList</h3>
 <div *ngFor="let section of sectionsList">
@@ -24,17 +39,17 @@
   </div>
 
   <div class="form-group">
-    <label for="inputDescription">description</label>
+    <label for="inputDescription">Description</label>
     <textarea class="form-control" id="inputDescription" name="newSection.description" [(ngModel)]="newSection.description" required></textarea>
   </div>
 
   <div class="form-group">
-    <label for="inputTags">tags</label>
+    <label for="inputTags">Tags</label>
     <tag-input [(ngModel)]='newSection.tags' name="newSection.tags" required></tag-input>
   </div>
   
   <div class="form-group">
-    <label for="inputBigImage">BigImage</label>
+    <label for="inputBigImage">Image </label>
     <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="sectionImage" value="" name="sectionImage" required>
   </div>
 
@@ -42,8 +57,9 @@
 
   <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
 
-  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button>
+  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
 </form>
-
+<div class="gap-50"></div>
+<div class="gap-50"></div>
 
 

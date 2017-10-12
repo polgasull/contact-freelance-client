@@ -1,7 +1,21 @@
-<h3>
-    DashBoard
-  </h3>
-  <p class="text-left"><a class="btn btn-success btn-sm" [routerLink]="['/dashboard/profile']" role="button">Profile</a></p>
-  <p class="text-left"><a class="btn btn-primary btn-sm" [routerLink]="['/dashboard/services']" role="button">Services</a></p>
-  <p class="text-left"><a class="btn btn-success btn-sm" [routerLink]="['/dashboard/sections']" role="button">Sections</a></p>
+<div class="card">
+  <div class="card-block">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <a class="link" [routerLink]="['/dashboard']" role="button">Dashboard</a>
+      </li>
+      <li class="list-group-item">
+        <a class="link" [routerLink]="['/dashboard/profile']" role="button">Public profile</a>
+      </li>
+      <li class="list-group-item">
+        <a class="link" [routerLink]="['/dashboard/services']" role="button">Services</a>
+      </li>
+      <li class="list-group-item">
+        <a class="link" [routerLink]="['/dashboard/password']" role="button">Change Password</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 

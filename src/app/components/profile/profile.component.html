@@ -1,12 +1,13 @@
-<h3>Profile </h3>
+<h3>Public profile </h3>
+<p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
 
 <form (ngSubmit)="submitUpdates(myForm)" #myForm="ngForm">
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="inputEmail">Email</label>
         <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" [(ngModel)]="user.email"
             #myEmail="ngModel" ng-model="required">
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
         <label for="inputPassword">Password</label>
         <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password" name="password" [(ngModel)]="user.password"
             #myPassword="ngModel" minlength="6" ng-model="required">
@@ -15,7 +16,9 @@
                 <small>Password must be at least 6 characters long.</small>
             </p>
         </div>
-    </div>
+    </div> -->
+    <h2>Personal Data</h2>
+     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputName">Name</label>
         <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name" [(ngModel)]="user.name" ng-model="required">
@@ -25,9 +28,8 @@
         <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname"
             ng-model="required">
     </div>
-
     <div class="form-group">
-        <label for="inputPhone">Phone</label>
+        <label for="inputPhone">Contact phone</label>
         <input type="text" class="form-control" id="inputPhone" placeholder="Your Phone" name="phone" [(ngModel)]="user.phone">
     </div>
     <div class="form-group">
@@ -38,16 +40,20 @@
         <label for="inputCity">City</label>
         <input type="text" class="form-control" id="inputCity" placeholder="Your City" name="city" [(ngModel)]="user.city">
     </div>
+    <h2>Sector data</h2>
+    <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
-        <label for="inputKlaim">Klaim</label>
-        <textarea class="form-control" id="inputKlaim" placeholder="Your Klaim" name="klaim" [(ngModel)]="user.klaim"></textarea>
+        <label for="inputKlaim">Short description</label>
+        <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false">ddddddddf</textarea>
+         {{160 - user.klaim.length}}
     </div>
     
     <div class="form-group">
-        <label for="inputTags">tags</label>
-        <tag-input [(ngModel)]='user.tags' name="tags"></tag-input>    
+        <label for="inputTags">Tags</label>
+        <tag-input class="tagline" [(ngModel)]='user.tags' name="tags"></tag-input>    
     </div>
-    
+    <h2>Social Networks</h2>
+    <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputLinkedin">Linkedin</label>
         <input class="form-control" id="inputLinkedin" placeholder="Your Linkedin" name="linkedin" pattern="https?://.+" [(ngModel)]="user.linkedin" #linkedin="ngModel">
@@ -96,19 +102,23 @@
             </div>
         </div>
     </div>
+    <h2>Images</h2>
+    <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
-        <label for="inputUserImage">User image</label>
+        <label for="inputUserImage">Profile image</label>
 
         <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="userImage" value="" name="userImage">
     </div>
     {{feedback}}
     <div class="form-group">
-        <label for="inputBigImage">BigImage</label>
+        <label for="inputBigImage">Banner image</label>
         <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="bigImage" value="" name="bigImage">
         {{bigImage}}
     </div>
 
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
      
-    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
 </form>
+<div class="gap-50"></div>
+<div class="gap-50"></div>

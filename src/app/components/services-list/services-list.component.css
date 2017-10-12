@@ -1,0 +1,15 @@
+.card-block {
+    padding: 20px;
+}
+.card {
+    margin-bottom: 20px;
+}
+.badge {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    font-weight: 300;
+    margin-right: 5px;
+}
+.badge-info {
+    background-color: #333;
+}

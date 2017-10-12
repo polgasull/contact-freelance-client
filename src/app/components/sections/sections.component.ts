@@ -14,6 +14,7 @@ import { HelpersService } from '../../services/helpers.service'
   styleUrls: ['./sections.component.css']
 })
 export class SectionsComponent implements OnInit {
+  url = `${environment.baseURL}`;
   feedback: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: any;
@@ -24,7 +25,6 @@ export class SectionsComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
     url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
-
   });
 
   public hasBaseDropZoneOver: boolean = false;

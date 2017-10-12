@@ -1,3 +1,10 @@
+<h1>Services</h1>
+<p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit. Ut luctus, dolor
+et vehicula mattis, augue sem fringilla nisi, a vestibulum nisi odio ac nulla. Integer vitae aliquam nunc. Suspendisse potenti.
+Aliquam nec feugiat nunc. Pellentesque vitae arcu mi. Cras elementum lorem sit amet risus condimentum, sit amet aliquam elit
+viverra. Cras quis rhoncus nulla.</p>
+<hr>
+<h2>Create new Service</h2>
 <form (ngSubmit)="submitService(myForm)" #myForm="ngForm">
   <div class="form-group">
     <label for="inputName">Name</label>
@@ -5,19 +12,17 @@
   </div>
 
    <div class="form-group">
-    <label for="inputDescription">description</label>
+    <label for="inputDescription">Description</label>
     <textarea class="form-control" id="inputDescription" name="newService.description" [(ngModel)]="newService.descritpion" required></textarea>
   </div>
 
   <div class="form-group">
-    <label for="inputTags">tags</label>
+    <label for="inputTags">Tags</label>
     <tag-input [(ngModel)]='newService.tags' name="newService.tags" required></tag-input>
   </div>
 
-
-  {{newService.tags}}
   <div class="form-group">
-    <label for="inputBigImage">BigImage</label>
+    <label for="inputBigImage">Image </label>
     <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="serviceImage" value="" name="serviceImage" required>
   </div>
   
@@ -25,22 +30,11 @@
 
   <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
 
-  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button>
+  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
 </form>
+<hr>
+
+<app-services-list></app-services-list>
 
 
-<h2>Services list</h2>
-
-<div class="card" style="width: 20rem;" *ngFor="let service of servicesList">
-    <img class="card-img-top" [src]="url + service.bigImage" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">{{service.name}}</h4>
-      <p>{{service.user}}</p>
-      <span class="badge badge-info" *ngFor="let tag of service.tags">
-          {{tag}}
-        </span>
-      <p class="card-text">{{service.description}}</p>
-      <p><a class="btn btn-primary" [routerLink]="['/dashboard/service/', service._id]">View Details</a></p>
-    </div>
-  </div>
 

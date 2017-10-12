@@ -35,6 +35,9 @@ import { HelpersService } from './services/helpers.service';
 
 import { FreelancePublicService } from './services/freelance-public.service';
 import { HeaderComponent } from './header/header.component';
+import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
+import { ServicesListComponent } from './components/services-list/services-list.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,8 +50,10 @@ export const routes: Routes = [
   { 
     path: 'dashboard', component: DashboardComponent, canActivate: [SessionService],
     children: [
+      { path: '', component: DashboardHomeComponent, canActivate: [SessionService]},
       { path: 'profile', component: ProfileComponent, canActivate: [SessionService] },
       { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
+      { path: 'password', component: ChangePasswordComponent, canActivate: [SessionService] },
       { path: 'service/:id', component: SectionsComponent, canActivate: [SessionService] }
       // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
@@ -77,7 +82,10 @@ export const routes: Routes = [
     FooterComponent,
     FileSelectDirective,
     DashboardMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardHomeComponent,
+    ServicesListComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
