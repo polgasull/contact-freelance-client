@@ -7,23 +7,20 @@
           <p>
             <img [src]="url + user.userImage" class="rounded-circle" alt="User Image">
           </p>
-          <a href="{{user.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;" target="_blank">
+          <a *ngIf="user.linkedin" href="{{user.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;" target="_blank">
             <i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin </a>
-          <a href="{{user.facebook}}" class="btn btn-primary fbkBtn" style="border-radius: 0px;" target="_blank">
+          <a *ngIf="user.facebook" href="{{user.facebook}}" class="btn btn-success fbkBtn" style="border-radius: 0px;" target="_blank">
             <i class="fa fa-facebook" aria-hidden="true"></i>Facebook </a>
-          <a href="{{user.google}}" class="btn btn-danger GoogleBtn" style="border-radius: 0px;" target="_blank">
+          <a *ngIf="user.google" href="{{user.google}}" class="btn btn-danger GoogleBtn" style="border-radius: 0px;" target="_blank">
             <i class="fa fa-google-plus" aria-hidden="true"></i>Google </a>
         </div>
         <p>{{user.web}}</p>
         <div class="col-sm">
-          <span>{{user.name}} {{user.surname}}</span>
-          <p>{{ service.name }}</p>
+          <span>{{user.name}} {{user.surname}} </span>
+          <p>{{user.email}}</p>
           <span>{{user.city}} {{user.country}}</span>
           <div class="badge badge-primary" *ngFor="let tag of user.tags">
             {{ tag.value }}
-          </div>
-          <div *ngFor="let service of user.services">
-            <p>{{service.name}}</p>
           </div>
           <p>{{user.klaim}}</p>
           <a>

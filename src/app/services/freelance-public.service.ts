@@ -11,19 +11,19 @@ export class FreelancePublicService {
   }
 
   getUserProfile(id) {
-    return this.http.get(`${this.BASE_URL}/profile/${id}`, )
+    return this.http.get(`${this.BASE_URL}/public-profile/${id}`, )
       .map((res) => res.json());
   }
 
   getPublicService(id) {
     console.log('entra', id)
-    return this.http.get(`${this.BASE_URL}/public-service/${id}`,)
+    return this.http.get(`${this.BASE_URL}/public-profile-service/${id}`,)
     .map((res) => res.json());
   }
 
   getPublicSection(id) {
     console.log('section or user id?', id)
-    return this.http.get(`${this.BASE_URL}/public-section/${id}`,)
+    return this.http.get(`${this.BASE_URL}/public-profile-section/${id}`,)
     .map((res) => res.json());
   }
 

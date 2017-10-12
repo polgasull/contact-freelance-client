@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FreelancePublicService } from '../../services/freelance-public.service'
+import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -8,8 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./public-services.component.css']
 })
 export class PublicServicesComponent implements OnInit {
+  url = `${environment.baseURL}`;  
+  publicUserId:any;
+  user :any = {
+  };
+  serviceId: any;
+  services: any = [];
+  sections: any = [];
 
-  constructor() { }
+
+  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
   
