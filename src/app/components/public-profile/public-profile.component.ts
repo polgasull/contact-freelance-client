@@ -34,7 +34,10 @@ export class PublicProfileComponent implements OnInit {
     .subscribe((service) => {
       this.services = service;
       console.log(this.services)
+      
     });
+
+
 
     this.freelancePublic.getPublicSection(this.publicUserId)
     .subscribe((section) => {
