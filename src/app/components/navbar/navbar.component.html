@@ -8,16 +8,16 @@
       <a class="" [routerLink]="['/search-list']">Search</a>
     </li>
     <li class="">
-      <a class="" [routerLink]="['/dashboard']">Dashboard</a>
+      <a class="" *ngIf="this.session.isAuth" [routerLink]="['/dashboard']">Dashboard</a>
     </li>
     <li class="">
-      <a class="" [routerLink]="['/signup']">Signup</a>
+      <a class="" *ngIf="!this.session.isAuth" [routerLink]="['/signup']">Signup</a>
     </li>
     <li class="">
-      <a class="" [routerLink]="['/login']">Login</a>
+      <a class="" *ngIf="!this.session.isAuth" [routerLink]="['/login']">Login</a>
     </li>
     <li class="">
-      <a class="" [routerLink]="['/logout']">Logout</a>
+      <a class="" *ngIf="this.session.isAuth" [routerLink]="['/logout']">Logout</a>
     </li>
   </ul>
   <div class="gap-5"></div>

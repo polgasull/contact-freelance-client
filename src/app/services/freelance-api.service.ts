@@ -45,6 +45,14 @@ export class FreelanceApiService {
     return this.http.get(`${this.BASE_URL}/api/sections/${service}`, this.setOptionsApi())
       .map((res) => res.json());
   }
+  removeSection(sectionId){
+    return this.http.delete(`${this.BASE_URL}/api/section/${sectionId}`, this.setOptionsApi())
+      .map((res) => res.json());
+  }
+  removeService(serviceId) {
+    return this.http.delete(`${this.BASE_URL}/api/service/${serviceId}`, this.setOptionsApi())
+      .map((res) => res.json());
+  }
 
 }
 

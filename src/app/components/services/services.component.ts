@@ -17,16 +17,11 @@ export class ServicesComponent implements OnInit {
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: String;
   servicesList: any =[];
-  newService: any = {
-   
-    
-
-  };
+  newService: any = {};
   tags: string;
   uploader: FileUploader = new FileUploader({
     url: `${environment.baseURL}/api/service/image`,
     authToken: "Bearer " + this.session.token,
-
   });
 
   public hasBaseDropZoneOver: boolean = false;
@@ -41,28 +36,37 @@ export class ServicesComponent implements OnInit {
   }
 
 
-  constructor(private freelanceApi: FreelanceApiService, private helpers: HelpersService, private session: SessionService) { }
+  constructor(
+    private freelanceApi: FreelanceApiService, 
+    private helpers: HelpersService, 
+    private session: SessionService
+  ) { }
 
   ngOnInit() {
     
-    //Service List
-    this.freelanceApi.servicesList(this.userId)
-      .subscribe((list) => {
-        this.servicesList = list;
-      });
-      //uploader
+    this.serviceList(this.userId);
+
     this.uploader.onSuccessItem = (item, response) => {
+      this.serviceList(this.userId);
       this.feedback = JSON.parse(response).message;
     };
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
-
     };
+  }
+
+  serviceList(id){
+    this.freelanceApi.servicesList(id)
+      .subscribe((list) => {
+        this.servicesList = list;
+        console.log( list)
+      });
   }
   
   submitService(myForm){
     this.helpers.formatTags(this.newService.tags, (tags, myForm)=>{
+      
       this.uploader.onBuildItemForm = (item, form) => {
         item.withCredentials = false;
         form.append('name', this.newService.name);
@@ -72,11 +76,14 @@ export class ServicesComponent implements OnInit {
       };
       this.uploader.uploadAll();
       this.newService = {};
-      // this.freelanceApi.editUserProfile(this.user)
-      //   .subscribe((user) => {
-      //   });
     })
-    
+  }
+
+  removeService(id) {
+    this.freelanceApi.removeService(id)
+      .subscribe((details) => {
+        this.serviceList(this.userId);
+      });
   }
   
 

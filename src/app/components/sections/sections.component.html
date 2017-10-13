@@ -1,6 +1,5 @@
 <h1>Details service</h1>
 <div class="card" >
-   {{ serviceDetails.bigImage }}
   <img class="card-img-top" [src]="url + serviceDetails.bigImage">
   <div class="card-block">
     <h4 class="card-title">{{ serviceDetails.name }}</h4>
@@ -16,19 +15,23 @@
 </div>
 <div class="gap-50"></div>
 
-
-
-
 <h3>SectionsList</h3>
-<div *ngFor="let section of sectionsList">
-  <img src="{{section.bigImage}}" /> {{section.user}}
-  <h2>{{section.name}}</h2>
-  <h2>{{section.description}}</h2>
-  <span *ngFor="let tag of section.tags">
 
-    {{tag}}
-  </span> 
-
+<div *ngFor="let section of sectionsList" class="card">
+  <img class="card-img-top" src="{{url + section.bigImage}}" /> 
+  {{section.user}}
+  <div class="card-block">
+    <h4 class="card-title">{{section.name}}</h4>
+    <p class="card-text">{{section.description}}</p>
+    <span *ngFor="let tag of section.tags">
+      {{tag}}
+    </span>
+    <div class="gap-20"></div>
+    <p>
+      <a class="btn btn-danger pointer" (click)="removeSection(section._id)">Remove section</a>
+    </p>
+  </div>
+  
 </div> 
 <h3>Add new section of this service:</h3>
 <form (ngSubmit)="submitSection(myForm)" #myForm="ngForm">

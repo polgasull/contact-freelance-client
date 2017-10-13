@@ -12,10 +12,15 @@ import { SessionService } from '../../services/session.service'
 })
 export class ProfileComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `${environment.baseURL}/api/user/edit/${JSON.parse(localStorage.getItem('user'))._id}`,
+    url: `${environment.baseURL}/api/user/edit/userImage/${JSON.parse(localStorage.getItem('user'))._id}`,
+    authToken: "Bearer " + this.session.token
+  });
+  uploaderBig: FileUploader = new FileUploader({
+    url: `${environment.baseURL}/api/user/edit/bigImage/${JSON.parse(localStorage.getItem('user'))._id}`,
     authToken: "Bearer " + this.session.token
   });
   feedback: string;
+  feedbackError: string;
   usersList: Array<any> = [];
   userId:any;
   user :any = {};
@@ -26,25 +31,34 @@ export class ProfileComponent implements OnInit {
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 
   ngOnInit() {
-    this.user.klaim  = "demo"
+    this.user.klaim  = ""
     this.userId = JSON.parse(localStorage.getItem('user'))._id
     
-    this.freelanceApi.getUser(this.userId)
-    .subscribe((user) => {
-      this.user = user;  
-      if (!this.user.klaim){
-        this.user.klaim = '';
-      }  
-    });
+    this.getUser(this.userId);
 
     this.uploader.onSuccessItem = (item, response) => {
+      this.getUser(this.userId);
       this.feedback = JSON.parse(response).message;
     };
-
     this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-      
+      this.feedbackError = JSON.parse(response).message;
     };
+    this.uploaderBig.onSuccessItem = (item, response) => {
+      this.getUser(this.userId);
+      this.feedback = JSON.parse(response).message;
+    };
+    this.uploaderBig.onErrorItem = (item, response, status, headers) => {
+      this.feedbackError = JSON.parse(response).message;
+    };
+  }
+  getUser(id){
+    this.freelanceApi.getUser(id)
+      .subscribe((user) => {
+        this.user = user;
+        if (!this.user.klaim) {
+          this.user.klaim = '';
+        }
+    });
   }
 
   submitUpdates(myForm) {
@@ -53,9 +67,19 @@ export class ProfileComponent implements OnInit {
     };
 
     this.uploader.uploadAll();
+
+    this.uploaderBig.onBuildItemForm = (item, form) => {
+      item.withCredentials = false;
+    };
+
+    this.uploaderBig.uploadAll();
   
     this.freelanceApi.editUserProfile(this.user)
     .subscribe((user)=>{
+      this.getUser(this.userId);
+      this.feedback = 'saved';
+
+
     });
   }
 

@@ -11,6 +11,7 @@ export class SessionService implements CanActivate {
   public token: string = '';
   public isAuth:  boolean = false;
   public user = {};
+  public userLogged:boolean = false; 
   
   private BASE_URL: String = 'http://localhost:3000'
   
@@ -18,7 +19,9 @@ export class SessionService implements CanActivate {
     private http: Http,
     private router: Router
   ) { }
-
+// ifIsLogged(){
+//   if(localStorage.getItem('token')
+// }
 canActivate() {
   if (localStorage.getItem('token')) {
     
@@ -41,6 +44,7 @@ canActivate() {
       })
 
   }else{
+    
     // this.logout()
     this.router.navigate(['/login'])
     return false;
@@ -94,6 +98,8 @@ signup(user) {
 }
 
 logout() {
+  this.isAuth = false;
+
   localStorage.removeItem('user');
   localStorage.removeItem('token');
   this.router.navigate(['/dashboard']);

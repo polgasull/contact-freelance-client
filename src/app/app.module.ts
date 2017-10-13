@@ -5,12 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { HttpModule } from '@angular/http';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FileSelectDirective } from "ng2-file-upload";
-
-
-
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -34,7 +29,7 @@ import { SessionService } from './services/session.service';
 import { HelpersService } from './services/helpers.service';
 
 import { FreelancePublicService } from './services/freelance-public.service';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { ServicesListComponent } from './components/services-list/services-list.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';

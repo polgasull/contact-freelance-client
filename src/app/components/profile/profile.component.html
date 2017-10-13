@@ -1,6 +1,9 @@
 <h3>Public profile </h3>
 <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
-
+        
+<a class="btn btn-secondary" target="_blank" [routerLink]="['/p/', user._id]">View your public profile</a>
+        
+<div class="gap-50"></div>
 <form (ngSubmit)="submitUpdates(myForm)" #myForm="ngForm">
     <!-- <div class="form-group">
         <label for="inputEmail">Email</label>
@@ -25,8 +28,7 @@
     </div>
     <div class="form-group">
         <label for="inputSurname">Surname</label>
-        <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname"
-            ng-model="required">
+        <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname" ng-model="required">
     </div>
     <div class="form-group">
         <label for="inputPhone">Contact phone</label>
@@ -40,11 +42,17 @@
         <label for="inputCity">City</label>
         <input type="text" class="form-control" id="inputCity" placeholder="Your City" name="city" [(ngModel)]="user.city">
     </div>
+    <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
+    <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+    
+    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
+    <div class="gap-50"></div>
     <h2>Sector data</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputKlaim">Short description</label>
-        <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false">ddddddddf</textarea>
+        <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false"></textarea>
          {{160 - user.klaim.length}}
     </div>
     
@@ -52,12 +60,19 @@
         <label for="inputTags">Tags</label>
         <tag-input class="tagline" [(ngModel)]='user.tags' name="tags"></tag-input>    
     </div>
+    <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
+    <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+    
+    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
+    <div class="gap-50"></div>
     <h2>Social Networks</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputLinkedin">Linkedin</label>
         <input class="form-control" id="inputLinkedin" placeholder="Your Linkedin" name="linkedin" pattern="https?://.+" [(ngModel)]="user.linkedin" #linkedin="ngModel">
         <div *ngIf="linkedin.errors && (linkedin.dirty || linkedin.touched)" class="alert alert-danger">
+            <div class="gap-10"></div>
             <div [hidden]="!linkedin.errors.required">
                 URL is required!
             </div>
@@ -102,6 +117,12 @@
             </div>
         </div>
     </div>
+    <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
+    <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+    
+    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
+    <div class="gap-50"></div>
     <h2>Images</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
@@ -109,16 +130,17 @@
 
         <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="userImage" value="" name="userImage">
     </div>
-    {{feedback}}
     <div class="form-group">
         <label for="inputBigImage">Banner image</label>
-        <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="bigImage" value="" name="bigImage">
+        <input type="file" ng2FileSelect [uploader]="uploaderBig" class="form-control" id="bigImage" value="" name="bigImage">
         {{bigImage}}
     </div>
-
+    <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
+    <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
      
-    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
+    <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
 </form>
+<div class="gap-50"></div>
 <div class="gap-50"></div>
 <div class="gap-50"></div>

@@ -26,15 +26,36 @@ viverra. Cras quis rhoncus nulla.</p>
     <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="serviceImage" value="" name="serviceImage" required>
   </div>
   
-   {{feedback}}
 
   <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
 
   <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
 </form>
+   {{feedback}}
+
 <hr>
+<h2>Services list</h2>
+<div class="card" *ngFor="let service of servicesList">
+  <div class="crop-img-card">
+    <img class="card-img-top" [src]="url + service.bigImage" alt="{{service.name}}">
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">{{service.name}}</h4>
+    <p>{{service.user}}</p>
+    <span class="badge badge-pill badge-info" *ngFor="let tag of service.tags">
+      {{tag}}
+    </span>
+    <p class="card-text">{{service.description}}</p>
+    <p>
+      <a class="btn btn-danger pointer" (click)="removeService(service._id)">REMOVE</a>
+      <a class="btn btn-secondary" [routerLink]="['/dashboard/service/', service._id]">View Details</a>
+    </p>
+  </div>
+</div>
+<div class="gap-50"></div>
+<!-- <app-services-list></app-services-list> -->
 
-<app-services-list></app-services-list>
 
 
+<div class="gap-50"></div>
 
