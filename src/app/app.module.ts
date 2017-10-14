@@ -40,7 +40,7 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },//delete
   { path: 'p/:id', component: PublicProfileComponent },  
-  { path: 'public-sections', component: PublicSectionsComponent },
+  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },
   { path: 'search-list', component: SearchListComponent },
   { 
     path: 'dashboard', component: DashboardComponent, canActivate: [SessionService],

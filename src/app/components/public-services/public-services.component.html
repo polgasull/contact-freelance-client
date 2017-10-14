@@ -38,8 +38,8 @@
               <span class="badge badge-primary"> {{ section.tags}} </span>
               {{ section.bigImage}}
               <a>
-                  <button class="btn btn-success btn" [routerLink]="['section._id']" role="button">View</button>
-                </a>
+                  <button class="btn btn-success btn" routerLink="/{{serviceDetail._id}}/{{section._id}}" role="button">View</button>
+              </a>
         </div>
     </div>
   </div>
