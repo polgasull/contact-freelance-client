@@ -11,19 +11,30 @@ import { environment } from '../../../environments/environment';
 })
 export class PublicServicesComponent implements OnInit {
   url = `${environment.baseURL}`;  
-  publicUserId:any;
-  user :any = {
-  };
+
   serviceId: any;
-  services: any = [];
-  sections: any = [];
+  service: any = {};
+  serviceDetail = {};
+  userDetail = {};
+  sectionDetail: Array<object>;
+ 
 
-
-  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
+  constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-  
+  this.route.params
+  .subscribe((params) => {
+    this.serviceId = params['id']
+  });
 
+  this.freelancePublicService.getServiceProfile(this.serviceId)
+  .subscribe((service) => {
+    this.service = service;
+    this.serviceDetail = service.services
+    this.userDetail = service.user
+    this.sectionDetail = service.section
+    console.log(this.service);
+  });
 }
 
 }

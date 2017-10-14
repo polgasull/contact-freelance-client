@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="col-sm">
+        <h3>{{ serviceDetail.name }}</h3>
+        <span>{{userDetail.city}}</span>
+        <span>{{userDetail.country}}</span>
+        <span class="badge badge-primary"> {{ serviceDetail.tags }}</span>
+        <p>{{ serviceDetail.description }}</p>
+
+        <img [src]="url + serviceDetail.bigImage" class="service-bigImage img-responsive" alt="Service bigImage">
+      </div>
+
+      <div class="col-sm">
+
+        <p>{{userDetail.name}}</p>
+        <p>{{userDetail.surname}}</p>
+        <a *ngIf="userDetail.linkedin" href="{{userDetail.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;" target="_blank">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin </a>
+          <a *ngIf="userDetail.facebook" href="{{userDetail.facebook}}" class="btn btn-success fbkBtn" style="border-radius: 0px;" target="_blank">
+            <i class="fa fa-facebook" aria-hidden="true"></i>Facebook </a>
+          <a *ngIf="userDetail.google" href="{{userDetail.google}}" class="btn btn-danger GoogleBtn" style="border-radius: 0px;" target="_blank">
+            <i class="fa fa-google-plus" aria-hidden="true"></i>Google </a>
+
+        <a>
+          <button class="btn btn-success">Contact</button>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div  class="col-sm-3" *ngFor="let section of sectionDetail">
+        <div class="jumbotron">
+              <h3> Section </h3>
+              {{ section.name }}
+              {{ section.description}}
+              <span class="badge badge-primary"> {{ section.tags}} </span>
+              {{ section.bigImage}}
+              <a>
+                  <button class="btn btn-success btn" [routerLink]="['section._id']" role="button">View</button>
+                </a>
+        </div>
+    </div>
+  </div>
+</div>

@@ -17,19 +17,19 @@ export class FreelancePublicService {
 
   getPublicService(id) {
     console.log('entra', id)
-    return this.http.get(`${this.BASE_URL}/public-profile-service/${id}`,)
-    .map((res) => res.json());
+    return this.http.get(`${this.BASE_URL}/public-profile-service/${id}`, )
+      .map((res) => res.json());
   }
 
   getPublicSection(id) {
     console.log('section or user id?', id)
-    return this.http.get(`${this.BASE_URL}/public-profile-section/${id}`,)
-    .map((res) => res.json());
+    return this.http.get(`${this.BASE_URL}/public-profile-section/${id}`, )
+      .map((res) => res.json());
   }
 
-getServiceProfile(id) {
- return this.http.get(`${this.BASE_URL}/public-service/${id}`,)
- .map((res) => res.json());
-}
+  getServiceProfile(id) {
+    return this.http.get(`${this.BASE_URL}/public-service/${id}`, )
+      .map((res) => res.json());
+  }
 
 }
