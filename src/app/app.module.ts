@@ -40,7 +40,6 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },//delete
   { path: 'p/:id', component: PublicProfileComponent },  
-  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },
   { path: 'search-list', component: SearchListComponent },
   { 
     path: 'dashboard', component: DashboardComponent, canActivate: [SessionService],
@@ -53,6 +52,7 @@ export const routes: Routes = [
       // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
+  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },  
   { path: ':id', component: PublicServicesComponent },
   { path: '**', redirectTo: '' }
 ];

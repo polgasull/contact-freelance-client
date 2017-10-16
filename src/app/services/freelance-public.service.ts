@@ -32,4 +32,8 @@ export class FreelancePublicService {
       .map((res) => res.json());
   }
 
+  getSectionProfile(id) {
+    return this.http.get(`${this.BASE_URL}/public-section/${id}`,)
+    .map((res) => res.json());
+  }
 }
