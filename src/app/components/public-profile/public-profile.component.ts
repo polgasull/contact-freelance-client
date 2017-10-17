@@ -30,7 +30,7 @@ export class PublicProfileComponent implements OnInit {
     .subscribe((user) => {
       this.user = user;
     })
-    this.freelancePublic.getPublicService(this.publicUserId)
+    this.freelancePublic.getServiceProfile(this.publicUserId)
     .subscribe((service) => {
       this.services = service;
       console.log(this.services)
