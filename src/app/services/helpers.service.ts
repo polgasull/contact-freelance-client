@@ -16,4 +16,12 @@ export class HelpersService {
     cb(this.tags);
   }
 
+  
+  convertToUrl(url) {
+    return encodeURI(url)
+
+  }
+
+
+
 }

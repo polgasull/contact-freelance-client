@@ -21,8 +21,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   submitSignup(myForm) {
+    // llamar aqui el helper para hacer encodeURI y hacer el console.log
+
     this.session.signup(this.user)
       .subscribe(
       (data) => {

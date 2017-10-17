@@ -15,15 +15,15 @@ export class PublicSectionsComponent implements OnInit {
   service: any = {};
   serviceDetail = {};
   userDetail = {};
-  sectionDetail: Array<object>;
-
+  sectionDetail = {};
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
       .subscribe((params) => {
-        this.sectionId = params['id']
+        this.sectionId = params['sectionId']
+        console.log(params['sectionId'])
       });
 
     this.freelancePublicService.getSectionProfile(this.sectionId)
@@ -32,7 +32,7 @@ export class PublicSectionsComponent implements OnInit {
         this.serviceDetail = section.services
         this.userDetail = section.user
         this.sectionDetail = section.section
-        console.log(this.service);
+        
       });
 
 
