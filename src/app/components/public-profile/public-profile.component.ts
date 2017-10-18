@@ -11,11 +11,23 @@ import { environment } from '../../../environments/environment';
 export class PublicProfileComponent implements OnInit {
   url = `${environment.baseURL}`;  
   publicUserId:any;
-  user :any = {
-  };
+  user :any = {};
   serviceId: any;
   services: any = [];
   sections: any = [];
+  firstService: any = {};
+  contact: any = {
+    name: "",
+    tel: "",
+    message: "",
+    email: "",
+    userEmail: "",
+    origin: "",
+    user: "",
+    service: ""
+  }
+  
+  
 
 
   constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
@@ -30,23 +42,40 @@ export class PublicProfileComponent implements OnInit {
     this.freelancePublic.getUserProfile(this.publicUserId)
     .subscribe((user) => {
       this.user = user;
+      
     })
-    this.freelancePublic.getServiceProfile(this.publicUserId)
+
+    this.freelancePublic.getPublicService(this.publicUserId)
     .subscribe((service) => {
       this.services = service;
-      console.log(this.services)
-    
-     
+      this.firstService = {
+        id: this.services[0]._id,
+        name: this.services[0].name,
+        description : this.services[0].description
+      };  
+       
     });
+  }
+  
 
-    
+  send(myForm){
+    this.contact = {
+      name: this.contact.name,
+      tel: this.contact.tel,
+      message: this.contact.message,
+      email: this.contact.email,
+      userEmail: this.user.email,
+      origin: "USER",
+      user: this.user._id,
+      service: this.services._id
 
-    this.freelancePublic.getPublicSection(this.publicUserId)
-    .subscribe((section) => {
-      this.sections = section;
-      console.log(this.sections);
-    });
-
+    }
+   
+    console.log(this.contact)
+    this.freelancePublic.sendNewContact(this.contact)
+    .subscribe((contact)=>{
+      console.log(contact)
+    })
   }
 
 }

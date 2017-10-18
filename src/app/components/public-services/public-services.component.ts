@@ -17,6 +17,16 @@ export class PublicServicesComponent implements OnInit {
   serviceDetail = {};
   userDetail = {};
   sectionDetail: Array<object>;
+  contact: any = {
+    name: "",
+    tel: "",
+    message: "",
+    email: "",
+    userEmail: "",
+    origin: "SERVICE",
+    user: "",
+    service: ""
+  }
  
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
@@ -33,7 +43,7 @@ export class PublicServicesComponent implements OnInit {
     this.serviceDetail = service.services
     this.userDetail = service.user
     this.sectionDetail = service.section
-    console.log(this.service);
+    console.log('ew',this.serviceDetail);
   });
 }
 

@@ -52,7 +52,7 @@ export const routes: Routes = [
       // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
-  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },  
+  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },
   { path: ':id', component: PublicServicesComponent },
   { path: '**', redirectTo: '' }
 ];

@@ -16,14 +16,7 @@ export class FreelancePublicService {
   }
 
   getPublicService(id) {
-    console.log('entra', id)
     return this.http.get(`${this.BASE_URL}/public-profile-service/${id}`, )
-      .map((res) => res.json());
-  }
-
-  getPublicSection(id) {
-    console.log('section or user id?', id)
-    return this.http.get(`${this.BASE_URL}/public-profile-section/${id}`, )
       .map((res) => res.json());
   }
 
@@ -32,8 +25,9 @@ export class FreelancePublicService {
       .map((res) => res.json());
   }
 
-  getSectionProfile(id) {
-    return this.http.get(`${this.BASE_URL}/public-section/${id}`,)
-    .map((res) => res.json());
+  sendNewContact(contact){
+    return this.http.post(`${this.BASE_URL}/send`, contact )
+      .map((res)=> res.json());
   }
+
 }
