@@ -25,7 +25,8 @@ export class PublicProfileComponent implements OnInit {
       .subscribe((params) => {
         this.publicUserId = params['id'];
       });
-    
+
+      
     this.freelancePublic.getUserProfile(this.publicUserId)
     .subscribe((user) => {
       this.user = user;

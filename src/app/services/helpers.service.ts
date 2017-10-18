@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HelpersService {
   tags: string;
+  str: string;
   constructor() { }
 
   formatTags(tags, cb) {
@@ -16,9 +17,14 @@ export class HelpersService {
     cb(this.tags);
   }
 
-  
-  convertToUrl(url) {
-    return encodeURI(url)
+  // función que detecta 2 parametros, los junta, elimina espacio, minusculas y lo convierte en url
+  convertToUrl(name, surname) {
+    this.str = name + '-' + surname;
+    this.str = this.str.replace(/\s/g, '')
+    this.str = this.str.toLowerCase();
+    this.str = encodeURI(this.str);
+
+    return this.str;
 
   }
 

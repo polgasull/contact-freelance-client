@@ -20,8 +20,9 @@ export class SignupComponent implements OnInit {
   constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
+ 
   }
-  
+
   submitSignup(myForm) {
     // llamar aqui el helper para hacer encodeURI y hacer el console.log
 
@@ -35,5 +36,7 @@ export class SignupComponent implements OnInit {
       }
       )
   }
+  
+  
 
 }

@@ -55,7 +55,7 @@
         <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false"></textarea>
          {{160 - user.klaim.length}}
     </div>
-    
+
     <div class="form-group">
         <label for="inputTags">Tags</label>
         <tag-input class="tagline" [(ngModel)]='user.tags' name="tags"></tag-input>    

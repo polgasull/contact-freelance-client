@@ -3,7 +3,9 @@ import { FreelanceApiService } from '../../services/freelance-api.service'
 import { TagInputModule } from 'ngx-chips';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
-import { SessionService } from '../../services/session.service'
+import { SessionService } from '../../services/session.service';
+import { HelpersService } from '../../services/helpers.service'; 
+
 
 @Component({
   selector: 'app-profile',
@@ -23,19 +25,21 @@ export class ProfileComponent implements OnInit {
   feedbackError: string;
   usersList: Array<any> = [];
   userId:any;
-  user :any = {};
+  user : any = {};
   newUser: any = {};
   bigImage : any;
- 
+  name : any;
+  surname : any; 
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
+  constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
 
   ngOnInit() {
     this.user.klaim  = ""
     this.userId = JSON.parse(localStorage.getItem('user'))._id
-    
-    this.getUser(this.userId);
+    this.name = this.user.name
 
+    this.getUser(this.userId);
+    
     this.uploader.onSuccessItem = (item, response) => {
       this.getUser(this.userId);
       this.feedback = JSON.parse(response).message;
@@ -58,6 +62,8 @@ export class ProfileComponent implements OnInit {
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
+    console.log(this.helpers.convertToUrl(this.user.name, this.user.surname));
+    this.helpers.convertToUrl(this.user.name, this.user.surname)
     });
   }
 
@@ -78,8 +84,6 @@ export class ProfileComponent implements OnInit {
     .subscribe((user)=>{
       this.getUser(this.userId);
       this.feedback = 'saved';
-
-
     });
   }
 
