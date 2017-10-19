@@ -63,7 +63,7 @@ export class ServicesComponent implements OnInit {
         this.servicesList = list
         this.serviceDetail = list.forEach(function(e) {
           console.log('foreach',e.name);
-          console.log(this.helpers.convertToUrl(e.name, e.name));        
+          // console.log(this.helpers.convertToUrl(e.name, e.name));        
         });
       });
   }
