@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+import { HelpersService } from '../../services/helpers.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,20 +13,21 @@ export class SignupComponent implements OnInit {
     email: '',
     password: '',
     name: '',
-    surname: ''
+    surname: '',
+    url: '',
   }
 
   error = null;
 
-  constructor(private session: SessionService, private router: Router) { }
+  constructor(private session: SessionService, private router: Router, private helpers: HelpersService) { }
 
   ngOnInit() {
  
   }
 
   submitSignup(myForm) {
-    // llamar aqui el helper para hacer encodeURI y hacer el console.log
-
+    this.user.url = this.helpers.convertToUrl(this.user.name, this.user.surname)
+    
     this.session.signup(this.user)
       .subscribe(
       (data) => {

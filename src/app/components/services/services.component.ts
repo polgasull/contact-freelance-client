@@ -16,7 +16,8 @@ export class ServicesComponent implements OnInit {
   feedback: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: String;
-  servicesList: any =[];
+  servicesList: any = [];
+  serviceDetail = {};
   newService: any = {};
   tags: string;
   uploader: FileUploader = new FileUploader({
@@ -59,8 +60,11 @@ export class ServicesComponent implements OnInit {
   serviceList(id){
     this.freelanceApi.servicesList(id)
       .subscribe((list) => {
-        this.servicesList = list;
-        console.log( list)
+        this.servicesList = list
+        this.serviceDetail = list.forEach(function(e) {
+          console.log('foreach',e.name);
+          console.log(this.helpers.convertToUrl(e.name, e.name));        
+        });
       });
   }
   
@@ -76,6 +80,7 @@ export class ServicesComponent implements OnInit {
       };
       this.uploader.uploadAll();
       this.newService = {};
+
     })
   }
 

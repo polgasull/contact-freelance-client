@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   bigImage : any;
   name : any;
   surname : any; 
+  newUrl: string;
 
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
 
@@ -63,7 +64,7 @@ export class ProfileComponent implements OnInit {
           this.user.klaim = '';
         }
     console.log(this.helpers.convertToUrl(this.user.name, this.user.surname));
-    this.helpers.convertToUrl(this.user.name, this.user.surname)
+    this.user.url = this.helpers.convertToUrl(this.user.name, this.user.surname)
     });
   }
 
