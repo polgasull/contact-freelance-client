@@ -14,8 +14,13 @@ export class PublicServicesComponent implements OnInit {
 
   serviceId: any;
   service: any = {};
+<<<<<<< HEAD
   serviceDetail: any = {};
   userDetail: any = {};
+=======
+  serviceDetail : any = {};
+  userDetail : any = {};
+>>>>>>> routes without images
   sectionDetail: Array<object>;
   contact: any = {
     name: "",
@@ -29,6 +34,7 @@ export class PublicServicesComponent implements OnInit {
   }
  
 
+<<<<<<< HEAD
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute, private helpers: HelpersService) { }
 
   ngOnInit() {
@@ -46,5 +52,41 @@ export class PublicServicesComponent implements OnInit {
     console.log('service url:', this.serviceDetail.url);
   });
 }
+=======
+  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.params
+    .subscribe((params) => {
+      this.serviceId = params['id']
+    });
+
+    this.freelancePublic.getServiceProfile(this.serviceId)
+    .subscribe((service) => {
+      this.service = service;
+      this.serviceDetail = service.services
+      this.userDetail = service.user
+      this.sectionDetail = service.section
+      
+    });
+  }
+  send(myForm) {
+    this.contact = {
+      name: this.contact.name,
+      tel: this.contact.tel,
+      message: this.contact.message,
+      email: this.contact.email,
+      userEmail: this.userDetail.email,
+      origin: "USER",
+      user: this.userDetail._id,
+      service: this.serviceDetail._id
+    }
+
+    this.freelancePublic.sendNewContact(this.contact)
+      .subscribe((contact) => {
+        console.log(contact)
+      })
+  }
+>>>>>>> routes without images
 
 }

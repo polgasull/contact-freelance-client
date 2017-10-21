@@ -12,13 +12,22 @@ export class PublicSectionsComponent implements OnInit {
   url = `${environment.baseURL}`;
 
   sectionId: any;
-  service: any = {};
+  section: any = {};
   serviceDetail = {};
-  userDetail = {};
-  section = {};
-  sectionDetail: any = {};
+  userDetail : any= {};
+  sectionDetail : any = {};
+  contact: any = {
+    name: "",
+    tel: "",
+    message: "",
+    email: "",
+    userEmail: "",
+    origin: "SERVICE",
+    user: "",
+    service: ""
+  }
 
-  constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
+  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
@@ -27,7 +36,7 @@ export class PublicSectionsComponent implements OnInit {
         console.log(params['sectionId'])
       });
 
-    this.freelancePublicService.getSectionProfile(this.sectionId)
+    this.freelancePublic.getSectionProfile(this.sectionId)
       .subscribe((section) => {
         this.section = section;
         this.serviceDetail = section.services
@@ -35,9 +44,25 @@ export class PublicSectionsComponent implements OnInit {
         this.sectionDetail = section.section
         console.log(this.sectionDetail.url)
       });
+  }
 
+  send(myForm) {
+    this.contact = {
+      name: this.contact.name,
+      tel: this.contact.tel,
+      message: this.contact.message,
+      email: this.contact.email,
+      userEmail: this.userDetail.email,
+      origin: "USER",
+      user: this.userDetail._id,
+      section: this.sectionDetail._id
 
+    }
 
+    this.freelancePublic.sendNewContact(this.contact)
+      .subscribe((contact) => {
+        console.log(contact)
+      })
   }
 
 }

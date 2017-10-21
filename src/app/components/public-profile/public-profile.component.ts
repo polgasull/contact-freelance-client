@@ -7,7 +7,8 @@ import { HelpersService } from '../../services/helpers.service';
 @Component({
   selector: 'app-public-profile',
   templateUrl: './public-profile.component.html',
-  styleUrls: ['./public-profile.component.css']
+  styleUrls: ['./public-profile.component.css'],
+  
 })
 export class PublicProfileComponent implements OnInit {
   url = `${environment.baseURL}`;

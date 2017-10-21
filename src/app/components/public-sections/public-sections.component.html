@@ -1,30 +1,113 @@
-<div class="row">
-  <div class="col-sm-3">
-    <div class="jumbotron">
-      <h3> Section </h3>
-      <span>{{userDetail.city}}</span>
-      <span>{{userDetail.country}}</span>
+<section class="bigImageContent">
+  <div class="bigImage" [ngStyle]="{'background-image': 'url('+ url + sectionDetail.bigImage + ')'}">
+  </div>
+  <div class="container">
+    <div class="gap-50"></div>
+    <div class="row">
 
-      {{ sectionDetail.name }} {{ sectionDetail.description}}
-      <span class="badge badge-primary"> {{ sectionDetail.tags}} </span>
-      <div class="col-sm">
+      <div class="col-sm-9">
+        <h1> {{ sectionDetail.name }}</h1>
+        <div class="badge badge-pill badge-info" *ngFor="let tag of sectionDetail.tags">
+          {{ tag }}
+        </div>
+        <p>{{userDetail.city}} {{userDetail.country}}</p>
+        <p class="lead">{{ sectionDetail.description }}</p>
 
-        <p>{{userDetail.name}}</p>
-        <p>{{userDetail.surname}}</p>
-        <a *ngIf="userDetail.linkedin" href="{{userDetail.linkedin}}" class="btn btn-info linkedinBtn" style="border-radius: 0px;"
-          target="_blank">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin </a>
-        <a *ngIf="userDetail.facebook" href="{{userDetail.facebook}}" class="btn btn-success fbkBtn" style="border-radius: 0px;"
-          target="_blank">
-          <i class="fa fa-facebook" aria-hidden="true"></i>Facebook </a>
-        <a *ngIf="userDetail.google" href="{{userDetail.google}}" class="btn btn-danger GoogleBtn" style="border-radius: 0px;" target="_blank">
-          <i class="fa fa-google-plus" aria-hidden="true"></i>Google </a>
-
-        <a>
-          <button class="btn btn-success">Contact</button>
-        </a>
-
+        <div>
+          <a *ngIf="userDetail.linkedin" href="{{userDetail.linkedin}}" class="btn btn-info" target="_blank">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a *ngIf="userDetail.facebook" href="{{userDetail.facebook}}" class="btn btn-info" target="_blank">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a *ngIf="userDetail.google" href="{{userDetail.google}}" class="btn btn-info" target="_blank">
+            <i class="fa fa-google-plus" aria-hidden="true"></i>
+          </a>
+          <a *ngIf="userDetail.web" href="{{userDetail.web}}" class="btn btn-info" target="_blank">
+            <i class="fa fa-link" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
+    <div class="gap-50"></div>
   </div>
-</div>
+</section>
+<section class="form-section">
+  <div class="container">
+    <div class="gap-50"></div>
+    <div class="row">
+      <div class="col-md-7">
+        <h2 class="med">Contact with
+          <span>{{ sectionDetail.name }}</span>
+          freelance
+        </h2>
+        <p>{{ sectionDetail.description}}</p>
+      </div>
+      <div class="col-md-5">
+        <div class="form-box">
+          <form (ngSubmit)="send(myForm)" #myForm="ngForm">
+            <h3>Contact Form</h3>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input class="form-control form-deco" type="text" placeholder="Your name ... " name="name" [(ngModel)]="contact.name" />
+            </div>
+            <div class="form-group">
+              <label for="name">Email</label>
+              <input class="form-control form-deco" type="text" placeholder="Your email ... " name="email" [(ngModel)]="contact.email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Phone</label>
+              <input class="form-control form-deco" type="text" placeholder="Your phone ... " name="tel" [(ngModel)]="contact.tel" />
+            </div>
+            <div class="form-group">
+              <label for="name">Message</label>
+              <textarea class="form-control form-deco" name="message" [(ngModel)]="contact.message"></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-info btn-lg pointer" type="submit">CONTACT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="gap-50"></div>
+  </div>
+</section>
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+
+        <div class="gap-30"></div>
+        <h4>do you know my other services?</h4>
+        <div class="gap-20"></div>
+        <img src="./assets/images/arrow.png">
+        <div class="gap-30"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="gap-40"></div>
+    <div class="row">
+      <div class="col-sm-4 text-center"></div>
+      <div class="col-sm-4 text-center">
+        <img [src]="url + userDetail.userImage" class="rounded-circle userImage" alt="User Image">
+        <h3>{{userDetail.name}}</h3>
+        <span class="badge badge-pill badge-info" *ngFor="let tag of userDetail.tags"> {{ tag.value }}</span>
+        <div class="gap-20"></div>
+        <p>{{ userDetail.klaim }}</p>
+        <div class="gap-20"></div>
+        <button class="btn btn-secondary pointer" routerLink="/p/{{userDetail._id}}" role="button">View my profile</button>
+
+      </div>
+
+    </div>
+    <div class="gap-50"></div>
+  </div>
+</section>
+<div class="gap-50"></div>
+<div class="gap-50"></div>

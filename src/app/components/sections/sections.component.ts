@@ -28,6 +28,8 @@ export class SectionsComponent implements OnInit {
     url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
   });
+  CLIENT_BASE_URL: string = environment.clientBaseURL
+
 
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
@@ -78,6 +80,7 @@ export class SectionsComponent implements OnInit {
     this.freelanceApi.sectionsList(this.serviceId)
       .subscribe((details) => {
         this.sectionsList = details;
+        
       });
   }
   
@@ -91,8 +94,21 @@ export class SectionsComponent implements OnInit {
   }
 
   submitSection(myForm) {
-    this.helpers.convertToUrl(this.newSection.name, null, (patatasLlevo) => {
-      this.newSection.url = patatasLlevo;
+    if (!this.uploader.queue[0]) {
+      this.newSection = {
+        name: this.newSection.name,
+        description: this.newSection.description,
+        tags: this.newSection.tags,
+        user: this.userId,
+        service: this.serviceId,
+      }
+
+      this.freelanceApi.newSection(this.newSection)
+        .subscribe((details) => {
+          this.sectionList();
+          this.newSection = {};
+        });
+    } else {
       this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
         this.uploader.onBuildItemForm = (item, form) => {
           item.withCredentials = false;
@@ -106,6 +122,6 @@ export class SectionsComponent implements OnInit {
         this.uploader.uploadAll();
         
       });
-    })   
+    } 
   }
 }

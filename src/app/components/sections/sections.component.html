@@ -18,6 +18,7 @@
 <h3>SectionsList</h3>
 
 <div *ngFor="let section of sectionsList" class="card">
+  
   <img class="card-img-top" src="{{url + section.bigImage}}" /> 
   {{section.user}}
   <div class="card-block">
@@ -48,7 +49,8 @@
 
   <div class="form-group">
     <label for="inputTags">Tags</label>
-    <tag-input [(ngModel)]='newSection.tags' name="newSection.tags" required></tag-input>
+
+    <tag-input id="inputTags" [(ngModel)]='newSection.tags' name="newSection.tags" value=""></tag-input>
   </div>
   
   <div class="form-group">

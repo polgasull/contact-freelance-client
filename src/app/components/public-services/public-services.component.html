@@ -1,5 +1,7 @@
-<section class="bigImage" [ngStyle]="{'background-image': 'url('+ url + serviceDetail.bigImage + ')'}">
-  <div class="container">
+<section class="bigImageContent">
+  <div class="bigImage" [ngStyle]="{'background-image': 'url('+ url + serviceDetail.bigImage + ')'}">
+  </div>
+    <div class="container">
     <div class="gap-50"></div>
     <div class="row">
      
@@ -41,9 +43,9 @@
           <span>{{ serviceDetail.name }}</span>
           
         </h2>
-        <p></p>
+        <div class="gap-40"></div>
+        <p>{{ serviceDetail.description }}</p>
 
-        <button class="btn btn-secondary pointer"  role="button">View</button>
 
       </div>
       <div class="col-md-5">
@@ -77,7 +79,7 @@
     <div class="gap-50"></div>
   </div>
 </section>
-<section class="bk-g">
+<section class="">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">

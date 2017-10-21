@@ -35,6 +35,14 @@ export class FreelanceApiService {
     return this.http.get(`${this.BASE_URL}/api/services/${user}`, this.setOptionsApi())
     .map((res)=>res.json());
   }
+  newService(service) {
+    return this.http.post('http://localhost:3000/api/service', service, this.setOptionsApi())
+      .map((res) => res.json());
+  }
+  removeService(serviceId) {
+    return this.http.delete(`${this.BASE_URL}/api/service/${serviceId}`, this.setOptionsApi())
+      .map((res) => res.json());
+  }
   //get 1 service
   serviceDetails(service) {
     return this.http.get(`${this.BASE_URL}/api/service/${service}`, this.setOptionsApi())
@@ -45,14 +53,15 @@ export class FreelanceApiService {
     return this.http.get(`${this.BASE_URL}/api/sections/${service}`, this.setOptionsApi())
       .map((res) => res.json());
   }
+  newSection(section){
+    return this.http.post('http://localhost:3000/api/section', section, this.setOptionsApi())
+      .map((res)=> res.json());
+  }
   removeSection(sectionId){
     return this.http.delete(`${this.BASE_URL}/api/section/${sectionId}`, this.setOptionsApi())
       .map((res) => res.json());
   }
-  removeService(serviceId) {
-    return this.http.delete(`${this.BASE_URL}/api/service/${serviceId}`, this.setOptionsApi())
-      .map((res) => res.json());
-  }
+  
 
 }
 
