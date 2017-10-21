@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../services/freelance-public.service'
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
-
+import { HelpersService } from '../../services/helpers.service'; 
 
 @Component({
   selector: 'app-public-services',
@@ -14,8 +14,8 @@ export class PublicServicesComponent implements OnInit {
 
   serviceId: any;
   service: any = {};
-  serviceDetail = {};
-  userDetail = {};
+  serviceDetail: any = {};
+  userDetail: any = {};
   sectionDetail: Array<object>;
   contact: any = {
     name: "",
@@ -29,12 +29,12 @@ export class PublicServicesComponent implements OnInit {
   }
  
 
-  constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
+  constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute, private helpers: HelpersService) { }
 
   ngOnInit() {
   this.route.params
   .subscribe((params) => {
-    this.serviceId = params['id']
+    this.serviceId = params['url']
   });
 
   this.freelancePublicService.getServiceProfile(this.serviceId)
@@ -43,8 +43,7 @@ export class PublicServicesComponent implements OnInit {
     this.serviceDetail = service.services
     this.userDetail = service.user
     this.sectionDetail = service.section
-    
-    
+    console.log('service url:', this.serviceDetail.url);
   });
 }
 

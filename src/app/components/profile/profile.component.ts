@@ -4,7 +4,7 @@ import { TagInputModule } from 'ngx-chips';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service';
-
+import { HelpersService } from '../../services/helpers.service';
 
 
 @Component({
@@ -24,23 +24,22 @@ export class ProfileComponent implements OnInit {
   feedback: string;
   feedbackError: string;
   usersList: Array<any> = [];
-  userId:any;
-  user : any = {};
+  userId: any;
+  user: any = {};
   newUser: any = {};
-  bigImage : any;
-  name : any;
-  surname : any; 
-  newUrl: string;
+  bigImage: any;
+  name: any;
+  surname: any;
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
+  constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
 
   ngOnInit() {
-    this.user.klaim  = ""
+    this.user.klaim = ""
     this.userId = JSON.parse(localStorage.getItem('user'))._id
     this.name = this.user.name
 
     this.getUser(this.userId);
-    
+
     this.uploader.onSuccessItem = (item, response) => {
       this.getUser(this.userId);
       this.feedback = JSON.parse(response).message;
@@ -56,34 +55,40 @@ export class ProfileComponent implements OnInit {
       this.feedbackError = JSON.parse(response).message;
     };
   }
-  getUser(id){
+
+  getUser(id) {
     this.freelanceApi.getUser(id)
       .subscribe((user) => {
         this.user = user;
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
-    });
+
+      });
   }
 
   submitUpdates(myForm) {
-    this.uploader.onBuildItemForm = (item, form) => {
-      item.withCredentials = false;
-    };
+    this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {
+      this.user.url = string;
+      this.uploader.onBuildItemForm = (item, form) => {
+        item.withCredentials = false;
+      };
 
-    this.uploader.uploadAll();
+      this.uploader.uploadAll();
 
-    this.uploaderBig.onBuildItemForm = (item, form) => {
-      item.withCredentials = false;
-    };
+      this.uploaderBig.onBuildItemForm = (item, form) => {
+        item.withCredentials = false;
+      };
 
-    this.uploaderBig.uploadAll();
-  
-    this.freelanceApi.editUserProfile(this.user)
-    .subscribe((user)=>{
-      this.getUser(this.userId);
-      this.feedback = 'saved';
-    });
+      this.uploaderBig.uploadAll();
+
+      this.freelanceApi.editUserProfile(this.user)
+        .subscribe((user) => {
+          this.getUser(this.userId);
+          this.feedback = 'saved';
+        });
+    })
+
   }
 
 }

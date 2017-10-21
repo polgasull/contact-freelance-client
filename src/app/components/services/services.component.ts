@@ -64,18 +64,23 @@ export class ServicesComponent implements OnInit {
       });
   }
   
-  submitService(myForm){
-    this.helpers.formatTags(this.newService.tags, (tags, myForm)=>{
-      
-      this.uploader.onBuildItemForm = (item, form) => {
-        item.withCredentials = false;
-        form.append('name', this.newService.name);
-        form.append('description', this.newService.description);
-        form.append('tags', tags);
-        form.append('user', this.userId);
-      };
-      this.uploader.uploadAll();
-      this.newService = {};
+  submitService(myForm) {
+    this.helpers.convertToUrl(this.newService.name, null, (string) => {
+      this.newService.url = string; 
+      console.log(this.newService)
+      this.helpers.formatTags(this.newService.tags, (tags, myForm)=>{
+        
+        this.uploader.onBuildItemForm = (item, form) => {
+          item.withCredentials = false;
+          form.append('name', this.newService.name);
+          form.append('description', this.newService.description);
+          form.append('tags', tags);
+          form.append('user', this.userId);
+          form.append('url', this.newService.url)
+        };
+        this.uploader.uploadAll();
+        this.newService = {};
+      })
     })
   }
 

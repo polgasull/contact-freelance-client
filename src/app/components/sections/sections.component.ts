@@ -91,18 +91,21 @@ export class SectionsComponent implements OnInit {
   }
 
   submitSection(myForm) {
-    this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
-      this.uploader.onBuildItemForm = (item, form) => {
-        item.withCredentials = false;
-        form.append('name', this.newSection.name);
-        form.append('description', this.newSection.description);
-        form.append('tags', tags);
-        form.append('user', this.userId);
-        form.append('service', this.serviceId);
-      };
-      this.uploader.uploadAll();
-      
-    });
+    this.helpers.convertToUrl(this.newSection.name, null, (patatasLlevo) => {
+      this.newSection.url = patatasLlevo;
+      this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
+        this.uploader.onBuildItemForm = (item, form) => {
+          item.withCredentials = false;
+          form.append('name', this.newSection.name);
+          form.append('description', this.newSection.description);
+          form.append('tags', tags);
+          form.append('user', this.userId);
+          form.append('service', this.serviceId);
+          form.append('url', this.newSection.url);
+        };
+        this.uploader.uploadAll();
+        
+      });
+    })   
   }
-
 }

@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <section>
   <div class="container">
-    <router-outlet></router-outlet>
+    <router-outlet (deactivate)="onDeactivate()"></router-outlet>
   </div>
 </section>
 <app-footer></app-footer>

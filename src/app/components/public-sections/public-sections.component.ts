@@ -15,7 +15,8 @@ export class PublicSectionsComponent implements OnInit {
   service: any = {};
   serviceDetail = {};
   userDetail = {};
-  sectionDetail = {};
+  section = {};
+  sectionDetail: any = {};
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute) { }
 
@@ -28,11 +29,11 @@ export class PublicSectionsComponent implements OnInit {
 
     this.freelancePublicService.getSectionProfile(this.sectionId)
       .subscribe((section) => {
-        this.service = section;
+        this.section = section;
         this.serviceDetail = section.services
         this.userDetail = section.user
         this.sectionDetail = section.section
-        
+        console.log(this.sectionDetail.url)
       });
 
 

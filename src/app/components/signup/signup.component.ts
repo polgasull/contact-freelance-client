@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
   }
 
   submitSignup(myForm) {
-    this.user.url = this.helpers.convertToUrl(this.user.name, this.user.surname)
-    
-    this.session.signup(this.user)
+    this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {
+      this.user.url = string;
+      this.session.signup(this.user)
       .subscribe(
       (data) => {
         this.router.navigate(['/profile']);
@@ -37,6 +37,7 @@ export class SignupComponent implements OnInit {
         this.error = err
       }
       )
+    }) 
   }
   
   

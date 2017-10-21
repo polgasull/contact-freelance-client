@@ -11,5 +11,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
+  onDeactivate() {
+    document.body.scrollTop = 0;
+}
 
 }

@@ -10,8 +10,8 @@ export class FreelancePublicService {
   constructor(private http: Http) {
   }
 
-  getUserProfile(id) {
-    return this.http.get(`${this.BASE_URL}/public-profile/${id}`, )
+  getUserProfile(url) {
+    return this.http.get(`${this.BASE_URL}/public-profile/${url}`, )
       .map((res) => res.json());
   }
 
@@ -20,11 +20,15 @@ export class FreelancePublicService {
       .map((res) => res.json());
   }
 
-  getServiceProfile(id) {
-    return this.http.get(`${this.BASE_URL}/public-service/${id}`, )
+  getServiceProfile(url) {
+    return this.http.get(`${this.BASE_URL}/public-service/${url}`, )
       .map((res) => res.json());
   }
 
+  getSectionProfile(url) {
+    return this.http.get(`${this.BASE_URL}/public-section/${url}`,)
+    .map((res) => res.json());
+  }
   sendNewContact(contact){
     return this.http.post(`${this.BASE_URL}/send`, contact )
       .map((res)=> res.json());

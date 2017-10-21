@@ -40,7 +40,7 @@
         </h2>
         <p>{{ firstService.description }}</p>
         
-        <button class="btn btn-secondary pointer" [routerLink]="['/', firstService.id]" role="button">View</button>
+        <button class="btn btn-secondary pointer" [routerLink]="['/', firstService.url]" role="button">View</button>
 
       </div>
       <div class="col-md-5">
@@ -98,7 +98,7 @@
           <span class="badge badge-pill badge-info"> {{ service.tags }}</span>
           <p>{{ service.description }}</p>
           <!-- <img [src]="url + service.bigImage" class="service-bigImage img-responsive" alt="Service bigImage"> -->
-          <button class="btn btn-secondary pointer" [routerLink]="['/', service._id]" role="button">View</button>
+          <button class="btn btn-secondary pointer" [routerLink]="['/', service.url]" role="button">View</button>
       </div>
       <div class="col-sm-4 text-center" *ngFor="let section of sections">
         <!-- <img class="card-img-top" [src]="url + section.bigImage" alt="Card image cap"> -->
@@ -108,7 +108,7 @@
         <!-- <p>{{section.user}}</p>
         <p>{{section.service }}</p> -->
         <p>{{section.description}}</p>
-        <button class="btn btn-secondary pointer" [routerLink]="['section._id']" role="button">View</button>
+        <button class="btn btn-secondary pointer" [routerLink]="['section.url']" role="button">View</button>
       </div>
     </div>   
     <div class="gap-50"></div>
