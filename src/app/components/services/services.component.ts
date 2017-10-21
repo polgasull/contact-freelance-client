@@ -61,10 +61,6 @@ export class ServicesComponent implements OnInit {
     this.freelanceApi.servicesList(id)
       .subscribe((list) => {
         this.servicesList = list
-        this.serviceDetail = list.forEach(function(e) {
-          console.log('foreach',e.name);
-          // console.log(this.helpers.convertToUrl(e.name, e.name));        
-        });
       });
   }
   
@@ -80,7 +76,6 @@ export class ServicesComponent implements OnInit {
       };
       this.uploader.uploadAll();
       this.newService = {};
-
     })
   }
 

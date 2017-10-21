@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../services/freelance-public.service'
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { HelpersService } from '../../services/helpers.service'; 
 
 @Component({
   selector: 'app-public-profile',
@@ -30,18 +31,21 @@ export class PublicProfileComponent implements OnInit {
   
 
 
-  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
+  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute, private helpers: HelpersService) { }
 
   ngOnInit() {
     this.route.params
       .subscribe((params) => {
         this.publicUserId = params['id'];
+        
       });
 
       
     this.freelancePublic.getUserProfile(this.publicUserId)
     .subscribe((user) => {
       this.user = user;
+      console.log(this.helpers.convertToUrl(this.user.name, this.user.surname));
+      this.user.url = this.helpers.convertToUrl(this.user.name, this.user.surname)
       
     })
 

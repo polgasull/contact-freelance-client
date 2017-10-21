@@ -4,7 +4,7 @@ import { TagInputModule } from 'ngx-chips';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service';
-import { HelpersService } from '../../services/helpers.service'; 
+
 
 
 @Component({
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   surname : any; 
   newUrl: string;
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
+  constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 
   ngOnInit() {
     this.user.klaim  = ""
@@ -63,8 +63,6 @@ export class ProfileComponent implements OnInit {
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
-    console.log(this.helpers.convertToUrl(this.user.name, this.user.surname));
-    this.user.url = this.helpers.convertToUrl(this.user.name, this.user.surname)
     });
   }
 
