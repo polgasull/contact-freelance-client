@@ -43,7 +43,8 @@ export class PublicServicesComponent implements OnInit {
     this.serviceDetail = service.services
     this.userDetail = service.user
     this.sectionDetail = service.section
-    console.log('ew',this.serviceDetail);
+    
+    
   });
 }
 
