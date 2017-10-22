@@ -36,7 +36,12 @@ export class FreelanceApiService {
     .map((res)=>res.json());
   }
   newService(service) {
-    return this.http.post('http://localhost:3000/api/service', service, this.setOptionsApi())
+    return this.http.post(`${this.BASE_URL}/api/service`, service, this.setOptionsApi())
+      .map((res) => res.json());
+  }
+  updateService(service) {
+    console.log('conect updtae')
+    return this.http.put(`${this.BASE_URL}/api/service/${service._id}`, service, this.setOptionsApi())
       .map((res) => res.json());
   }
   removeService(serviceId) {

@@ -33,6 +33,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { ServicesListComponent } from './components/services-list/services-list.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ServiceUpdateComponent } from './components/service-update/service-update.component';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -80,7 +84,9 @@ export const routes: Routes = [
     HeaderComponent,
     DashboardHomeComponent,
     ServicesListComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ConfirmComponent,
+    ServiceUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -88,9 +94,13 @@ export const routes: Routes = [
     HttpModule,
     TagInputModule,
     BrowserAnimationsModule,
+    BootstrapModalModule.forRoot({ container: document.body }),
     RouterModule.forRoot(routes)
   ],
   providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
+  entryComponents: [
+    ConfirmComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

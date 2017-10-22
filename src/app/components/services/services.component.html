@@ -49,9 +49,13 @@ viverra. Cras quis rhoncus nulla.</p>
     <p>
       <a class="btn btn-danger pointer" (click)="removeService(service._id)">REMOVE</a>
       <a class="btn btn-secondary" [routerLink]="['/dashboard/service/', service._id]">View Details</a>
+        <app-service-update [service]="service" (onSave)="updateService($event)"></app-service-update>
+
+      
     </p>
   </div>
 </div>
 <div class="gap-50"></div>
 <div class="gap-50"></div>
+
 

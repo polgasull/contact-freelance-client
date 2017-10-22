@@ -5,6 +5,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
 import { HelpersService } from '../../services/helpers.service'
+import { ServiceUpdateComponent } from '../../components/service-update/service-update.component';
 
 @Component({
   selector: 'app-services',
@@ -88,6 +89,16 @@ export class ServicesComponent implements OnInit {
     this.freelanceApi.removeService(id)
       .subscribe((details) => {
         this.serviceList(this.userId);
+      });
+  }
+
+  updateService(service){
+    this.freelanceApi.updateService(service)
+      .subscribe((serviceDetails) => {
+        console.log('XX', service)
+        this.serviceList(this.userId);
+        console.log('service updated', serviceDetails)
+
       });
   }
   
