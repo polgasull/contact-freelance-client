@@ -1,4 +1,4 @@
-import { Component, Renderer } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,6 @@ import { Component, Renderer } from '@angular/core';
 export class AppComponent {
   title = 'contact-freelance';
 
-  constructor(private renderer: Renderer) {
-  }
-  onDeactivate() {
-    document.body.scrollTop = 0;
-  }
 }
 
 

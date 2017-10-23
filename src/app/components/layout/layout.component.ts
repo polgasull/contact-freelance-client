@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
@@ -7,14 +7,9 @@ import { Component, OnInit, Renderer } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(private renderer: Renderer) { }
-
   ngOnInit() {
     
 }
 
-onDeactivate() {
-  document.body.scrollTop = 0;
-}
 }
 
