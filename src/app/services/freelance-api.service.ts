@@ -66,8 +66,6 @@ export class FreelanceApiService {
     return this.http.delete(`${this.BASE_URL}/api/section/${sectionId}`, this.setOptionsApi())
       .map((res) => res.json());
   }
-  
-
 }
 
 

@@ -34,4 +34,11 @@ export class FreelancePublicService {
       .map((res)=> res.json());
   }
 
+    // search how many users match with the query
+    searchUserList(query) {
+      return this.http.get(`${this.BASE_URL}/search-user/${query}`,)
+      .map((res) => res.json());
+    }
+  
+
 }

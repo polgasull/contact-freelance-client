@@ -40,9 +40,6 @@
           <span>{{user.name}} {{user.surname}}</span>
          {{ firstService.name}}
         </h2>
-        <div class="col-sm-3">
-          <img [src]="url + service.bigImage" class="rounded-circle userImage" alt="User Image">
-      </div>
         <p>{{ firstService.description }}</p>
         
         <button class="btn btn-secondary pointer" [routerLink]="['/', firstService.url]" role="button">View</button>
