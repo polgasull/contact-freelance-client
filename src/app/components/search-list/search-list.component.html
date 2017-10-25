@@ -4,6 +4,10 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>Resultados para servicios</h1>
+        <div *ngFor="let service of serviceList">
+          {{service.name}}
+          <img src="{{url + service.bigImage}}" class="rounded-circle userImage" alt="User Image">
+        </div>
         <a class="btn btn-secondary">Load more</a>
       </div>
     </div>
@@ -16,6 +20,11 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>Resultados para sections</h1>
+        <div *ngFor="let section of sectionList">
+            {{section.name}}
+            <img src="{{url + section.bigImage}}" class="rounded-circle userImage" alt="User Image">
+          </div>
+
         <a class="btn btn-secondary">Load more</a>
       </div>
     </div>
@@ -28,6 +37,10 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>Resultados para freelance</h1>
+        <div *ngFor="let user of userList">
+          {{user.name}} {{user.surname}}
+          <img src="{{url + user.userImage}}" class="rounded-circle userImage" alt="User Image">
+        </div>
         <a class="btn btn-secondary">Load more</a>
       </div>
     </div>

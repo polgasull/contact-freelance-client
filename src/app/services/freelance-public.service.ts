@@ -39,6 +39,16 @@ export class FreelancePublicService {
       return this.http.get(`${this.BASE_URL}/search-user/${query}`,)
       .map((res) => res.json());
     }
+
+    searchServiceList(query) {
+      return this.http.get(`${this.BASE_URL}/search-service/${query}`,)
+      .map((res) => res.json());
+    }
+
+    searchSectionList(query) {
+      return this.http.get(`${this.BASE_URL}/search-section/${query}`,)
+      .map((res) => res.json());
+    }
   
 
 }
