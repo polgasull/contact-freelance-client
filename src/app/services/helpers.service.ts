@@ -25,4 +25,13 @@ export class HelpersService {
     if (cb) cb(this.str)
     return this.str;
   }
+
+  arrayReassign(originArray, newArray) {
+    originArray.forEach((e) => {
+      newArray.push(e)
+    })
+  }
+
+
 }
+

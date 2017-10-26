@@ -35,20 +35,18 @@ export class FreelancePublicService {
   }
 
     // search how many users match with the query
-    searchUserList(query) {
-      return this.http.get(`${this.BASE_URL}/search-user/${query}`,)
+    searchUserList(query, limit, skip) {
+      return this.http.get(`${this.BASE_URL}/search-user/${query}/${limit}/${skip}`,)
       .map((res) => res.json());
     }
 
-    searchServiceList(query) {
-      return this.http.get(`${this.BASE_URL}/search-service/${query}`,)
+    searchServiceList(query, limit, skip) {
+      return this.http.get(`${this.BASE_URL}/search-service/${query}/${limit}/${skip}`,)
       .map((res) => res.json());
     }
 
-    searchSectionList(query) {
-      return this.http.get(`${this.BASE_URL}/search-section/${query}`,)
+    searchSectionList(query, limit, skip) {
+      return this.http.get(`${this.BASE_URL}/search-section/${query}/${limit}/${skip}`,)
       .map((res) => res.json());
     }
-  
-
 }
