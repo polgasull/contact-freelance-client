@@ -30,6 +30,8 @@
     <div class="gap-20"></div>
     <p>
       <a class="btn btn-danger pointer" (click)="removeSection(section._id)">Remove section</a>
+      <app-section-update [section]="section" (onSave)="updateSection($event)"></app-section-update>
+
     </p>
   </div>
   

@@ -7,7 +7,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
 import { HelpersService } from '../../services/helpers.service'
-
+import { SectionUpdateComponent } from '../../components/section-update/section-update.component';
 
 @Component({
   selector: 'app-sections',
@@ -28,19 +28,14 @@ export class SectionsComponent implements OnInit {
     url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
   });
+  uploaderUpdate: FileUploader = new FileUploader({
+    url: `${environment.baseURL}/api/section-update/image`,
+    authToken: "Bearer " + this.session.token,
+  });
   CLIENT_BASE_URL: string = environment.clientBaseURL
 
 
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
-
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
-  }
+  
 
   constructor(
     private freelanceApi: FreelanceApiService, 
@@ -122,6 +117,32 @@ export class SectionsComponent implements OnInit {
         this.uploader.uploadAll();
         
       });
-    } 
+    };
+  };
+  updateSection(section) {
+    if (!this.uploader.queue[0]) {
+      this.freelanceApi.updateSection(section)
+        .subscribe((serviceDetails) => {
+          
+          this.sectionList();
+         
+
+      });
+    } else {
+      this.helpers.formatTags(section.tags, (tags, myForm) => {
+        this.uploaderUpdate.onBuildItemForm = (item, form) => {
+          item.withCredentials = false;
+          form.append('id', section._id);
+          form.append('name', section.name);
+          form.append('description', section.description);
+          form.append('tags', tags);
+          form.append('user', this.userId);
+          form.append('service', this.serviceId);
+        };
+        this.uploader.uploadAll();
+      });
+    }
   }
-}
+  
+  
+};

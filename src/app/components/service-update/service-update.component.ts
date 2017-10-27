@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DialogService } from "ng2-bootstrap-modal";
-import { ConfirmComponent } from "../../components/confirm/confirm.component";
+import { ModalUpdateServiceComponent } from "../../components/modal-update-service/modal-update-service.component";
 @Component({
   selector: 'app-service-update',
   templateUrl: './service-update.component.html',
@@ -13,7 +13,7 @@ export class ServiceUpdateComponent implements OnInit {
   
   constructor(private dialogService: DialogService) { }
   showConfirm() {
-    let disposable = this.dialogService.addDialog(ConfirmComponent, {
+    let disposable = this.dialogService.addDialog(ModalUpdateServiceComponent, {
       title: 'Confirm title',
       message: 'Confirm message',
       service: this.service,

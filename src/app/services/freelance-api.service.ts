@@ -59,7 +59,11 @@ export class FreelanceApiService {
       .map((res) => res.json());
   }
   newSection(section){
-    return this.http.post('http://localhost:3000/api/section', section, this.setOptionsApi())
+    return this.http.post(`${this.BASE_URL}/api/section`, section, this.setOptionsApi())
+      .map((res)=> res.json());
+  }
+  updateSection(section){
+    return this.http.put(`${this.BASE_URL}/api/section/${section._id}`, section, this.setOptionsApi())
       .map((res)=> res.json());
   }
   removeSection(sectionId){

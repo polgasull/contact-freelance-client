@@ -34,8 +34,10 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 import { ServicesListComponent } from './components/services-list/services-list.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ModalUpdateServiceComponent } from './components/modal-update-service/modal-update-service.component';
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
+import { ModalUpdateSectionComponent } from './components/modal-update-section/modal-update-section.component';
+import { SectionUpdateComponent } from './components/section-update/section-update.component';
 
 
 export const routes: Routes = [
@@ -85,8 +87,10 @@ export const routes: Routes = [
     DashboardHomeComponent,
     ServicesListComponent,
     ChangePasswordComponent,
-    ConfirmComponent,
-    ServiceUpdateComponent
+    ModalUpdateServiceComponent,
+    ServiceUpdateComponent,
+    ModalUpdateSectionComponent,
+    SectionUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,8 @@ export const routes: Routes = [
   ],
   providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
   entryComponents: [
-    ConfirmComponent
+    ModalUpdateServiceComponent,
+    ModalUpdateSectionComponent
   ],
   bootstrap: [AppComponent]
 })
