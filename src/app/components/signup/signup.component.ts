@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
       this.session.signup(this.user)
       .subscribe(
       (data) => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashboard']);
       },
       (err) => {
         this.error = err
