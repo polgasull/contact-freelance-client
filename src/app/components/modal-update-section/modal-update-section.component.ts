@@ -68,10 +68,22 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
       
     }
   
-    this.result = true;
-    this.close();
+    
   }
   ngOnInit() {
+    //uploader
+    this.uploaderUpdate.onSuccessItem = (item, response) => {
+      // this.feedback = JSON.parse(response).message;
+      // this.sectionList();
+      this.result = true;
+      this.close();
+      console.log('success')
+    };
+
+    this.uploaderUpdate.onErrorItem = (item, response, status, headers) => {
+      // this.feedback = JSON.parse(response).message;
+
+    };
   }
 
 }

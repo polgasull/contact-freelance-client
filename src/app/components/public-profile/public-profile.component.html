@@ -1,11 +1,11 @@
 <section class="bigImageContent">
-  <div class="bigImage" [ngStyle]="{'background-image': 'url('+ url + user.bigImage + ')'}">
+  <div class="bigImage" [ngStyle]="{'background-image': 'url('+ user.bigImage + ')'}">
   </div>
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
         <div class="col-sm-3">
-            <img [src]="url + user.userImage" class="rounded-circle userImage" alt="User Image">
+            <img [src]="user.userImage" class="rounded-circle userImage" alt="User Image">
         </div>
         <div class="col-sm-9">
           <h1>{{user.name}} {{user.surname}}</h1>

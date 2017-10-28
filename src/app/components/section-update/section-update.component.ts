@@ -35,6 +35,7 @@ export class SectionUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   goEmiterGo() {

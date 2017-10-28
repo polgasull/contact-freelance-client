@@ -1,6 +1,6 @@
 <h1>Details service</h1>
 <div class="card" >
-  <img class="card-img-top" [src]="url + serviceDetails.bigImage">
+  <img class="card-img-top" [src]="serviceDetails.bigImage">
   <div class="card-block">
     <h4 class="card-title">{{ serviceDetails.name }}</h4>
     <p>{{serviceDetails.user}}</p>
@@ -19,7 +19,7 @@
 
 <div *ngFor="let section of sectionsList" class="card">
   
-  <img class="card-img-top" src="{{url + section.bigImage}}" /> 
+  <img class="card-img-top" src="{{section.bigImage}}" /> 
   {{section.user}}
   <div class="card-block">
     <h4 class="card-title">{{section.name}}</h4>
@@ -31,6 +31,8 @@
     <p>
       <a class="btn btn-danger pointer" (click)="removeSection(section._id)">Remove section</a>
       <app-section-update [section]="section" (onSave)="sectionList()"></app-section-update>
+            <a class="btn btn-danger pointer" (click)="sectionList()">Remove section</a>
+
 
     </p>
   </div>
