@@ -1,9 +1,19 @@
-<div class="input-group">
-    <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
-    <span class="input-group-btn">
-      <button class="btn btn-secondary pointer" type="button" (click)="newSearch()">Search</button>
-    </span>
+<section>
+  <div class="container">
+    <div class="gap-50"></div>
+    <div class="row">
+      <div class="input-group">
+        <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary pointer" type="button" (click)="newSearch()">Search</button>
+        </span>
+      </div>
+    </div>
   </div>
+
+</section>
+
+
 
 <section>
   <div class="container">
@@ -14,12 +24,12 @@
       </div>
     </div>
     <div class="row">
-      
+
       <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let service of serviceList">
         <app-search-item [item]="service"></app-search-item>
       </div>
     </div>
-    
+
     <a class="btn btn-secondary pointer" (click)="searchServiceFunction()">Load more</a>
 
 
@@ -33,12 +43,14 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>Resultados para freelance</h1>
-        <div *ngFor="let user of userList">
-          <app-search-item [item]="user"></app-search-item>
-        </div>
-        <a class="btn btn-secondary pointer" (click)="searchUserFunction()">Load more</a>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let user of userList">
+        <app-search-item [item]="user"></app-search-item>
+      </div>
+    </div>
+    <a class="btn btn-secondary pointer" (click)="searchUserFunction()">Load more</a>
     <div class="gap-50"></div>
   </div>
 </section>
