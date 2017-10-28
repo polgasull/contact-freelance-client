@@ -4,7 +4,6 @@ import { FreelancePublicService } from '../../services/freelance-public.service'
 import { HelpersService } from '../../services/helpers.service';
 import { environment } from '../../../environments/environment';
 
-
 @Component({
   selector: 'app-search-list',
   templateUrl: './search-list.component.html',
@@ -23,7 +22,7 @@ export class SearchListComponent implements OnInit {
   skipUser: number= 0;
   skipService: number = 0;
   skipSection: number = 0;
-
+  search: string;
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute, private router: Router, private helpers: HelpersService) { }
 
@@ -33,20 +32,28 @@ export class SearchListComponent implements OnInit {
         this.query = params['query'];
       });
 
+      this.searchUserFunction();
+      this.searchServiceFunction();
+  }
+  
+  newSearch() {
+    this.serviceList = [];
+    this.userList = [];
+    this.skipUser = 0;
+    this.skipService = 0;
+    this.query = this.search;
     this.searchUserFunction();
     this.searchServiceFunction();
-    this.searchSectionFunction();
   }
 
+
   searchUserFunction() {
-    console.log('1',this.limit)
     this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser)
       .subscribe((user) => {
         this.users = user
         this.skipUser++;
         this.helpers.arrayReassign(this.users, this.userList)
         console.log('User List:', this.userList);
-        console.log('limit num:', this.limit)
       })
       
   }
@@ -61,13 +68,4 @@ export class SearchListComponent implements OnInit {
       })
   }
 
-  searchSectionFunction() {
-    this.freelancePublicService.searchSectionList(this.query, this.limit, this.skipSection)
-      .subscribe((section) => {
-        this.sections = section;
-        this.skipSection++;
-        this.helpers.arrayReassign(this.sections, this.sectionList)        
-        console.log('Section List', this.sectionList)
-      })
-  }
 }

@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="crop-image">
+    <img class="card-img-top" src="{{url + item.bigImage}}" alt="User Image">
+  </div>
+
+  <div class="card-body">
+    <h6 class="card-title">{{item.name}} {{item.surname}}</h6>
+    <span *ngFor="let tag of item.tags; let i=index">
+      <span class="badge badge-pill badge-info" *ngIf="i<3">
+        {{ tag.value || tag }}
+      </span>
+    </span>
+    <br>
+    <br>
+    <a class="btn btn-secondary" *ngIf="item.surname" [routerLink]="['/p', item.url]">View</a>
+    <a class="btn btn-secondary" *ngIf="!item.surname" [routerLink]="['/', item.url]">View</a>
+  </div>
+</div>

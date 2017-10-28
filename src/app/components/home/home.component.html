@@ -14,9 +14,9 @@
         </p>
         <h1 class="c-w">Contact Freelance</h1>
         <div class="input-group">
-          <input type="text" name="search" [(ngModel)]="search"  class="form-control" placeholder="Search for...">
+          <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button">Search</button>
+            <button class="btn btn-secondary pointer" type="button" [routerLink]="['/s/', search]">Search</button>
           </span>
         </div>
         <div class="gap-20"></div>

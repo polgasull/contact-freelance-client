@@ -5,7 +5,7 @@
       <a class="" [routerLink]="['/']">Home </a>
     </li>
     <li class="">
-      <a class="" [routerLink]="['/search-list']">Search</a>
+      <a class="" [routerLink]="['/s/:query']">Search</a>
     </li>
     <li class="">
       <a class="" *ngIf="this.session.isAuth" [routerLink]="['/dashboard']">Dashboard</a>

@@ -44,9 +44,4 @@ export class FreelancePublicService {
       return this.http.get(`${this.BASE_URL}/search-service/${query}/${limit}/${skip}`,)
       .map((res) => res.json());
     }
-
-    searchSectionList(query, limit, skip) {
-      return this.http.get(`${this.BASE_URL}/search-section/${query}/${limit}/${skip}`,)
-      .map((res) => res.json());
-    }
 }

@@ -39,6 +39,7 @@ import { ServiceUpdateComponent } from './components/service-update/service-upda
 import { ModalUpdateSectionComponent } from './components/modal-update-section/modal-update-section.component';
 import { SectionUpdateComponent } from './components/section-update/section-update.component';
 
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -90,7 +91,8 @@ export const routes: Routes = [
     ModalUpdateServiceComponent,
     ServiceUpdateComponent,
     ModalUpdateSectionComponent,
-    SectionUpdateComponent
+    SectionUpdateComponent,
+    SearchItemComponent
   ],
   imports: [
     BrowserModule,
