@@ -91,16 +91,6 @@ export class ServicesComponent implements OnInit {
         this.serviceList(this.userId);
       });
   }
-
-  updateService(service){
-    this.freelanceApi.updateService(service)
-      .subscribe((serviceDetails) => {
-        console.log('XX', service)
-        this.serviceList(this.userId);
-        console.log('service updated', serviceDetails)
-
-      });
-  }
   
 
 }

@@ -28,10 +28,6 @@ export class SectionsComponent implements OnInit {
     url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
   });
-  uploaderUpdate: FileUploader = new FileUploader({
-    url: `${environment.baseURL}/api/section-update/image`,
-    authToken: "Bearer " + this.session.token,
-  });
   CLIENT_BASE_URL: string = environment.clientBaseURL
 
 
@@ -105,6 +101,7 @@ export class SectionsComponent implements OnInit {
         });
     } else {
       this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
+
         this.uploader.onBuildItemForm = (item, form) => {
           item.withCredentials = false;
           form.append('name', this.newSection.name);
@@ -119,30 +116,4 @@ export class SectionsComponent implements OnInit {
       });
     };
   };
-  updateSection(section) {
-    if (!this.uploader.queue[0]) {
-      this.freelanceApi.updateSection(section)
-        .subscribe((serviceDetails) => {
-          
-          this.sectionList();
-         
-
-      });
-    } else {
-      this.helpers.formatTags(section.tags, (tags, myForm) => {
-        this.uploaderUpdate.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('id', section._id);
-          form.append('name', section.name);
-          form.append('description', section.description);
-          form.append('tags', tags);
-          form.append('user', this.userId);
-          form.append('service', this.serviceId);
-        };
-        this.uploader.uploadAll();
-      });
-    }
-  }
-  
-  
 };

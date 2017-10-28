@@ -22,18 +22,7 @@ export class ServiceUpdateComponent implements OnInit {
       .subscribe((isConfirmed) => {
         //We get dialog result
         if (isConfirmed) {
-          this.service = {
-            name: this.service.name,
-            description: this.service.description,
-            tags: this.service.tags,
-            user: this.service.user,
-            _id: this.service._id,
-            
-          }
           this.goEmiterGo();
-        }
-        else {
-         
         }
       });
     //We can close dialog calling disposable.unsubscribe();
@@ -47,7 +36,6 @@ export class ServiceUpdateComponent implements OnInit {
   }
   goEmiterGo() {
     this.onSave.emit(this.service);
-    console.log('inside goemiter')
   }
   
 

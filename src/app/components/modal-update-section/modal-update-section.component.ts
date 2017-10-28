@@ -4,6 +4,8 @@ import { environment } from "../../../environments/environment";
 import { FileUploader } from 'ng2-file-upload';
 import { SessionService } from '../../services/session.service'
 import { HelpersService } from '../../services/helpers.service'
+import { FreelanceApiService } from '../../services/freelance-api.service'
+
 
 export interface UpdateSectionModel {
   title: string;
@@ -31,6 +33,7 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
   constructor(
     dialogService: DialogService,
     private session: SessionService,
+    private freelanceApi: FreelanceApiService,
     private helpers: HelpersService
   ) { 
     super(dialogService);
@@ -39,19 +42,32 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
     // we set dialog result as true on click on confirm button, 
     // then we can get dialog result from caller code 
     if (this.uploaderUpdate.queue[0]) {
-        console.log(this.section.tags)
+      this.helpers.formatTags(this.section.tags, (tags, myForm) => {
         this.uploaderUpdate.onBuildItemForm = (item, form) => {
           item.withCredentials = false;
           form.append('id', this.section._id);
           form.append('name', this.section.name);
           form.append('description', this.section.description);
-          form.append('tags', this.section.tags);
+          form.append('tags', tags);
           form.append('user', this.section.user);
           form.append('service', this.section.service);
         };
         this.uploaderUpdate.uploadAll();
+      });
+      
+    } else {
+      this.section = {
+        name: this.section.name,
+        description: this.section.description,
+        tags: this.section.tags,
+        user: this.section.user,
+        _id: this.section._id,
+      }
+          this.freelanceApi.updateSection(this.section)
+            .subscribe((serviceDetails) => {});
       
     }
+  
     this.result = true;
     this.close();
   }
