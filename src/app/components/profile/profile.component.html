@@ -1,8 +1,8 @@
 <h3>Public profile </h3>
 <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
-        
+
 <a class="btn btn-secondary" target="_blank" [routerLink]="['/p/', user.url]">View your public profile</a>
-        
+
 <div class="gap-50"></div>
 <form (ngSubmit)="submitUpdates(myForm)" #myForm="ngForm">
     <!-- <div class="form-group">
@@ -21,57 +21,62 @@
         </div>
     </div> -->
     <h2>Personal Data</h2>
-     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
+    <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputName">Name</label>
         <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name" [(ngModel)]="user.name" ng-model="required">
     </div>
     <div class="form-group">
         <label for="inputSurname">Surname</label>
-        <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname" ng-model="required">
+        <input type="text" class="form-control" id="inputSurname" placeholder="Your Surname" name="surname" [(ngModel)]="user.surname"
+            ng-model="required">
     </div>
     <div class="form-group">
         <label for="inputPhone">Contact phone</label>
         <input type="text" class="form-control" id="inputPhone" placeholder="Your Phone" name="phone" [(ngModel)]="user.phone">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="inputCountry">Country</label>
         <input type="text" class="form-control" id="inputCountry" placeholder="Your Country" name="country" [(ngModel)]="user.country">
     </div>
     <div class="form-group">
         <label for="inputCity">City</label>
         <input type="text" class="form-control" id="inputCity" placeholder="Your City" name="city" [(ngModel)]="user.city">
+    </div> -->
+    <div class="form-group">
+        <label for="inputCity">City</label>
+       <app-maps [city]="user.city" (getMapPlaces)="handleMapEvent($event)"></app-maps>
     </div>
-    <app-maps></app-maps>
+
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
     <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-    
+
     <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
     <div class="gap-50"></div>
     <h2>Sector data</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputKlaim">Short description</label>
-        <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false"></textarea>
-         {{160 - user.klaim.length}}
+        <textarea class="form-control" id="inputKlaim" name="klaim" [(ngModel)]="user.klaim" value="s" [maxLength]="160" ng-trim="false"></textarea> {{160 - user.klaim.length}}
     </div>
 
     <div class="form-group">
         <label for="inputTags">Tags</label>
-        <tag-input class="tagline" [(ngModel)]='user.tags' name="tags"></tag-input>    
+        <tag-input class="tagline" [(ngModel)]='user.tags' name="tags"></tag-input>
     </div>
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
     <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-    
+
     <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
     <div class="gap-50"></div>
     <h2>Social Networks</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
         <label for="inputLinkedin">Linkedin</label>
-        <input class="form-control" id="inputLinkedin" placeholder="Your Linkedin" name="linkedin" pattern="https?://.+" [(ngModel)]="user.linkedin" #linkedin="ngModel">
+        <input class="form-control" id="inputLinkedin" placeholder="Your Linkedin" name="linkedin" pattern="https?://.+" [(ngModel)]="user.linkedin"
+            #linkedin="ngModel">
         <div *ngIf="linkedin.errors && (linkedin.dirty || linkedin.touched)" class="alert alert-danger">
             <div class="gap-10"></div>
             <div [hidden]="!linkedin.errors.required">
@@ -84,7 +89,8 @@
     </div>
     <div class="form-group">
         <label for="inputFacebook">Facebook</label>
-        <input type="text" class="form-control" id="inputFacebook" placeholder="Your Facebook" name="Facebook" pattern="https?://.+" [(ngModel)]="user.facebook" #facebook="ngModel">
+        <input type="text" class="form-control" id="inputFacebook" placeholder="Your Facebook" name="Facebook" pattern="https?://.+"
+            [(ngModel)]="user.facebook" #facebook="ngModel">
         <div *ngIf="facebook.errors && (facebook.dirty || facebook.touched)" class="alert alert-danger">
             <div [hidden]="!facebook.errors.required">
                 URL is required!
@@ -96,7 +102,8 @@
     </div>
     <div class="form-group">
         <label for="inputGoogle">Google</label>
-        <input type="text" class="form-control" id="inputGoogle" placeholder="Your Google" name="google" pattern="https?://.+" [(ngModel)]="user.google" #google="ngModel" >
+        <input type="text" class="form-control" id="inputGoogle" placeholder="Your Google" name="google" pattern="https?://.+" [(ngModel)]="user.google"
+            #google="ngModel">
         <div *ngIf="google.errors && (url.dirty || google.touched)" class="alert alert-danger">
             <div [hidden]="!google.errors.required">
                 URL is required!
@@ -108,7 +115,8 @@
     </div>
     <div class="form-group">
         <label for="inputWeb">Web</label>
-        <input type="text" class="form-control" id="inputWeb" placeholder="Your Web" pattern="https?://.+" [(ngModel)]="user.web" name="web" #url="ngModel">
+        <input type="text" class="form-control" id="inputWeb" placeholder="Your Web" pattern="https?://.+" [(ngModel)]="user.web"
+            name="web" #url="ngModel">
         <div *ngIf="url.errors && (url.dirty || url.touched)" class="alert alert-danger">
             <div [hidden]="!url.errors.required">
                 URL is required!
@@ -121,7 +129,7 @@
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
     <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-    
+
     <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
     <div class="gap-50"></div>
     <h2>Images</h2>
@@ -133,13 +141,12 @@
     </div>
     <div class="form-group">
         <label for="inputBigImage">Banner image</label>
-        <input type="file" ng2FileSelect [uploader]="uploaderBig" class="form-control" id="bigImage" value="" name="bigImage">
-        {{bigImage}}
+        <input type="file" ng2FileSelect [uploader]="uploaderBig" class="form-control" id="bigImage" value="" name="bigImage"> {{bigImage}}
     </div>
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
     <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-     
+
     <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Save all</button>
 </form>
 <div class="gap-50"></div>

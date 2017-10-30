@@ -63,9 +63,13 @@ export class ProfileComponent implements OnInit {
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
-
       });
   }
+
+  handleMapEvent(place) {
+    console.log("Emit sended:", place)
+      this.user.city = place 
+    }
 
   submitUpdates(myForm) {
     this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {

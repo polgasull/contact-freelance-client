@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BrowserModule } from "@angular/platform-browser";
@@ -10,6 +10,9 @@ import { } from 'googlemaps';
   styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
+  @Input() city: string;
+  @Output() getMapPlaces = new EventEmitter();
+
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -24,6 +27,7 @@ export class MapsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     //set google maps defaults
     this.zoom = 4;
     this.latitude = 41.3948976;
@@ -41,7 +45,9 @@ export class MapsComponent implements OnInit {
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          console.log(place)
+          console.log('placido',place.formatted_address)
+          this.city = place.formatted_address;
+          this.getMapPlaces.emit(place.formatted_address);
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -57,12 +63,12 @@ export class MapsComponent implements OnInit {
   }
 
   // private setCurrentPosition() {
-  //   if ("geolocation" in navigator) {
+  //   // if ("geolocation" in navigator) {
   //     navigator.geolocation.getCurrentPosition((position) => {
   //       this.latitude = position.coords.latitude;
   //       this.longitude = position.coords.longitude;
   //       this.zoom = 12;
   //     });
-  //   }
+  //   // }
   // }
 }
