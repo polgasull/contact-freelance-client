@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes, NavigationEnd } from "@angular/router";
 import { HttpModule } from '@angular/http';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../environments/environment';
+
 import { FileSelectDirective } from "ng2-file-upload";
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,12 +27,6 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
-
-import { FreelanceApiService } from './services/freelance-api.service';
-import { SessionService } from './services/session.service';
-import { HelpersService } from './services/helpers.service';
-
-import { FreelancePublicService } from './services/freelance-public.service';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { ServicesListComponent } from './components/services-list/services-list.component';
@@ -38,8 +36,14 @@ import { ModalUpdateServiceComponent } from './components/modal-update-service/m
 import { ServiceUpdateComponent } from './components/service-update/service-update.component';
 import { ModalUpdateSectionComponent } from './components/modal-update-section/modal-update-section.component';
 import { SectionUpdateComponent } from './components/section-update/section-update.component';
-
 import { SearchItemComponent } from './components/search-item/search-item.component';
+
+import { FreelanceApiService } from './services/freelance-api.service';
+import { SessionService } from './services/session.service';
+import { HelpersService } from './services/helpers.service';
+import { FreelancePublicService } from './services/freelance-public.service';
+import { MapsComponent } from './components/maps/maps.component';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -92,7 +96,8 @@ export const routes: Routes = [
     ServiceUpdateComponent,
     ModalUpdateSectionComponent,
     SectionUpdateComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
@@ -100,8 +105,13 @@ export const routes: Routes = [
     HttpModule,
     TagInputModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     BootstrapModalModule.forRoot({ container: document.body }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({
+      apiKey: `${environment.googleApiKey}`,
+      libraries: ["places"]
+    }),
   ],
   providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
   entryComponents: [

@@ -1,24 +1,27 @@
-<section class="bk-home">
+<section class="bk-home home-section">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
         <div class="gap-50"></div>
         <a title="contacT-Freelance" href="/"><img src="./assets/images/contact-freelance-logo.png"/></a>
         <div class="gap-50"></div>
+        <div class="input-group">
+            <input type="text" name="search" [(ngModel)]="search" class="form-control main-search-bar" placeholder="Find your freelance...">
+            <span class="input-group-btn">
+              <button class="btn btn-light pointer" type="button" [routerLink]="['/s/', search]">Go!</button>
+            </span>
+          </div>
       </div>
     </div>
+    <div class="gap-50"></div>
+    
     <div class="row">
       <div class="col-sm-6">
         <p class="lead c-w">
            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc sapien.
         </p>
         <h1 class="c-w">Contact Freelance</h1>
-        <div class="input-group">
-          <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
-            <button class="btn btn-secondary pointer" type="button" [routerLink]="['/s/', search]">Search</button>
-          </span>
-        </div>
+       
         <div class="gap-20"></div>
         <p class="lead c-w">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc sapien.

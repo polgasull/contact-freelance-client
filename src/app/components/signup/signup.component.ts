@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { HelpersService } from '../../services/helpers.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-signup',
@@ -40,6 +41,4 @@ export class SignupComponent implements OnInit {
     }) 
   }
   
-  
-
 }

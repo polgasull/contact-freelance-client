@@ -42,6 +42,7 @@
         <label for="inputCity">City</label>
         <input type="text" class="form-control" id="inputCity" placeholder="Your City" name="city" [(ngModel)]="user.city">
     </div>
+    <app-maps></app-maps>
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
     <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
     <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
