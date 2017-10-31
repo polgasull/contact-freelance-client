@@ -49,7 +49,7 @@ viverra. Cras quis rhoncus nulla.</p>
     <p>
       <a class="btn btn-danger pointer" (click)="removeService(service._id)">REMOVE</a>
       <a class="btn btn-secondary" [routerLink]="['/dashboard/service/', service._id]">View Details</a>
-        <app-service-update [service]="service" (onSave)="serviceList(service.user)"></app-service-update>
+      <app-service-update [service]="service" (onSave)="serviceList(service.user)"></app-service-update>
 
       
     </p>

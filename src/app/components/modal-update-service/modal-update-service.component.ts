@@ -64,21 +64,26 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
 
       this.freelanceApi.updateService(this.service)
         .subscribe((serviceDetails) => {
-          console.log('serviceDetails subscribe', serviceDetails)
-
         });
 
     }
-    
-      
-    
-    this.result = true;
-    this.close();
   }
 
   
 
   ngOnInit() {
+    //uploader
+    this.uploaderUpdate.onSuccessItem = (item, response) => {
+      // this.feedback = JSON.parse(response).message;
+      // this.sectionList();
+      this.result = true;
+      this.close();
+    };
+
+    this.uploaderUpdate.onErrorItem = (item, response, status, headers) => {
+      // this.feedback = JSON.parse(response).message;
+
+    };
   }
    
 

@@ -65,7 +65,6 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
       }
           this.freelanceApi.updateSection(this.section)
             .subscribe((serviceDetails) => {});
-      
     }
   
     
@@ -77,7 +76,6 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
       // this.sectionList();
       this.result = true;
       this.close();
-      console.log('success')
     };
 
     this.uploaderUpdate.onErrorItem = (item, response, status, headers) => {

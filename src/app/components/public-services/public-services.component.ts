@@ -49,6 +49,7 @@ export class PublicServicesComponent implements OnInit {
         this.serviceDetail = service.services;
         this.userDetail = service.user;
         this.sectionDetail = service.section;
+        console.log(service.section.length)
       });
   }
   send(myForm) {

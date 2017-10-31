@@ -1,4 +1,4 @@
-<section class="bigImageContent">
+<section *ngIf="serviceDetail.url" class="bigImageContent">
   <div class="bigImage" [ngStyle]="{'background-image': 'url('+ serviceDetail.bigImage + ')'}">
   </div>
     <div class="container">
@@ -79,11 +79,11 @@
     <div class="gap-50"></div>
   </div>
 </section>
-<section class="">
+
+<section *ngIf="sectionDetail && sectionDetail.length" class="">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-
         <div class="gap-30"></div>
         <h4>do you know my other services?</h4>
         <div class="gap-20"></div>
@@ -91,7 +91,6 @@
         <div class="gap-30"></div>
       </div>
     </div>
-
   </div>
 </section>
 

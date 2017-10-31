@@ -33,9 +33,9 @@
 
         <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
 
-        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm()" class="btn btn-secondary">Submit</button>
+        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm()" class="btn btn-secondary pointer">Submit</button>
         <!-- <button type="button" class="btn btn-secondary" (click)="confirm()">OK</button> -->
-        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+        <button type="button" class="btn btn-default pointer" (click)="close()">Cancel</button>
       </form>
       {{feedback}}
     </div>

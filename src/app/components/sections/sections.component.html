@@ -9,7 +9,7 @@
     </span>
     <p class="card-text">{{ serviceDetails.description }}</p>
     <p>
-      <a class="btn btn-secondary" [routerLink]="['/', serviceDetails._id]">View public Service Page</a>
+      <a class="btn btn-secondary" [routerLink]="['/', serviceDetails.url]">View public Service Page</a>
     </p>
   </div>
 </div>
@@ -31,7 +31,8 @@
     <p>
       <a class="btn btn-danger pointer" (click)="removeSection(section._id)">Remove section</a>
       <app-section-update [section]="section" (onSave)="sectionList()"></app-section-update>
-            <a class="btn btn-danger pointer" (click)="sectionList()">Remove section</a>
+      <a class="btn btn-secondary" routerLink="/{{serviceDetails.url}}/{{section.url}}">View public Service Page</a>
+
 
 
     </p>

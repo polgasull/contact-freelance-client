@@ -1,4 +1,4 @@
-<section class="bigImageContent">
+<section *ngIf="user.url" class="bigImageContent">
   <div class="bigImage" [ngStyle]="{'background-image': 'url('+ user.bigImage + ')'}">
   </div>
   <div class="container">

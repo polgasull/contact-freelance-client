@@ -58,6 +58,7 @@ export class PublicProfileComponent implements OnInit {
             description: this.services[0].description,
             url: this.services[0].url
           };
+          console.log('first service',this.firstService, service)
         });
 
 
