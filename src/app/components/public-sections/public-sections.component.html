@@ -8,7 +8,7 @@
       <div class="col-sm-9">
         <h1> {{ sectionDetail.name }}</h1>
         <div class="badge badge-pill badge-info" *ngFor="let tag of sectionDetail.tags">
-          {{ tag }}
+          <a [routerLink]="['/s/', tag]">{{tag}}</a>
         </div>
         <p>{{userDetail.city}} {{userDetail.country}}</p>
         <p class="lead">{{ sectionDetail.description }}</p>

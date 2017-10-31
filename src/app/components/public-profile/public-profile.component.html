@@ -11,7 +11,7 @@
           <h1>{{user.name}} {{user.surname}}</h1>
           <p>{{user.city}} {{user.country}}</p>
           <div class="badge badge-pill badge-info" *ngFor="let tag of user.tags">
-            {{ tag.value }}
+            <a [routerLink]="['/s/', tag.value]">{{tag.value}}</a>
           </div>
           <p class="lead">{{user.klaim}}</p>
           <a *ngIf="user.linkedin" href="{{user.linkedin}}" class="btn btn-info" target="_blank">
