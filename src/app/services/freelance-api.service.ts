@@ -70,6 +70,11 @@ export class FreelanceApiService {
     return this.http.delete(`${this.BASE_URL}/api/section/${sectionId}`, this.setOptionsApi())
       .map((res) => res.json());
   }
+
+  // getMapsCoords(str){
+  //     return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${str}&components=formatted_address&key=AIzaSyBK-_f7kp8ZGLCdeinr8SLXPVQ5fuVvfwY`)
+  //     .map((res) => res.json());
+  // }
 }
 
 

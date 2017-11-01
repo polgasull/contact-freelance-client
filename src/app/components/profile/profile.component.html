@@ -45,7 +45,7 @@
     </div> -->
     <div class="form-group">
         <label for="inputCity">City</label>
-       <app-maps [city]="user.city" (getMapPlaces)="handleMapEvent($event)"></app-maps>
+       <app-maps *ngIf="cityQuote" [cityQuote]="cityQuote" (getMapPlaces)="handleMapEvent($event)"></app-maps>
     </div>
 
     <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>

@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   bigImage: any;
   name: any;
   surname: any;
+  cityQuote:any;
 
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
 
@@ -38,8 +39,9 @@ export class ProfileComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('user'))._id
     this.name = this.user.name
 
-    this.getUser(this.userId);
 
+    this.getUser(this.userId);
+    
     this.uploader.onSuccessItem = (item, response) => {
       this.getUser(this.userId);
       this.feedback = JSON.parse(response).message;
@@ -63,11 +65,13 @@ export class ProfileComponent implements OnInit {
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
+        this.cityQuote = this.user.city
+        
       });
   }
 
   handleMapEvent(place) {
-    console.log("Emit sended:", place)
+    console.log("Emit works:", place)
       this.user.city = place 
     }
 
