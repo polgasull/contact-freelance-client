@@ -8,9 +8,11 @@ import { SessionService } from '../../services/session.service'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService) { 
+  }
 
   ngOnInit() {
+    this.session.canActivate();
   }
 
 }

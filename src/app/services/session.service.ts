@@ -35,6 +35,7 @@ canActivate() {
         this.isAuth = true;
         this.user = JSON.parse(localStorage.getItem('user'));
         this.token = localStorage.getItem('token');
+
         return true;
       })
       .catch((err) => {
@@ -66,7 +67,8 @@ login(user) {
 
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(this.user));
-        
+        console.log('isauth', this.isAuth)
+
         return true;
       } else {
         return false;
