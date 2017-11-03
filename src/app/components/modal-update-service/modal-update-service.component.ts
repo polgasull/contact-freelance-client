@@ -21,6 +21,8 @@ export interface ConfirmModel {
 export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel { 
   title: string;
   message: string;
+  feedback: string;
+  error: string;
   service: any;
   updateService:any = {};
   uploaderUpdate: FileUploader = new FileUploader({

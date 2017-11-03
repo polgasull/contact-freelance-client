@@ -21,6 +21,8 @@ export interface UpdateSectionModel {
 export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionModel, boolean> implements UpdateSectionModel {
   title: string;
   message: string;
+  feedback: string;
+  error: string;
   section: any;
   updateSection: any = {};
   url: string = environment.baseURL;

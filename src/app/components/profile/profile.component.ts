@@ -5,6 +5,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service';
 import { HelpersService } from '../../services/helpers.service';
+import { Response } from '@angular/http';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ProfileComponent implements OnInit {
   });
   feedback: string;
   feedbackError: string;
+  error: string;
   usersList: Array<any> = [];
   userId: any;
   user: any = {};

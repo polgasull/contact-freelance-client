@@ -11,6 +11,7 @@ import { SessionService } from '../../services/session.service'
 export class ChangePasswordComponent implements OnInit {
   userId: any = JSON.parse(localStorage.getItem('user'))._id
   user: any = {};
+  error: string;
 
   constructor(private freelanceApi: FreelanceApiService, private session: SessionService) { }
 

@@ -15,6 +15,7 @@ import { ServiceUpdateComponent } from '../../components/service-update/service-
 export class ServicesComponent implements OnInit {
   url = `${environment.baseURL}`; 
   feedback: string;
+  error: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: String;
   servicesList: any = [];

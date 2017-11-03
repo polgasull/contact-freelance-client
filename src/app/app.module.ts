@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 
-import { FileSelectDirective } from "ng2-file-upload";
+import { FileSelectDirective, FileUploadModule } from "ng2-file-upload";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -86,7 +86,6 @@ export const routes: Routes = [
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
-    FileSelectDirective,
     DashboardMenuComponent,
     HeaderComponent,
     DashboardHomeComponent,
@@ -104,6 +103,7 @@ export const routes: Routes = [
     FormsModule,
     HttpModule,
     TagInputModule,
+    FileUploadModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     BootstrapModalModule.forRoot({ container: document.body }),

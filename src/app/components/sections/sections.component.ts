@@ -17,6 +17,7 @@ import { SectionUpdateComponent } from '../../components/section-update/section-
 export class SectionsComponent implements OnInit {
   url = `${environment.baseURL}`;
   feedback: string;
+  error: string;
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: any;
   sectionId:any;
