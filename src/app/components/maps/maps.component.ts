@@ -2,8 +2,10 @@ import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild, Output, Eve
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BrowserModule } from "@angular/platform-browser";
-import { } from 'googlemaps';
+import { } from '@types/googlemaps';
 import { FreelanceApiService } from '../../services/freelance-api.service';
+
+declare var google: any;
 
 @Component({
   selector: 'app-maps',
