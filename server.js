@@ -9,7 +9,7 @@ app.options('*', cors);
 app.use(express.static(__dirname + '/app/dist'));
 // Start the app by listening on the default
 // Heroku port
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8089);
 
 // PathLocationStrategy
 
