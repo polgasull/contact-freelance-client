@@ -55,11 +55,10 @@ export class MapsComponent implements OnInit {
       
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
       autocomplete.addListener("place_changed", () => {
-        let google : any;
         this.ngZone.run(() => {
           
           //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          let place: any = autocomplete.getPlace();
           console.log('Map res:',place.formatted_address)
           this.cityQuote = place.formatted_address;
           this.getMapPlaces.emit(this.cityQuote);
