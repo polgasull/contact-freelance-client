@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -13,7 +14,7 @@ export class SessionService implements CanActivate {
   public user = {};
   public userLogged:boolean = false; 
   
-  private BASE_URL: String = 'http://localhost:3000'
+  private BASE_URL: String = environment.baseURL
   
   constructor(
     private http: Http,
