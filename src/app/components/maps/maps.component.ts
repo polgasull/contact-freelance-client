@@ -5,7 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { } from '@types/googlemaps';
 import { FreelanceApiService } from '../../services/freelance-api.service';
 
-declare var google: any;
+declare const google: any;
 
 @Component({
   selector: 'app-maps',
@@ -56,6 +56,7 @@ export class MapsComponent implements OnInit {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
+          let google : any;
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           console.log('Map res:',place.formatted_address)
