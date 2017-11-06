@@ -1,9 +1,9 @@
 import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BrowserModule } from "@angular/platform-browser";
-import { } from '@types/googlemaps';
 import { FreelanceApiService } from '../../services/freelance-api.service';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { } from '@types/googlemaps';
 
 declare let google: any;
 
