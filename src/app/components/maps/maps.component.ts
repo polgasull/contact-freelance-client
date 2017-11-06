@@ -3,9 +3,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { FreelanceApiService } from '../../services/freelance-api.service';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { } from '@types/googlemaps';
-
-declare let google: any;
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-maps',
@@ -16,8 +14,8 @@ export class MapsComponent implements OnInit {
   @Input() cityQuote: any;
   @Output() getMapPlaces = new EventEmitter();
 
-  public latitude: any;
-  public longitude: any;
+  public latitude: number;
+  public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
   public formatted_address: string;
@@ -54,11 +52,8 @@ export class MapsComponent implements OnInit {
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
 
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ['adresss']
-      });
-
-
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
