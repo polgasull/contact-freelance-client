@@ -6,8 +6,6 @@ import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service';
 import { HelpersService } from '../../services/helpers.service';
 import { Response } from '@angular/http';
-import { } from 
-
 
 @Component({
   selector: 'app-profile',
