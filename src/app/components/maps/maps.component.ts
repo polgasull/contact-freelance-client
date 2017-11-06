@@ -16,6 +16,7 @@ declare let google: any;
 export class MapsComponent implements OnInit {
   @Input() cityQuote: any;
   @Output() getMapPlaces = new EventEmitter();
+  place: any;
 
   public latitude: any;
   public longitude: any;
@@ -57,7 +58,6 @@ export class MapsComponent implements OnInit {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
-          let google: any;
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           console.log('Map res:',place.formatted_address)
