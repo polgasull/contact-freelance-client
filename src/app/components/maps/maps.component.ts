@@ -21,7 +21,6 @@ export class MapsComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   public formatted_address: string;
-  public place: any;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -56,12 +55,16 @@ export class MapsComponent implements OnInit {
     this.mapsAPILoader.load().then(() => {
       
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      let place: google.maps.places.PlaceResult 
+      
+      
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
-          this.place = autocomplete.getPlace();
-          console.log('Map res:',this.place.formatted_address)
-          this.cityQuote = this.place.formatted_address;
+          place = autocomplete.getPlace();
+          
+          console.log('Map res:',place.formatted_address)
+          this.cityQuote = place.formatted_address;
           this.getMapPlaces.emit(this.cityQuote);
           //verify result
           // if (place.geometry === undefined || place.geometry === null) {
