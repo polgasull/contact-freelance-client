@@ -21,7 +21,7 @@ export class MapsComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   public formatted_address: string;
-  public place: google.maps.places.PlaceResult 
+  public place: any;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
