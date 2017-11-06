@@ -7,7 +7,6 @@ import { FreelanceApiService } from '../../services/freelance-api.service';
 
 declare let google: any;
 
-
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
@@ -16,12 +15,12 @@ declare let google: any;
 export class MapsComponent implements OnInit {
   @Input() cityQuote: any;
   @Output() getMapPlaces = new EventEmitter();
-  place: any;
 
   public latitude: any;
   public longitude: any;
   public searchControl: FormControl;
   public zoom: number;
+  public formatted_address: string;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
