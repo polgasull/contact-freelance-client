@@ -58,7 +58,7 @@ export class MapsComponent implements OnInit {
         this.ngZone.run(() => {
           
           //get the place result
-          let place: any = autocomplete.getPlace();
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           console.log('Map res:',place.formatted_address)
           this.cityQuote = place.formatted_address;
           this.getMapPlaces.emit(this.cityQuote);

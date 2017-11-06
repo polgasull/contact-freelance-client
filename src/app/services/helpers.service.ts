@@ -21,7 +21,7 @@ export class HelpersService {
   // función que detecta 2 parametros, los junta, elimina espacio, minusculas y lo convierte en url
   convertToUrl(name, surname, cb) {
     this.str = surname ? name + '-' + surname : name;
-    this.str = encodeURI(this.str.replace(/\s/g, '').replace("'", '').toLowerCase());
+    this.str = encodeURI(this.str.replace(/\s/g, '').replace("'", '').replace("ñ", "n").toLowerCase());
     if (cb) cb(this.str)
     return this.str;
   }
