@@ -29,10 +29,10 @@ export class MapsComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private freelanceApiService: FreelanceApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    
+
     //set google maps defaults
 
     // this.freelanceApiService.getMapsCoords(this.cityQuote)
@@ -53,17 +53,17 @@ export class MapsComponent implements OnInit {
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      let place: google.maps.places.PlaceResult 
-      
-      
+
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ['adresss']
+      });
+
+
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
-          place = autocomplete.getPlace();
-          
-          console.log('Map res:',place.formatted_address)
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          console.log('Map res:', place.formatted_address)
           this.cityQuote = place.formatted_address;
           this.getMapPlaces.emit(this.cityQuote);
           //verify result
