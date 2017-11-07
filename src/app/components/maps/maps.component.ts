@@ -1,10 +1,16 @@
 import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BrowserModule } from "@angular/platform-browser";
+<<<<<<< HEAD
 import { FreelanceApiService } from "../../services/freelance-api.service";
 import { } from '@types/googlemaps';
 declare var google: any;
+=======
+import { FreelanceApiService } from '../../services/freelance-api.service';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
+
+>>>>>>> a05b76dc0d48e8ef7218f4c0de5c01f6e9603dd9
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
@@ -14,10 +20,11 @@ export class MapsComponent implements OnInit {
   @Input() cityQuote: any;
   @Output() getMapPlaces = new EventEmitter();
 
-  public latitude: any;
-  public longitude: any;
+  public latitude: number;
+  public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  public formatted_address: string;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -26,10 +33,10 @@ export class MapsComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private freelanceApiService: FreelanceApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    
+
     //set google maps defaults
 
     // this.freelanceApiService.getMapsCoords(this.cityQuote)
@@ -50,13 +57,14 @@ export class MapsComponent implements OnInit {
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      
+
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          console.log('Map res:',place.formatted_address)
+          console.log('Map res:', place.formatted_address)
           this.cityQuote = place.formatted_address;
           this.getMapPlaces.emit(this.cityQuote);
           //verify result

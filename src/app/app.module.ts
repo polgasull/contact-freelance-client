@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes, NavigationEnd } from "@angular/router";
 import { HttpModule } from '@angular/http';
@@ -108,12 +109,13 @@ export const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CommonModule, 
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     TagInputModule,
     FileUploadModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     BootstrapModalModule.forRoot({ container: document.body }),
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({

@@ -7,7 +7,6 @@ import { SessionService } from '../../services/session.service';
 import { HelpersService } from '../../services/helpers.service';
 import { Response } from '@angular/http';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -64,11 +63,11 @@ export class ProfileComponent implements OnInit {
     this.freelanceApi.getUser(id)
       .subscribe((user) => {
         this.user = user;
+        console.log(this.user)
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
         this.cityQuote = this.user.city
-        
       });
   }
 
@@ -79,6 +78,7 @@ export class ProfileComponent implements OnInit {
 
   submitUpdates(myForm) {
     this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {
+      console.log('convertUrl:', this.user.url, 't', string )
       this.user.url = string;
       this.uploader.onBuildItemForm = (item, form) => {
         item.withCredentials = false;
