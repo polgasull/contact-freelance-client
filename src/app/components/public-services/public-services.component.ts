@@ -18,6 +18,7 @@ export class PublicServicesComponent implements OnInit {
   serviceDetail: any = {};
   userDetail: any = {};
   sectionDetail: Array<object>;
+  error404: boolean = false;
   contact: any = {
     name: "",
     tel: "",
@@ -44,13 +45,12 @@ export class PublicServicesComponent implements OnInit {
     this.freelancePublicService.getServiceProfile(this.serviceId)
       .subscribe((service) => {
         if (service.message === "error") {
-          this.router.navigate(['/']);
+          this.error404 = true;
         }
         this.service = service;
         this.serviceDetail = service.services;
         this.userDetail = service.user;
         this.sectionDetail = service.section;
-        console.log(service.section.length)
       });
   }
   send(myForm) {
@@ -64,7 +64,6 @@ export class PublicServicesComponent implements OnInit {
       user: this.userDetail._id,
       service: this.serviceDetail
     };
-    console.log(this.contact)
     this.freelancePublicService.sendNewContact(this.contact)
       .subscribe((contact) => {
       });
