@@ -22,7 +22,10 @@ export class SearchListComponent implements OnInit {
   skipUser: number= 0;
   skipService: number = 0;
   skipSection: number = 0;
+  skipServiceLoadMore: number = 0;
   search: string;
+  i: number = 0;
+  j: number = 0;
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute, private router: Router, private helpers: HelpersService) { }
 
@@ -35,6 +38,8 @@ export class SearchListComponent implements OnInit {
 
       this.searchUserFunction();
       this.searchServiceFunction();
+      this.skipUser = 4;
+      this.skipService = 4;
   }
   
   newSearch() {
@@ -45,28 +50,45 @@ export class SearchListComponent implements OnInit {
     this.query = this.search;
     this.searchUserFunction();
     this.searchServiceFunction();
+    this.skipUser = 4;
+    this.skipService = 4;
+    this.skipServiceLoadMore = 4;
+    this.j = 1;
+    this.i = 1;
   }
 
 
   searchUserFunction() {
     this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser)
       .subscribe((user) => {
-        this.users = user
-        this.skipUser++;
-        this.helpers.arrayReassign(this.users, this.userList)
-      
-      })
-      
+        this.users = user;
+        this.helpers.arrayReassign(this.users, this.userList);
+      });
   }
 
   searchServiceFunction() {
     this.freelancePublicService.searchServiceList(this.query, this.limit, this.skipService)
       .subscribe((service) => {
         this.services = service;
-        this.skipService++;
-        this.helpers.arrayReassign(this.services, this.serviceList)        
-        
+        this.skipService = 1;
+        this.helpers.arrayReassign(this.services, this.serviceList);
       })
+  }
+  loadSearchServiceFunction() {
+    this.freelancePublicService.searchServiceList(this.query, this.limit, this.skipServiceLoadMore * this.j)
+      .subscribe((service) => {
+        this.services = service;
+        this.j += 1;
+        this.helpers.arrayReassign(this.services, this.serviceList);
+      })
+  }
+  loadMoreSearchUserFunction() {
+    this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser * this.i)
+      .subscribe((user) => {
+        this.users = user;
+        this.i += 1;
+        this.helpers.arrayReassign(this.users, this.userList);
+      });
   }
   
 

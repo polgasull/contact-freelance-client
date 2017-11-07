@@ -69,11 +69,10 @@ canActivate() {
           return true;
         })
         .catch((err) => {
-          this.router.navigate(['/'])
+      
           return false;
         })
     } else {
-      this.router.navigate(['/'])
       return false;
     }
   }
