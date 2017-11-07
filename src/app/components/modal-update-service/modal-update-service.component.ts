@@ -37,37 +37,42 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
     super(dialogService);
   }
   confirm(service) {
-    if (this.uploaderUpdate.queue[0]) {
-      this.helpers.formatTags(this.service.tags, (tags, myForm) => {
-        this.uploaderUpdate.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('id', this.service._id);
-          form.append('name', this.service.name);
-          form.append('description', this.service.description);
-          form.append('tags', tags);
-          form.append('user', this.service.user);
-          form.append('service', this.service.service);
-        };
-        this.uploaderUpdate.uploadAll();
-      });
-
-    } else {
-      this.service = {
-        name: this.service.name,
-        description: this.service.description,
-        tags: this.service.tags,
-        user: this.service.user,
-        _id: this.service._id,
-      }
-
-      this.freelanceApi.updateService(this.service)
-        .subscribe((serviceDetails) => {
-          this.result = true;
-          this.close();
-          
+    this.helpers.convertToUrl(this.service.name, null, (string) => {
+      this.service.url = string;
+      if (this.uploaderUpdate.queue[0]) {
+        this.helpers.formatTags(this.service.tags, (tags, myForm) => {
+          this.uploaderUpdate.onBuildItemForm = (item, form) => {
+            item.withCredentials = false;
+            form.append('id', this.service._id);
+            form.append('name', this.service.name);
+            form.append('description', this.service.description);
+            form.append('tags', tags);
+            form.append('user', this.service.user);
+            form.append('service', this.service.service);
+            form.append('url', this.service.url);
+          };
+          this.uploaderUpdate.uploadAll();
         });
 
-    }
+      } else {
+        this.service = {
+          name: this.service.name,
+          description: this.service.description,
+          tags: this.service.tags,
+          user: this.service.user,
+          _id: this.service._id,
+          url: this.service.url
+        }
+
+        this.freelanceApi.updateService(this.service)
+          .subscribe((serviceDetails) => {
+            this.result = true;
+            this.close();
+            
+          });
+
+      }
+    });
   }
 
   

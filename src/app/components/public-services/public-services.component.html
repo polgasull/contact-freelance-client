@@ -100,10 +100,13 @@
     <div class="row">
       <div class="col-sm-4 text-center" *ngFor="let section of sectionDetail">
         <h3>{{ section.name }}</h3>
-        <span class="badge badge-pill badge-info"> {{ section.tags }}</span>
+        
+        <div class="badge badge-pill badge-info" *ngFor="let tag of section.tags">
+          <a [routerLink]="['/s/', tag]">{{tag}}</a>
+        </div>
         <p>{{ section.description }}</p>
         <!-- <img [src]="url + service.bigImage" class="service-bigImage img-responsive" alt="Service bigImage"> -->
-        <button class="btn btn-secondary" routerLink="/{{serviceDetail.url}}/{{section.url}}" role="button">View</button>
+        <button class="btn btn-secondary pointer" routerLink="/{{serviceDetail.url}}/{{section.url}}" role="button">View</button>
       </div>
       
     </div>

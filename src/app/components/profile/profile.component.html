@@ -1,7 +1,7 @@
 <h3>Public profile </h3>
 <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
 
-<a class="btn btn-secondary" target="_blank" [routerLink]="['/p/', user.url]">View your public profile</a>
+<a class="btn btn-secondary" [routerLink]="['/p/', user.url]">View your public profile</a>
 
 <div class="gap-50"></div>
 <form (ngSubmit)="submitUpdates(myForm)" #myForm="ngForm">

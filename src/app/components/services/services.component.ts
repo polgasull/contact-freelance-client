@@ -68,38 +68,44 @@ export class ServicesComponent implements OnInit {
   }
   
   submitService(myForm) {
-    if (!this.uploader.queue[0]) {
-      this.newService = {
-        name: this.newService.name,
-        description: this.newService.description,
-        tags: this.newService.tags,
-        user: this.userId,
-        service: this.serviceId,
-      }
+    
+    this.helpers.convertToUrl(this.newService.name, null, (string) => {
+      
+      this.newService.url = string;
+      
+      if (!this.uploader.queue[0]) {
+        this.newService = {
+          name: this.newService.name,
+          description: this.newService.description,
+          tags: this.newService.tags,
+          user: this.userId,
+          service: this.serviceId,
+          url: this.newService.url
+        }
 
-      this.freelanceApi.newService(this.newService)
-        .subscribe((details) => {
-          this.serviceList(this.userId);
-          this.newService = {};
-        });
-    } else {
-      this.helpers.convertToUrl(this.newService.name, null, (string) => {
-        this.newService.url = string;
-        this.helpers.formatTags(this.newService.tags, (tags, myForm) => {
-          console.log(this.newService.tags)
-          this.uploader.onBuildItemForm = (item, form) => {
-            item.withCredentials = false;
-            form.append('name', this.newService.name);
-            form.append('description', this.newService.description);
-            form.append('tags', tags);
-            form.append('user', this.userId);
-            form.append('url', this.newService.url)
-          };
-          this.uploader.uploadAll();
-          this.newService = {};
-        })
-      })
-    }
+        this.freelanceApi.newService(this.newService)
+          .subscribe((details) => {
+            this.serviceList(this.userId);
+            this.newService = {};
+          });
+      } else {
+        
+          
+          this.helpers.formatTags(this.newService.tags, (tags, myForm) => {
+            
+            this.uploader.onBuildItemForm = (item, form) => {
+              item.withCredentials = false;
+              form.append('name', this.newService.name);
+              form.append('description', this.newService.description);
+              form.append('tags', tags);
+              form.append('user', this.userId);
+              form.append('url', this.newService.url)
+            };
+            this.uploader.uploadAll();
+            this.newService = {};
+          })
+        }
+    })
     
   }
 

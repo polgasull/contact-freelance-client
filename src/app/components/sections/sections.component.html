@@ -9,6 +9,7 @@
     </span>
     <p class="card-text">{{ serviceDetails.description }}</p>
     <p>
+       {{serviceDetails._id}}
       <a class="btn btn-danger pointer" (click)="removeService(serviceDetails._id)">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </a>
@@ -39,6 +40,7 @@
           <div class="card-block">
             <h4 class="card-title">{{section.name}}</h4>
             <p class="card-text">{{section.description}}</p>
+             url service {{serviceDetails.url}} url section {{section.url}}
             <span *ngFor="let tag of section.tags">
               {{tag}}
             </span>

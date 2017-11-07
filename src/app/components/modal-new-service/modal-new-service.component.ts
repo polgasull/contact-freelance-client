@@ -39,34 +39,39 @@ export class ModalNewServiceComponent extends DialogComponent<ConfirmModel, bool
     super(dialogService);
   }
   confirm(service) {
-    if (this.uploaderUpdate.queue[0]) {
-      this.helpers.formatTags(this.newService.tags, (tags, myForm) => {
-        this.uploaderUpdate.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('name', this.newService.name);
-          form.append('description', this.newService.description);
-          form.append('tags', tags);
-          form.append('user', this.userId);
-          form.append('service', this.newService.service);
-        };
-        this.uploaderUpdate.uploadAll();
-      });
-
-    } else {
-      this.newService = {
-        name: this.newService.name,
-        description: this.newService.description,
-        tags: this.newService.tags,
-        user: this.userId
-      }
-
-      this.freelanceApi.newService(this.newService)
-        .subscribe((serviceDetails) => {
-          this.result = true;
-          this.close();
+    this.helpers.convertToUrl(this.newService.name, null, (string) => {
+      this.newService.url = string;
+      if (this.uploaderUpdate.queue[0]) {
+        this.helpers.formatTags(this.newService.tags, (tags, myForm) => {
+          this.uploaderUpdate.onBuildItemForm = (item, form) => {
+            item.withCredentials = false;
+            form.append('name', this.newService.name);
+            form.append('description', this.newService.description);
+            form.append('tags', tags);
+            form.append('user', this.userId);
+            form.append('service', this.newService.service);
+            form.append('url', this.newService.url);
+          };
+          this.uploaderUpdate.uploadAll();
         });
 
-    }
+      } else {
+        this.newService = {
+          name: this.newService.name,
+          description: this.newService.description,
+          tags: this.newService.tags,
+          user: this.userId,
+          url: this.newService.url
+        }
+
+        this.freelanceApi.newService(this.newService)
+          .subscribe((serviceDetails) => {
+            this.result = true;
+            this.close();
+          });
+
+      }
+    });
   }
 
   ngOnInit() {

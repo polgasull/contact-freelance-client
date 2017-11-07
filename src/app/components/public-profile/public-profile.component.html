@@ -11,7 +11,7 @@
           <h1>{{user.name}} {{user.surname}}</h1>
           <p>{{user.city}} {{user.country}}</p>
           <div class="badge badge-pill badge-info" *ngFor="let tag of user.tags">
-            <a [routerLink]="['/s/', tag.value]">{{tag.value}}</a>
+            <a [routerLink]="['/s/', tag]">{{tag}}</a>
           </div>
           <p class="lead">{{user.klaim}}</p>
           <a *ngIf="user.linkedin" href="{{user.linkedin}}" class="btn btn-info" target="_blank">
@@ -38,9 +38,10 @@
       <div class="col-md-7">
         <h2 class="med">Contact with
           <span>{{user.name}} {{user.surname}}</span>
-         {{ firstService.name}}
+         <span *ngIf="firstService">{{ firstService.name}}</span>
         </h2>
-        <p>{{ firstService.description }}</p>
+        <p *ngIf="this.services[0]">{{ firstService.description }}</p>
+        <p *ngIf="!this.services[0]">{{user.klaim}}</p>
         
         <button class="btn btn-secondary pointer" [routerLink]="['/', firstService.url]" role="button">View</button>
 
@@ -76,7 +77,7 @@
   </div>
 </section>
 
-<section class="">
+<section *ngIf="this.services[0]">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
@@ -91,13 +92,16 @@
     
   </div>
 </section>
-<section>
+<section *ngIf="services.length >= 2">
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-4 text-center" *ngFor="let service of services | slice:1">
           <h3>{{ service.name }}</h3>
-          <span class="badge badge-pill badge-info"> {{ service.tags }}</span>
+          <div class="badge badge-pill badge-info" *ngFor="let tag of service.tags">
+            <a [routerLink]="['/s/', tag]">{{tag}}</a>
+          </div>
+          
           <p>{{ service.description }}</p>
           <!-- <img [src]="url + service.bigImage" class="service-bigImage img-responsive" alt="Service bigImage"> -->
           <button class="btn btn-secondary pointer" [routerLink]="['/', service.url]" role="button">View</button>
@@ -106,7 +110,10 @@
         <!-- <img class="card-img-top" [src]="url + section.bigImage" alt="Card image cap"> -->
         {{section}}
         <h3 class="card-title">{{section.name}}</h3>
-        <span class="badge badge-pill badge-info">{{tags}}</span>
+        
+        <div class="badge badge-pill badge-info" *ngFor="let tag of tags">
+          <a [routerLink]="['/s/', tag]">{{tag}}</a>
+        </div>
         <!-- <p>{{section.user}}</p>
         <p>{{section.service }}</p> -->
         <p>{{section.description}}</p>

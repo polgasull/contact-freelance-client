@@ -40,36 +40,40 @@ export class ModalNewSectionComponent extends DialogComponent<ConfirmModel, bool
     super(dialogService);
   }
   confirm(section) {
-    console.log(this.newSection)
-    if (this.uploaderUpdate.queue[0]) {
-      this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
-        this.uploaderUpdate.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('name', this.newSection.name);
-          form.append('description', this.newSection.description);
-          form.append('tags', tags);
-          form.append('user', this.userId);
-          form.append('service', this.serviceId);
-        };
-        this.uploaderUpdate.uploadAll();
-      });
-
-    } else {
-      this.newSection = {
-        name: this.newSection.name,
-        description: this.newSection.description,
-        tags: this.newSection.tags,
-        user: this.userId,
-        service: this.serviceId
-      }
-
-      this.freelanceApi.newSection(this.newSection)
-        .subscribe((sectionDetails) => {
-          this.result = true;
-          this.close();
+    this.helpers.convertToUrl(this.newSection.name, null, (string) => {
+      this.newSection.url = string;
+      if (this.uploaderUpdate.queue[0]) {
+        this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
+          this.uploaderUpdate.onBuildItemForm = (item, form) => {
+            item.withCredentials = false;
+            form.append('name', this.newSection.name);
+            form.append('description', this.newSection.description);
+            form.append('tags', tags);
+            form.append('user', this.userId);
+            form.append('service', this.serviceId);
+            form.append('url', this.newSection.url);
+          };
+          this.uploaderUpdate.uploadAll();
         });
 
-    }
+      } else {
+        this.newSection = {
+          name: this.newSection.name,
+          description: this.newSection.description,
+          tags: this.newSection.tags,
+          user: this.userId,
+          service: this.serviceId,
+          url: this.newSection.url
+        }
+
+        this.freelanceApi.newSection(this.newSection)
+          .subscribe((sectionDetails) => {
+            this.result = true;
+            this.close();
+          });
+
+      }
+    });
   }
 
   ngOnInit() {

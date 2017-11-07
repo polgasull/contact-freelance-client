@@ -132,6 +132,13 @@ textarea.form-control {
 .badge-info {
     background-color: #333;
 }
+.badge-info a {
+    color: #fff;
+}
+.badge-info a:hover {
+  
+    color: #ccc;
+}
 .alert {
     border-radius: 0px;
 }

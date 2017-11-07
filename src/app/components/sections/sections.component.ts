@@ -70,6 +70,7 @@ export class SectionsComponent implements OnInit {
     this.freelanceApi.serviceDetails(this.serviceId)
       .subscribe((details) => {
         this.serviceDetails = details;
+        console.log('detalles',this.serviceDetails)
       });
 
   }
@@ -91,39 +92,51 @@ export class SectionsComponent implements OnInit {
   }
 
   submitSection(myForm) {
-    if (!this.uploader.queue[0]) {
-      this.newSection = {
-        name: this.newSection.name,
-        description: this.newSection.description,
-        tags: this.newSection.tags,
-        user: this.userId,
-        service: this.serviceId,
-      }
+    this.helpers.convertToUrl(this.newSection.name, null, (string) => {
+      console.log('serviceurl', this.newSection.url)
+      this.newSection.url = string;
+      if (!this.uploader.queue[0]) {
+        this.newSection = {
+          name: this.newSection.name,
+          description: this.newSection.description,
+          tags: this.newSection.tags,
+          user: this.userId,
+          service: this.serviceId,
+          url: this.newSection.url
+        }
 
-      this.freelanceApi.newSection(this.newSection)
-        .subscribe((details) => {
-          this.sectionList();
-          this.newSection = {};
+        this.freelanceApi.newSection(this.newSection)
+          .subscribe((details) => {
+            this.sectionList();
+            this.newSection = {};
+          });
+      } else {
+        this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
+
+          this.uploader.onBuildItemForm = (item, form) => {
+            item.withCredentials = false;
+            form.append('name', this.newSection.name);
+            form.append('description', this.newSection.description);
+            form.append('tags', tags);
+            form.append('user', this.userId);
+            form.append('service', this.serviceId);
+            form.append('url', this.newSection.url);
+          };
+          this.uploader.uploadAll();
+          
         });
-    } else {
-      this.helpers.formatTags(this.newSection.tags, (tags, myForm) => {
-
-        this.uploader.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('name', this.newSection.name);
-          form.append('description', this.newSection.description);
-          form.append('tags', tags);
-          form.append('user', this.userId);
-          form.append('service', this.serviceId);
-          form.append('url', this.newSection.url);
-        };
-        this.uploader.uploadAll();
-        
-      });
-    };
+      };
+    });
   };
   removeService(id) {
+    
     this.freelanceApi.removeService(id)
-      .subscribe((details) => {});
+      .subscribe((details) => {
+        this.serviceDetailsRender();
+        this.router.navigate(['/dashboard/services/'])
+
+        
+      });
   }
+  
 }

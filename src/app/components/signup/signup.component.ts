@@ -29,9 +29,7 @@ export class SignupComponent implements OnInit {
   submitSignup(myForm) {
     this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {
       
-      
       this.user.url = string;
-      console.log(this.user)
       this.session.signup(this.user)
       .subscribe(
       (data) => {

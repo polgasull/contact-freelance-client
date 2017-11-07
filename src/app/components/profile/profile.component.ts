@@ -63,7 +63,6 @@ export class ProfileComponent implements OnInit {
     this.freelanceApi.getUser(id)
       .subscribe((user) => {
         this.user = user;
-        console.log(this.user)
         if (!this.user.klaim) {
           this.user.klaim = '';
         }
@@ -72,13 +71,12 @@ export class ProfileComponent implements OnInit {
   }
 
   handleMapEvent(place) {
-    console.log("Emit works:", place)
       this.user.city = place 
     }
 
   submitUpdates(myForm) {
     this.helpers.convertToUrl(this.user.name, this.user.surname, (string) => {
-      console.log('convertUrl:', this.user.url, 't', string )
+     
       this.user.url = string;
       this.uploader.onBuildItemForm = (item, form) => {
         item.withCredentials = false;
@@ -91,9 +89,10 @@ export class ProfileComponent implements OnInit {
       };
 
       this.uploaderBig.uploadAll();
-
+      
       this.freelanceApi.editUserProfile(this.user)
         .subscribe((user) => {
+          
           this.getUser(this.userId);
           this.feedback = 'saved';
         });

@@ -45,6 +45,7 @@ export class FreelanceApiService {
       .map((res) => res.json());
   }
   removeService(serviceId) {
+    console.log(' go to api',serviceId)
     return this.http.delete(`${this.BASE_URL}/api/service/${serviceId}`, this.setOptionsApi())
       .map((res) => res.json());
   }

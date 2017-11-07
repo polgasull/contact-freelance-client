@@ -44,21 +44,25 @@ export class PublicProfileComponent implements OnInit {
       .subscribe((user) => {
         this.user = user;
         this.publicUserId = user._id;
-        console.log(this.user.url);
+  
 
         this.freelancePublic.getPublicService(this.publicUserId)
         .subscribe((service) => {
-          console.log('services:', this.publicUserId)
+       
           
           this.services = service;
-          console.log('services:', this.services)
-          this.firstService = {
-            id: this.services[0]._id,
-            name: this.services[0].name,
-            description: this.services[0].description,
-            url: this.services[0].url
-          };
-          console.log('first service',this.firstService, service)
+          
+          if (this.services[0]) {
+            this.firstService = {
+              id: this.services[0]._id,
+              name: this.services[0].name,
+              description: this.services[0].description,
+              url: this.services[0].url
+            };
+
+          }
+          
+          
         });
 
 

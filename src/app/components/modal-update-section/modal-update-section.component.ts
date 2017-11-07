@@ -41,50 +41,52 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
     super(dialogService);
   }
   confirm(section) {
-    // we set dialog result as true on click on confirm button, 
-    // then we can get dialog result from caller code 
-    if (this.uploaderUpdate.queue[0]) {
-      this.helpers.formatTags(this.section.tags, (tags, myForm) => {
-        this.uploaderUpdate.onBuildItemForm = (item, form) => {
-          item.withCredentials = false;
-          form.append('id', this.section._id);
-          form.append('name', this.section.name);
-          form.append('description', this.section.description);
-          form.append('tags', tags);
-          form.append('user', this.section.user);
-          form.append('service', this.section.service);
-        };
-        this.uploaderUpdate.uploadAll();
-      });
-      
-    } else {
-      this.section = {
-        name: this.section.name,
-        description: this.section.description,
-        tags: this.section.tags,
-        user: this.section.user,
-        _id: this.section._id,
+    this.helpers.convertToUrl(this.section.name, null, (string) => {
+      this.section.url = string;
+      if (this.uploaderUpdate.queue[0]) {
+        this.helpers.formatTags(this.section.tags, (tags, myForm) => {
+          this.uploaderUpdate.onBuildItemForm = (item, form) => {
+            item.withCredentials = false;
+            form.append('id', this.section._id);
+            form.append('name', this.section.name);
+            form.append('description', this.section.description);
+            form.append('tags', tags);
+            form.append('user', this.section.user);
+            form.append('service', this.section.service);
+            form.append('url', this.section.url);
+          };
+          this.uploaderUpdate.uploadAll();
+        });
+        
+      } else {
+        this.section = {
+          name: this.section.name,
+          description: this.section.description,
+          tags: this.section.tags,
+          user: this.section.user,
+          _id: this.section._id,
+          url: this.section.url
+        }
+            this.freelanceApi.updateSection(this.section)
+              .subscribe((serviceDetails) => {
+                this.result = true;
+                this.close();
+              });
       }
-          this.freelanceApi.updateSection(this.section)
-            .subscribe((serviceDetails) => {
-              this.result = true;
-              this.close();
-            });
-    }
+    });
   
     
   }
   ngOnInit() {
-    //uploader
+   
     this.uploaderUpdate.onSuccessItem = (item, response) => {
-      // this.feedback = JSON.parse(response).message;
-      // this.sectionList();
+     
       this.result = true;
       this.close();
     };
 
     this.uploaderUpdate.onErrorItem = (item, response, status, headers) => {
-      // this.feedback = JSON.parse(response).message;
+      this.feedback = JSON.parse(response).message;
 
     };
   }
