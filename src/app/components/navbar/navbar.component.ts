@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.session.canActivate();
+    this.session.ifIsLogged();
   }
 
 }

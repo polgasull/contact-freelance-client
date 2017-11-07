@@ -52,6 +52,31 @@ canActivate() {
     return false;
   }
 }
+  ifIsLogged() {
+    if (localStorage.getItem('token')) {
+
+      const headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+      const options = new RequestOptions({ headers: headers });
+
+      return this.http.get(`${this.BASE_URL}/token`, options)
+        .toPromise()
+        .then((res) => res.json())
+        .then((data) => {
+          this.isAuth = true;
+          this.user = JSON.parse(localStorage.getItem('user'));
+          this.token = localStorage.getItem('token');
+
+          return true;
+        })
+        .catch((err) => {
+          this.router.navigate(['/'])
+          return false;
+        })
+    } else {
+      this.router.navigate(['/'])
+      return false;
+    }
+  }
 
 login(user) {
   return this.http.post(`${this.BASE_URL}/login`, user)

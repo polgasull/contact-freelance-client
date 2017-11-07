@@ -8,13 +8,24 @@ export class HelpersService {
   constructor() { }
 
   formatTags(tags, cb) {
+    console.log(tags)
+    this.tags = '';
     for (let i = 0; i < tags.length; i++) {
-      if (i == 0) {
+      if(tags[i].value && i === 0){
         this.tags = tags[i].value;
-      } else {
+      } 
+      if(!tags[i].value && i === 0) {
+        this.tags = tags[i];
+      }
+      if (tags[i].value && i !== 0) {
         this.tags += ', ' + tags[i].value;
       }
+      if (!tags[i].value && i !== 0) {
+        this.tags += ', ' + tags[i];
+      }  
+      
     }
+    console.log(this.tags)
     cb(this.tags);
   }
 

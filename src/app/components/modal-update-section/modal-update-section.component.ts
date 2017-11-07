@@ -66,7 +66,10 @@ export class ModalUpdateSectionComponent extends DialogComponent<UpdateSectionMo
         _id: this.section._id,
       }
           this.freelanceApi.updateSection(this.section)
-            .subscribe((serviceDetails) => {});
+            .subscribe((serviceDetails) => {
+              this.result = true;
+              this.close();
+            });
     }
   
     

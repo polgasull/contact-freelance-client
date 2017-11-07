@@ -43,6 +43,10 @@ import { SessionService } from './services/session.service';
 import { HelpersService } from './services/helpers.service';
 import { FreelancePublicService } from './services/freelance-public.service';
 import { MapsComponent } from './components/maps/maps.component';
+import { NewServiceComponent } from './components/new-service/new-service.component';
+import { ModalNewServiceComponent } from './components/modal-new-service/modal-new-service.component';
+import { NewSectionComponent } from './components/new-section/new-section.component';
+import { ModalNewSectionComponent } from './components/modal-new-section/modal-new-section.component';
 
 
 export const routes: Routes = [
@@ -96,7 +100,11 @@ export const routes: Routes = [
     ModalUpdateSectionComponent,
     SectionUpdateComponent,
     SearchItemComponent,
-    MapsComponent
+    MapsComponent,
+    NewServiceComponent,
+    ModalNewServiceComponent,
+    NewSectionComponent,
+    ModalNewSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +124,9 @@ export const routes: Routes = [
   providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
   entryComponents: [
     ModalUpdateServiceComponent,
-    ModalUpdateSectionComponent
+    ModalUpdateSectionComponent,
+    ModalNewServiceComponent,
+    ModalNewSectionComponent
   ],
   bootstrap: [AppComponent]
 })

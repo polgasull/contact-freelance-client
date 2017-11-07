@@ -61,7 +61,6 @@ export class PublicSectionsComponent implements OnInit {
 
     this.freelancePublic.sendNewContact(this.contact)
       .subscribe((contact) => {
-        console.log(contact)
       })
   }
 

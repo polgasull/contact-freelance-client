@@ -14,22 +14,15 @@ export class ServiceUpdateComponent implements OnInit {
   constructor(private dialogService: DialogService) { }
   showConfirm() {
     let disposable = this.dialogService.addDialog(ModalUpdateServiceComponent, {
-      title: 'Confirm title',
-      message: 'Confirm message',
-      service: this.service,
-      
+      title: 'Update service',
+      message: 'Update service',
+      service: this.service
     })
       .subscribe((isConfirmed) => {
-        //We get dialog result
         if (isConfirmed) {
           this.goEmiterGo();
         }
       });
-    //We can close dialog calling disposable.unsubscribe();
-    //If dialog was not closed manually close it by timeout
-    // setTimeout(() => {
-    //   disposable.unsubscribe();
-    // }, 10000);
   }
 
   ngOnInit() {

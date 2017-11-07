@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { HelpersService } from '../../services/helpers.service';
 
+
 @Component({
   selector: 'app-public-services',
   templateUrl: './public-services.component.html',
@@ -61,7 +62,11 @@ export class PublicServicesComponent implements OnInit {
       userEmail: this.userDetail.email,
       origin: "USER",
       user: this.userDetail._id,
-      service: this.serviceDetail._id
-    }
+      service: this.serviceDetail
+    };
+    console.log(this.contact)
+    this.freelancePublicService.sendNewContact(this.contact)
+      .subscribe((contact) => {
+      });
   }
 }

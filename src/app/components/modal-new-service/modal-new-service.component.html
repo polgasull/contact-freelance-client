@@ -1,0 +1,44 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()">&times;</button>
+      <h4 class="modal-title">{{title || 'Confirm'}}</h4>
+    </div>
+    <div class="modal-body">
+      <p>{{message || 'Are you sure?'}}</p>
+
+      <form #myForm="ngForm">
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input type="text" class="form-control" id="inputName" value="" placeholder="Your name" name="newService.name" [(ngModel)]="newService.name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDescription">Description</label>
+          <textarea class="form-control" id="inputDescription" name="newService.description" [(ngModel)]="newService.description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="inputTags">Tags</label>
+          <tag-input [(ngModel)]='newService.tags' name="newService.tags" required></tag-input>
+        </div>
+        <!-- <img src="{{ url + service.bigImage }}"/> -->
+        <div class="form-group">
+          <label for="inputBigImage">Image </label>
+          <input type="file" ng2FileSelect [uploader]="uploaderUpdate" class="form-control" id="serviceImage" value="" name="serviceImage"
+            required>
+        </div>
+
+
+        <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+
+        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm(newService)" class="btn btn-secondary pointer">Submit</button>
+        <!-- <button type="button" class="btn btn-secondary" (click)="confirm()">OK</button> -->
+        <button type="button" class="btn btn-default pointer" (click)="close()">Cancel</button>
+      </form>
+      {{feedback}}
+    </div>
+
+  </div>
+</div>

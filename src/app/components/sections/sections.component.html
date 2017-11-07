@@ -1,74 +1,59 @@
-<h1>Details service</h1>
-<div class="card" >
+<h1>Service details</h1>
+<div class="card" *ngIf="serviceDetails && serviceDetails.bigImage">
   <img class="card-img-top" [src]="serviceDetails.bigImage">
   <div class="card-block">
     <h4 class="card-title">{{ serviceDetails.name }}</h4>
     <p>{{serviceDetails.user}}</p>
     <span class="badge badge-pill badge-info" *ngFor="let tag of serviceDetails.tags">
-      {{tag}}
+      <a [routerLink]="['/s/', tag]">{{tag}}</a>
     </span>
     <p class="card-text">{{ serviceDetails.description }}</p>
     <p>
-      <a class="btn btn-secondary" [routerLink]="['/', serviceDetails.url]">View public Service Page</a>
+      <a class="btn btn-danger pointer" (click)="removeService(serviceDetails._id)">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </a>
+    
+
+        <app-service-update [service]="serviceDetails" (onSave)="serviceDetailsRender()"></app-service-update>
+        <a class="btn btn-secondary" [routerLink]="['/', serviceDetails.url]">
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+        </a>
+
     </p>
   </div>
 </div>
+
 <div class="gap-50"></div>
+<div *ngIf="sectionsList">
+  <h3>Products</h3>
+  <div class="row">
+      <div class="col-md-4">
+              <app-new-section [userId]="userId" [serviceId]="serviceId" (onSave)="sectionList()"></app-new-section>
 
-<h3>SectionsList</h3>
-
-<div *ngFor="let section of sectionsList" class="card">
+      </div>
+      <div *ngFor="let section of sectionsList" class="col-md-4">
+        <div class="card">
+          <div class="crop-img-card">
+            <img class="card-img-top" src="{{section.bigImage}}" />
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">{{section.name}}</h4>
+            <p class="card-text">{{section.description}}</p>
+            <span *ngFor="let tag of section.tags">
+              {{tag}}
+            </span>
+            <div class="gap-20"></div>
+            <p>
+              <a class="btn btn-danger pointer" (click)="removeSection(section._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              <app-section-update [section]="section" (onSave)="sectionList()"></app-section-update>
+              <a class="btn btn-secondary" routerLink="/{{serviceDetails.url}}/{{section.url}}"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
   
-  <img class="card-img-top" src="{{section.bigImage}}" /> 
-  {{section.user}}
-  <div class="card-block">
-    <h4 class="card-title">{{section.name}}</h4>
-    <p class="card-text">{{section.description}}</p>
-    <span *ngFor="let tag of section.tags">
-      {{tag}}
-    </span>
-    <div class="gap-20"></div>
-    <p>
-      <a class="btn btn-danger pointer" (click)="removeSection(section._id)">Remove section</a>
-      <app-section-update [section]="section" (onSave)="sectionList()"></app-section-update>
-      <a class="btn btn-secondary" routerLink="/{{serviceDetails.url}}/{{section.url}}">View public Service Page</a>
-
-
-
-    </p>
-  </div>
-  
-</div> 
-<h3>Add new section of this service:</h3>
-<form (ngSubmit)="submitSection(myForm)" #myForm="ngForm">
-  
-  <div class="form-group">
-    <label for="inputName">Name</label>
-    <input type="text" class="form-control" id="inputName" value="" placeholder="Your name" name="newSection.name" [(ngModel)]="newSection.name" required>
-  </div>
-
-  <div class="form-group">
-    <label for="inputDescription">Description</label>
-    <textarea class="form-control" id="inputDescription" name="newSection.description" [(ngModel)]="newSection.description" required></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="inputTags">Tags</label>
-
-    <tag-input id="inputTags" [(ngModel)]='newSection.tags' name="newSection.tags" value=""></tag-input>
-  </div>
-  
-  <div class="form-group">
-    <label for="inputBigImage">Image </label>
-    <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" id="sectionImage" value="" name="sectionImage" required>
-  </div>
-
-  {{feedback}}
-
-  <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-
-  <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-secondary">Submit</button>
-</form>
 <div class="gap-50"></div>
 <div class="gap-50"></div>
 

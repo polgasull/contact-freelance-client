@@ -80,11 +80,9 @@ export class PublicProfileComponent implements OnInit {
 
     }
 
-    console.log(this.contact)
     this.freelancePublic.sendNewContact(this.contact)
       .subscribe((contact) => {
-        console.log(contact)
-      })
+      });
   }
 
 }

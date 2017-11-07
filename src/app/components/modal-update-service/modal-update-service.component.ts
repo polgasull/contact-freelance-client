@@ -6,8 +6,6 @@ import { FreelanceApiService } from '../../services/freelance-api.service';
 import { SessionService } from '../../services/session.service';
 import { HelpersService } from '../../services/helpers.service'
 
-
-
 export interface ConfirmModel {
   title: string;
   message: string;
@@ -39,8 +37,6 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
     super(dialogService);
   }
   confirm(service) {
-    // we set dialog result as true on click on confirm button, 
-    // then we can get dialog result from caller code 
     if (this.uploaderUpdate.queue[0]) {
       this.helpers.formatTags(this.service.tags, (tags, myForm) => {
         this.uploaderUpdate.onBuildItemForm = (item, form) => {
@@ -66,6 +62,9 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
 
       this.freelanceApi.updateService(this.service)
         .subscribe((serviceDetails) => {
+          this.result = true;
+          this.close();
+          
         });
 
     }
@@ -78,6 +77,7 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
     this.uploaderUpdate.onSuccessItem = (item, response) => {
       // this.feedback = JSON.parse(response).message;
       // this.sectionList();
+      console.log('success')
       this.result = true;
       this.close();
     };

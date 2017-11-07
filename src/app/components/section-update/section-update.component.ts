@@ -15,8 +15,8 @@ export class SectionUpdateComponent implements OnInit {
   constructor(private dialogService: DialogService) {}
     showConfirm() {
       let disposable = this.dialogService.addDialog(ModalUpdateSectionComponent, {
-        title: 'Confirm title',
-        message: 'Confirm message',
+        title: 'Update product',
+        message: 'Update product',
         section: this.section,
       })
         .subscribe((isConfirmed) => {

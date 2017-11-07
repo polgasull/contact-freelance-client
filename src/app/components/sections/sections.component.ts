@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { SessionService } from '../../services/session.service'
 import { HelpersService } from '../../services/helpers.service'
 import { SectionUpdateComponent } from '../../components/section-update/section-update.component';
+import { ServiceUpdateComponent } from '../../components/service-update/service-update.component';
 
 @Component({
   selector: 'app-sections',
@@ -48,11 +49,7 @@ export class SectionsComponent implements OnInit {
       .subscribe((params) => {
         this.serviceId = params['id'];
       });
-    //Service Details
-    this.freelanceApi.serviceDetails(this.serviceId)
-      .subscribe((details) => {
-        this.serviceDetails = details;
-    });
+    this.serviceDetailsRender()
     //SectionList
     this.sectionList();
 
@@ -67,6 +64,14 @@ export class SectionsComponent implements OnInit {
       this.feedback = JSON.parse(response).message;
 
     };
+  }
+  serviceDetailsRender(){
+    //Service Details
+    this.freelanceApi.serviceDetails(this.serviceId)
+      .subscribe((details) => {
+        this.serviceDetails = details;
+      });
+
   }
   sectionList(){
     this.freelanceApi.sectionsList(this.serviceId)
@@ -117,4 +122,8 @@ export class SectionsComponent implements OnInit {
       });
     };
   };
-};
+  removeService(id) {
+    this.freelanceApi.removeService(id)
+      .subscribe((details) => {});
+  }
+}
