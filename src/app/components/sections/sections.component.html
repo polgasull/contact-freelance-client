@@ -3,13 +3,11 @@
   <img class="card-img-top" [src]="serviceDetails.bigImage">
   <div class="card-block">
     <h4 class="card-title">{{ serviceDetails.name }}</h4>
-    <p>{{serviceDetails.user}}</p>
     <span class="badge badge-pill badge-info" *ngFor="let tag of serviceDetails.tags">
       <a [routerLink]="['/s/', tag]">{{tag}}</a>
     </span>
     <p class="card-text">{{ serviceDetails.description }}</p>
     <p>
-       {{serviceDetails._id}}
       <a class="btn btn-danger pointer" (click)="removeService(serviceDetails._id)">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </a>
@@ -23,27 +21,27 @@
     </p>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-md-4">
+      <app-new-section [userId]="userId" [serviceId]="serviceId" (onSave)="sectionList()"></app-new-section>
+  </div>
+</div>
 <div class="gap-50"></div>
-<div *ngIf="sectionsList">
+<div *ngIf="sectionsList.length >0">
   <h3>Products</h3>
   <div class="row">
-      <div class="col-md-4">
-              <app-new-section [userId]="userId" [serviceId]="serviceId" (onSave)="sectionList()"></app-new-section>
-
-      </div>
       <div *ngFor="let section of sectionsList" class="col-md-4">
         <div class="card">
-          <div class="crop-img-card">
+          <div class="crop-img-card-section">
             <img class="card-img-top" src="{{section.bigImage}}" />
           </div>
           <div class="card-block">
             <h4 class="card-title">{{section.name}}</h4>
-            <p class="card-text">{{section.description}}</p>
-             url service {{serviceDetails.url}} url section {{section.url}}
-            <span *ngFor="let tag of section.tags">
-              {{tag}}
+            <span class="badge badge-pill badge-info" *ngFor="let tag of section.tags">
+              <a [routerLink]="['/s/', tag]">{{tag}}</a>
             </span>
+            <p class="card-text">{{section.description}}</p>
+            
             <div class="gap-20"></div>
             <p>
               <a class="btn btn-danger pointer" (click)="removeSection(section._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>

@@ -20,10 +20,10 @@
         </div>
 
         <div class="form-group">
-          <label for="inputTags">Tags</label>
+          <label for="inputTags">Tags, hit enter to add tags.</label>
           <tag-input [(ngModel)]='newSection.tags' name="newSection.tags" required></tag-input>
         </div>
-
+        
         <div class="form-group">
           <label for="inputBigImage">Image </label>
           <input type="file" ng2FileSelect [uploader]="uploaderUpdate" class="form-control" id="serviceImage" value="" name="serviceImage"
@@ -32,10 +32,10 @@
 
 
         <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
-
-        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm(newSection)" class="btn btn-secondary pointer">Submit</button>
+        <button type="button" class="btn btn-danger pointer" (click)="close()">Cancel</button>
+        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm(newSection)" class="btn btn-secondary pointer">Create</button>
         <!-- <button type="button" class="btn btn-secondary" (click)="confirm()">OK</button> -->
-        <button type="button" class="btn btn-default pointer" (click)="close()">Cancel</button>
+        
       </form>
       {{feedback}}
     </div>

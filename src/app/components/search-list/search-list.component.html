@@ -2,25 +2,26 @@
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
+      <h1>Search by</h1>
       <div class="input-group">
         <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
         <span class="input-group-btn">
           <button class="btn btn-secondary pointer" type="button" (click)="newSearch()">Search</button>
         </span>
       </div>
+      
     </div>
   </div>
-
 </section>
 
 
 
-<section>
+<section *ngIf="serviceList.length > 0">
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>Resultados para servicios</h1>
+        <h1>{{ search }} services</h1>
       </div>
     </div>
     <div class="row">
@@ -37,12 +38,12 @@
   </div>
 </section>
 
-<section>
+<section *ngIf="userList.length > 0">
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>Resultados para freelance</h1>
+        <h1>{{ search }} freelances</h1>
       </div>
     </div>
     <div class="row">
@@ -54,3 +55,7 @@
     <div class="gap-50"></div>
   </div>
 </section>
+
+<div class="gap-50"></div>
+<div class="gap-50"></div>
+<div class="gap-50"></div>

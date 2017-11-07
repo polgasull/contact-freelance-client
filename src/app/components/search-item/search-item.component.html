@@ -1,6 +1,11 @@
 <div class="card">
   <div class="crop-image">
-    <img class="card-img-top" src="{{url + item.bigImage}}" alt="User Image">
+    <a *ngIf="item.surname" [routerLink]="['/p', item.url]">
+      <img class="card-img-top" src="{{item.bigImage}}" alt="User Image">
+    </a>
+    <a *ngIf="!item.surname" [routerLink]="['/', item.url]">
+      <img class="card-img-top" src="{{item.bigImage}}" alt="User Image">
+    </a>
   </div>
 
   <div class="card-body">
@@ -12,7 +17,7 @@
     </span>
     <br>
     <br>
-    <a class="btn btn-secondary" *ngIf="item.surname" [routerLink]="['/p', item.url]">View</a>
-    <a class="btn btn-secondary" *ngIf="!item.surname" [routerLink]="['/', item.url]">View</a>
+    <a class="btn btn-secondary" *ngIf="item.surname" [routerLink]="['/p', item.url]"><i class="fa fa-eye" aria-hidden="true"></i></a>
+    <a class="btn btn-secondary" *ngIf="!item.surname" [routerLink]="['/', item.url]"><i class="fa fa-eye" aria-hidden="true"></i></a>
   </div>
 </div>

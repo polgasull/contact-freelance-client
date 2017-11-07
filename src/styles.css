@@ -82,7 +82,7 @@ a:hover {
 .btn-secondary:hover {
     background-color: #022938;
     border: 1px solid #022938;
-    color: #fff;
+    color: #fff !important;
 }
 .btn-secondary.disabled, .btn-secondary:disabled {
     background-color: #f1f1f1;
@@ -93,6 +93,7 @@ a:hover {
     background-color: transparent;
     border-radius: 0px;
     border-color: #a31313;
+    color: #333;
 }
 .btn-danger:hover {
     background-color: #a31313;
@@ -149,6 +150,10 @@ textarea.form-control {
 }
 .crop-img-card {
     max-height: 200px;
+    overflow: hidden;
+}
+.crop-img-card-section {
+    max-height: 100px;
     overflow: hidden;
 }
 .form-section {
@@ -236,4 +241,15 @@ textarea.form-control {
         width: 100px;
         height: 100px;
     }
+}
+.modal {
+    background-color: rgba(255,255,255,0.9);
+}
+.modal-content {
+    border: 0px;
+    border-radius:0px;
+    padding: 40px;
+}
+.img-responsive {
+    width: 100%;
 }

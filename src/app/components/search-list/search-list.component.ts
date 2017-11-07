@@ -18,7 +18,7 @@ export class SearchListComponent implements OnInit {
   sectionList: any = [];
   sections: any = [];
   query: string;
-  limit: number = 1;
+  limit: number = 4;
   skipUser: number= 0;
   skipService: number = 0;
   skipSection: number = 0;
@@ -31,6 +31,7 @@ export class SearchListComponent implements OnInit {
       .subscribe((params) => {
         this.query = params['query'];
       });
+    this.search = this.query;
 
       this.searchUserFunction();
       this.searchServiceFunction();
@@ -53,7 +54,7 @@ export class SearchListComponent implements OnInit {
         this.users = user
         this.skipUser++;
         this.helpers.arrayReassign(this.users, this.userList)
-        console.log('User List:', this.userList);
+      
       })
       
   }
@@ -64,8 +65,10 @@ export class SearchListComponent implements OnInit {
         this.services = service;
         this.skipService++;
         this.helpers.arrayReassign(this.services, this.serviceList)        
-        console.log('Service List:', this.serviceList)
+        
       })
   }
+  
+
 
 }
