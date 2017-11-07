@@ -1,16 +1,10 @@
 import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-<<<<<<< HEAD
-import { FreelanceApiService } from "../../services/freelance-api.service";
-import { } from '@types/googlemaps';
-declare var google: any;
-=======
 import { FreelanceApiService } from '../../services/freelance-api.service';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
 
->>>>>>> a05b76dc0d48e8ef7218f4c0de5c01f6e9603dd9
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
