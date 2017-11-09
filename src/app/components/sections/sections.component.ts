@@ -93,7 +93,7 @@ export class SectionsComponent implements OnInit {
 
   submitSection(myForm) {
     this.helpers.convertToUrl(this.newSection.name, null, (string) => {
-      console.log('serviceurl', this.newSection.url)
+    
       this.newSection.url = string;
       if (!this.uploader.queue[0]) {
         this.newSection = {
