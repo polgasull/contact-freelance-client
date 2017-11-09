@@ -29,6 +29,7 @@ export class PublicProfileComponent implements OnInit {
     user: "",
     service: ""
   }
+  loading: boolean = false;
 
   constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute, private helpers: HelpersService) { }
 
@@ -72,6 +73,7 @@ export class PublicProfileComponent implements OnInit {
   }
 
   send(myForm) {
+    this.loading = true;
     this.contact = {
       name: this.contact.name,
       tel: this.contact.tel,
@@ -86,6 +88,7 @@ export class PublicProfileComponent implements OnInit {
 
     this.freelancePublic.sendNewContact(this.contact)
       .subscribe((contact) => {
+        this.loading = false;
       });
   }
 
