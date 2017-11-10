@@ -42,6 +42,8 @@ export class SearchListComponent implements OnInit {
       this.skipService = 4;
   }
   
+// pendiente new search user y new search service
+
   newSearch() {
     this.serviceList = [];
     this.userList = [];
