@@ -129,7 +129,7 @@ logout() {
 
   localStorage.removeItem('user');
   localStorage.removeItem('token');
-  this.router.navigate(['/dashboard']);
+  this.router.navigate(['/login']);
 }
 
 }

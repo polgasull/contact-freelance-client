@@ -7,7 +7,7 @@
       <input class="form-control form-deco" type="text" placeholder="Your name ... " name="name" [(ngModel)]="contact.name" required #name="ngModel"/>
       
     </div>
-    <div class="" [hidden]="name.valid || name.untouched" class="alert alert-danger">
+    <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
       <div *ngIf="name.errors && name.errors.required">
         Name is required
       </div>

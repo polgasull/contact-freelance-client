@@ -85,7 +85,7 @@ a:hover {
 .btn-secondary:hover {
     background-color: #022938;
     border: 1px solid #022938;
-    color: #fff !important;
+    color: #fff;
 }
 .btn-secondary.disabled, .btn-secondary:disabled {
     background-color: #f1f1f1;
