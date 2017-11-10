@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FreelancePublicService } from '../../services/freelance-public.service'
+import { FreelancePublicService } from '../../../services/freelance-public.service'
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { HelpersService } from '../../services/helpers.service';
+import { environment } from '../../../../environments/environment';
+import { HelpersService } from '../../../services/helpers.service';
 
 
 @Component({
@@ -51,21 +51,12 @@ export class PublicServicesComponent implements OnInit {
         this.serviceDetail = service.services;
         this.userDetail = service.user;
         this.sectionDetail = service.section;
-      });
-  }
-  send(myForm) {
-    this.contact = {
-      name: this.contact.name,
-      tel: this.contact.tel,
-      message: this.contact.message,
-      email: this.contact.email,
-      userEmail: this.userDetail.email,
-      origin: "USER",
-      user: this.userDetail._id,
-      service: this.serviceDetail
-    };
-    this.freelancePublicService.sendNewContact(this.contact)
-      .subscribe((contact) => {
+
+        this.contact.userEmail = this.userDetail.email;
+        this.contact.origin = "SECTION";
+        this.contact.user = this.serviceDetail.user;
+        this.contact.service = this.serviceDetail._id;
+        console.log(this.contact)
       });
   }
 }

@@ -38,40 +38,16 @@
       <div class="col-md-7">
         <h2 class="med">Contact with
           <span>{{user.name}} {{user.surname}}</span>
-         <span *ngIf="firstService">{{ firstService.name}}</span>
+          <span *ngIf="firstService">{{ firstService.name}}</span>
         </h2>
         <p *ngIf="this.services[0]">{{ firstService.description }}</p>
         <p *ngIf="!this.services[0]">{{user.klaim}}</p>
-        
         <button class="btn btn-secondary pointer" [routerLink]="['/', firstService.url]" role="button">View</button>
-
       </div>
       <div class="col-md-5">
-        <div class="form-box">
-          <form (ngSubmit)="send(myForm)" #myForm="ngForm">
-            <h3>Contact Form</h3>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input class="form-control form-deco" type="text" placeholder="Your name ... " name="name" [(ngModel)]="contact.name" />
-            </div>
-            <div class="form-group">
-              <label for="name">Email</label>
-              <input class="form-control form-deco" type="text" placeholder="Your email ... " name="email" [(ngModel)]="contact.email" />
-            </div>
-            <div class="form-group">
-              <label for="name">Phone</label>
-              <input class="form-control form-deco" type="text" placeholder="Your phone ... " name="tel" [(ngModel)]="contact.tel" />
-            </div>
-            <div class="form-group">
-              <label for="name">Message</label>
-              <textarea class="form-control form-deco" name="message" [(ngModel)]="contact.message"></textarea>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-info btn-lg pointer" type="submit">CONTACT</button>
-            </div>
-            <div *ngIf="loading">Loading</div>
-          </form>
-        </div>
+        
+          <app-contact-form [contact]="contact"></app-contact-form>
+        
       </div>
     </div>
     <div class="gap-50"></div>

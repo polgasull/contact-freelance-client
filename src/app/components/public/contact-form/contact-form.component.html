@@ -1,0 +1,55 @@
+<div class="form-box">
+  <form (ngSubmit)="send()" #myForm="ngForm">
+    <h3>Contact Form</h3>
+    <div class="form-group">
+      <label for="name">Name</label>
+  
+      <input class="form-control form-deco" type="text" placeholder="Your name ... " name="name" [(ngModel)]="contact.name" required #name="ngModel"/>
+      
+    </div>
+    <div class="" [hidden]="name.valid || name.untouched" class="alert alert-danger">
+      <div *ngIf="name.errors && name.errors.required">
+        Name is required
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input class="form-control form-deco" type="email" placeholder="Your email ... " name="email" [(ngModel)]="contact.email"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required #email="ngModel" />
+    </div>
+    <div class="" [hidden]="email.valid || email.untouched" class="alert alert-danger">
+      <div *ngIf="email.errors && email.errors.required">
+        Email is required
+      </div>
+      <div *ngIf="email.errors && email.errors.pattern">
+        Email is invalid
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Phone</label>
+      <input class="form-control form-deco" type="text" placeholder="Your phone ... " name="tel" [(ngModel)]="contact.tel" required #phone="ngModel"/>
+    </div>
+    <div class="" [hidden]="phone.valid || phone.untouched" class="alert alert-danger">
+      <div *ngIf="phone.errors && phone.errors.required">
+       Phone is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Message</label>
+      <textarea class="form-control form-deco" name="message" [(ngModel)]="contact.message" required #message="ngModel"></textarea>
+    </div>
+    <div class="" [hidden]="message.valid || message.untouched" class="alert alert-danger">
+      <div *ngIf="message.errors && message.errors.required">
+        Message is required
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="!myForm.form.valid" class="btn btn-info btn-lg pointer" type="submit">CONTACT</button>
+    </div>
+    <div *ngIf="feedbackError" class="alert alert-danger" role="alert">{{feedbackError}}</div>
+    <div *ngIf="feedback" class="alert alert-success" role="alert">{{feedback}}</div>
+    <div *ngIf="loading text-center">
+      <img width="50" src="{{ clientUrl }}/assets/images/Facebook.gif" /> </div>
+  </form>
+</div>

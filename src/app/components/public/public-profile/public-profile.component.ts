@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FreelancePublicService } from '../../services/freelance-public.service'
+import { FreelancePublicService } from '../../../services/freelance-public.service'
 import { ActivatedRoute } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { HelpersService } from '../../services/helpers.service';
+import { environment } from '../../../../environments/environment';
+import { HelpersService } from '../../../services/helpers.service';
+
+import { ContactFormComponent } from '../../../components/public/contact-form/contact-form.component'
 
 @Component({
   selector: 'app-public-profile',
@@ -11,7 +13,8 @@ import { HelpersService } from '../../services/helpers.service';
   
 })
 export class PublicProfileComponent implements OnInit {
-  url = `${environment.baseURL}`;
+  url = environment.baseURL;
+  clientUrl = environment.clientBaseURL;
   publicUserId: any;
   publicUserUrl: any;
   user: any = {};
@@ -27,17 +30,21 @@ export class PublicProfileComponent implements OnInit {
     userEmail: "",
     origin: "",
     user: "",
-    service: ""
+    service: "",
   }
-  loading: boolean = false;
 
-  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute, private helpers: HelpersService) { }
+  
+
+  constructor(
+    private freelancePublic: FreelancePublicService, 
+    private route: ActivatedRoute, 
+    private helpers: HelpersService
+  ) { }
 
   ngOnInit() {
     this.route.params
       .subscribe((params) => {
         this.publicUserUrl = params['id'];
-
       });
 
 
@@ -49,10 +56,7 @@ export class PublicProfileComponent implements OnInit {
 
         this.freelancePublic.getPublicService(this.publicUserId)
         .subscribe((service) => {
-       
-          
           this.services = service;
-          
           if (this.services[0]) {
             this.firstService = {
               id: this.services[0]._id,
@@ -60,35 +64,11 @@ export class PublicProfileComponent implements OnInit {
               description: this.services[0].description,
               url: this.services[0].url
             };
-
           }
-          
-          
+          this.contact.userEmail = this.user.email;
+          this.contact.origin = "USER";
+          this.contact.user = this.user._id;
         });
-
-
-      })
-
-    
-  }
-
-  send(myForm) {
-    this.loading = true;
-    this.contact = {
-      name: this.contact.name,
-      tel: this.contact.tel,
-      message: this.contact.message,
-      email: this.contact.email,
-      userEmail: this.user.email,
-      origin: "USER",
-      user: this.user._id,
-      service: this.services._id
-
-    }
-
-    this.freelancePublic.sendNewContact(this.contact)
-      .subscribe((contact) => {
-        this.loading = false;
       });
   }
 

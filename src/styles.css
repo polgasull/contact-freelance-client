@@ -30,6 +30,9 @@ a:hover {
     text-decoration: none;
     color: #ccc;
 }
+.pointer {
+    cursor: pointer;
+}
 .c-w {
     color: #fff;
 }
@@ -108,6 +111,13 @@ a:hover {
     background-color: #04406d;
     color: #fff !important;
 }
+.btn-info.disabled, .btn-info:disabled {
+    background-color: #022938;
+    border-radius: 0px;
+    border-color: #fff;
+    cursor: auto;
+    opacity: 0.3;
+}
 .form-control {
     border-radius: 0px;
     height: 42px; 
@@ -115,9 +125,7 @@ a:hover {
 textarea.form-control {
     min-height: 120px;
 }
-.pointer {
-    cursor: pointer;
-}
+
 .card-block {
     padding: 20px;
 }
@@ -244,6 +252,7 @@ textarea.form-control {
 }
 .modal {
     background-color: rgba(255,255,255,0.9);
+    position: absolute;
 }
 .modal-content {
     border: 0px;

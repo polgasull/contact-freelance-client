@@ -33,7 +33,11 @@ export class ProfileComponent implements OnInit {
   surname: any;
   cityQuote:any;
 
-  constructor(private freelanceApi: FreelanceApiService, private session: SessionService, private helpers: HelpersService) { }
+  constructor(
+    private freelanceApi: FreelanceApiService, 
+    private session: SessionService, 
+    private helpers: HelpersService
+  ) { }
 
   ngOnInit() {
     this.user.klaim = ""
@@ -94,7 +98,7 @@ export class ProfileComponent implements OnInit {
         .subscribe((user) => {
           
           this.getUser(this.userId);
-          this.feedback = 'saved';
+          this.feedback = 'Saved';
         });
     })
 

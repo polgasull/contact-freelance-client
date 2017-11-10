@@ -21,9 +21,9 @@ import { SectionsComponent } from './components/sections/sections.component';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
-import { PublicServicesComponent } from './components/public-services/public-services.component';
-import { PublicSectionsComponent } from './components/public-sections/public-sections.component';
+import { PublicProfileComponent } from './components/public/public-profile/public-profile.component';
+import { PublicServicesComponent } from './components/public/public-services/public-services.component';
+import { PublicSectionsComponent } from './components/public/public-sections/public-sections.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -48,6 +48,7 @@ import { NewServiceComponent } from './components/new-service/new-service.compon
 import { ModalNewServiceComponent } from './components/modal-new-service/modal-new-service.component';
 import { NewSectionComponent } from './components/new-section/new-section.component';
 import { ModalNewSectionComponent } from './components/modal-new-section/modal-new-section.component';
+import { ContactFormComponent } from './components/public/contact-form/contact-form.component';
 
 
 export const routes: Routes = [
@@ -105,7 +106,8 @@ export const routes: Routes = [
     NewServiceComponent,
     ModalNewServiceComponent,
     NewSectionComponent,
-    ModalNewSectionComponent
+    ModalNewSectionComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

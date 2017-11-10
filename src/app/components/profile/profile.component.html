@@ -5,21 +5,6 @@
 
 <div class="gap-50"></div>
 <form (ngSubmit)="submitUpdates(myForm)" #myForm="ngForm">
-    <!-- <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" name="email" [(ngModel)]="user.email"
-            #myEmail="ngModel" ng-model="required">
-    </div> -->
-    <!-- <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Choose Password" name="password" [(ngModel)]="user.password"
-            #myPassword="ngModel" minlength="6" ng-model="required">
-        <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-            <p class="error" [hidden]="!myPassword.errors.required" [hidden]="!myPassword.errors.minlength">
-                <small>Password must be at least 6 characters long.</small>
-            </p>
-        </div>
-    </div> -->
     <h2>Personal Data</h2>
     <p>Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit.</p>
     <div class="form-group">
@@ -35,14 +20,6 @@
         <label for="inputPhone">Contact phone</label>
         <input type="text" class="form-control" id="inputPhone" placeholder="Your Phone" name="phone" [(ngModel)]="user.phone">
     </div>
-    <!-- <div class="form-group">
-        <label for="inputCountry">Country</label>
-        <input type="text" class="form-control" id="inputCountry" placeholder="Your Country" name="country" [(ngModel)]="user.country">
-    </div>
-    <div class="form-group">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity" placeholder="Your City" name="city" [(ngModel)]="user.city">
-    </div> -->
     <div class="form-group">
         <label for="inputCity">City</label>
        <app-maps [cityQuote]="cityQuote" (getMapPlaces)="handleMapEvent($event)"></app-maps>
