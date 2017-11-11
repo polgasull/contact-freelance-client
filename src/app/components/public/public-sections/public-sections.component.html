@@ -1,8 +1,5 @@
 
-<div *ngIf="this.error404">
-  <app-not-found></app-not-found>
-</div>
-<div *ngIf="!this.error404">
+<div>
   <section *ngIf="sectionDetail.bigImage" class="bigImageContent">
     <div class="bigImage" [ngStyle]="{'background-image': 'url('+ sectionDetail.bigImage + ')'}">
     </div>
