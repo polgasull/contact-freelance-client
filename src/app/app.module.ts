@@ -32,9 +32,7 @@ import { ServicesListComponent } from './components/private/services-list/servic
 import { ChangePasswordComponent } from './components/private/change-password/change-password.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalUpdateServiceComponent } from './components/private/modal-update-service/modal-update-service.component';
-import { ServiceUpdateComponent } from './components/private/service-update/service-update.component';
 import { ModalUpdateSectionComponent } from './components/private/modal-update-section/modal-update-section.component';
-import { SectionUpdateComponent } from './components/private/section-update/section-update.component';
 import { SearchItemComponent } from './components/public/search-item/search-item.component';
 
 import { FreelanceApiService } from './services/freelance-api.service';
@@ -50,6 +48,8 @@ import { ContactFormComponent } from './components/public/contact-form/contact-f
 import { NotFoundComponent } from './components/global/not-found/not-found.component';
 import { NotFoundPageComponent } from './components/public/not-found-page/not-found-page.component';
 import { CardBoxComponent } from './components/global/card-box/card-box.component';
+import { FormCreateUpdateComponent } from './components/global/form-create-update/form-create-update.component';
+import { CallModalComponent } from './components/global/call-modal/call-modal.component';
 
 
 
@@ -98,9 +98,7 @@ export const routes: Routes = [
     ServicesListComponent,
     ChangePasswordComponent,
     ModalUpdateServiceComponent,
-    ServiceUpdateComponent,
     ModalUpdateSectionComponent,
-    SectionUpdateComponent,
     SearchItemComponent,
     MapsComponent,
     NewServiceComponent,
@@ -111,6 +109,8 @@ export const routes: Routes = [
     NotFoundComponent,
     NotFoundPageComponent,
     CardBoxComponent,
+    FormCreateUpdateComponent,
+    CallModalComponent,
   ],
   imports: [
     BrowserModule,

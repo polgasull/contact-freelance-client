@@ -8,7 +8,7 @@ viverra. Cras quis rhoncus nulla.</p>
 <hr>
 <div *ngIf="servicesList">
   <div class="card" *ngFor="let service of servicesList">
-    <div class="crop-img-card">
+    <div class="crop-img-card transition">
       <a [routerLink]="['/dashboard/service/', service._id]"><img class="card-img-top" [src]="service.bigImage" alt="{{service.name}}"></a>
     </div>
     <div class="card-block">
@@ -20,7 +20,7 @@ viverra. Cras quis rhoncus nulla.</p>
       <p class="card-text">{{service.description}}</p>
       <p>
         <a class="btn btn-danger pointer" (click)="removeService(service._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
-        <app-service-update [service]="service" (onSave)="serviceList(service.user)"></app-service-update>
+        <app-call-modal [objectTo]="service" (onSave)="serviceList(service.user)"></app-call-modal>
         <a class="btn btn-secondary" [routerLink]="['/dashboard/service/', service._id]"><i class="fa fa-eye" aria-hidden="true"></i></a>
         <a class="btn btn-secondary" [routerLink]="['/', service.url]">
           <i class="fa fa-external-link" aria-hidden="true"></i>

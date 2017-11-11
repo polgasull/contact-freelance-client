@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServiceUpdateComponent } from './service-update.component';
+import { CallModalComponent } from './call-modal.component';
 
-describe('ServiceUpdateComponent', () => {
-  let component: ServiceUpdateComponent;
-  let fixture: ComponentFixture<ServiceUpdateComponent>;
+describe('CallModalComponent', () => {
+  let component: CallModalComponent;
+  let fixture: ComponentFixture<CallModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ServiceUpdateComponent ]
+      declarations: [ CallModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ServiceUpdateComponent);
+    fixture = TestBed.createComponent(CallModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

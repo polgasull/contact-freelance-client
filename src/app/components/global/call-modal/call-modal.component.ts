@@ -1,22 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DialogService } from "ng2-bootstrap-modal";
 import { ModalUpdateServiceComponent } from "../../private/modal-update-service/modal-update-service.component";
+
 @Component({
-  selector: 'app-service-update',
-  templateUrl: './service-update.component.html',
-  styleUrls: ['./service-update.component.css']
+  selector: 'app-call-modal',
+  templateUrl: './call-modal.component.html',
+  styleUrls: ['./call-modal.component.css']
 })
-export class ServiceUpdateComponent implements OnInit {
-  @Input() service:any; 
+export class CallModalComponent implements OnInit {
+  @Input() objectTo: any;
+  @Input() ob: any;
   @Output() onSave = new EventEmitter<string>();
 
-  
-  constructor(private dialogService: DialogService) { }
+  constructor(
+    private dialogService: DialogService
+  ) { }
   showConfirm() {
     let disposable = this.dialogService.addDialog(ModalUpdateServiceComponent, {
       title: 'Update service',
       message: 'Update service',
-      service: this.service
+      objectTo: this.objectTo
     })
       .subscribe((isConfirmed) => {
         if (isConfirmed) {
@@ -26,10 +29,11 @@ export class ServiceUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ob:', this.ob)
   }
   goEmiterGo() {
-    this.onSave.emit(this.service);
+    this.onSave.emit();
   }
-  
+
 
 }

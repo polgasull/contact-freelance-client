@@ -23,6 +23,7 @@ export class NewSectionComponent implements OnInit {
       serviceId: this.serviceId
     })
       .subscribe((isConfirmed) => {
+        console.log('isconfirmed',isConfirmed)
         if (isConfirmed) {
           this.goEmiterGo();
         }
@@ -30,7 +31,6 @@ export class NewSectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userId, this.serviceId)
   }
   goEmiterGo() {
     this.onSave.emit();
