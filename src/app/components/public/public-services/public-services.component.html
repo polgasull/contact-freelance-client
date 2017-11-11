@@ -1,15 +1,5 @@
 <div *ngIf="this.error404">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="med">Sorry
-          <span>error 404</span>
-        
-        </h2>
-      </div>
-    </div>
-  </div>
- 
+  <app-not-found></app-not-found>
 </div>
 <div *ngIf="!this.error404">
   <section *ngIf="serviceDetail.url" class="bigImageContent">

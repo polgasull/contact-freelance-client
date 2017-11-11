@@ -1,30 +1,12 @@
 
 <div  class="row">
   <div class="col-sm-6">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">Public profile</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a [routerLink]="['/dashboard/profile']" class="btn btn-secondary">View</a>
-      </div>
-    </div>
+    <app-card-box [cardContent]="cardContentProfile"></app-card-box>
   </div>
   <div class="col-sm-6">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">Services</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a [routerLink]="['/dashboard/services']" class="btn btn-secondary">View</a>
-      </div>
-    </div>
+    <app-card-box [cardContent]="cardContentServices"></app-card-box>
   </div>
   <div class="col-sm-6">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">Change password</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a [routerLink]="['/dashboard/password']" class="btn btn-secondary">Change</a>
-      </div>
-    </div>
+    <app-card-box [cardContent]="cardContentPassword"></app-card-box>
   </div>
 </div>

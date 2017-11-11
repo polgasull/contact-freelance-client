@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../../services/freelance-public.service'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -28,7 +28,11 @@ export class PublicSectionsComponent implements OnInit {
     section:""
   }
 
-  constructor(private freelancePublic: FreelancePublicService, private route: ActivatedRoute) { }
+  constructor(
+    private freelancePublic: FreelancePublicService, 
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.params
@@ -49,7 +53,11 @@ export class PublicSectionsComponent implements OnInit {
         this.contact.section = this.sectionDetail._id;
         this.contact.service = this.sectionDetail.service;
         
+      },
+      (err) => {
+        this.router.navigate(['/e/error'])
       });
+      
   }
 
 }

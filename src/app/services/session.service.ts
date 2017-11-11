@@ -13,7 +13,6 @@ export class SessionService implements CanActivate {
   public isAuth:  boolean = false;
   public user = {};
   public userLogged:boolean = false; 
-  
   private BASE_URL: String = environment.baseURL
   
   constructor(
@@ -40,14 +39,14 @@ canActivate() {
         return true;
       })
       .catch((err) => {
-        // this.logout()
+       
         this.router.navigate(['/login'])
         return false;    
       })
 
   }else{
     
-    // this.logout()
+  
     this.router.navigate(['/login'])
     return false;
   }
@@ -92,7 +91,7 @@ login(user) {
 
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(this.user));
-        console.log('isauth', this.isAuth)
+        
 
         return true;
       } else {

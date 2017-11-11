@@ -20,16 +20,19 @@ export class ModalNewSectionComponent extends DialogComponent<ConfirmModel, bool
   title: string;
   message: string;
   feedback: string;
+
   error: string;
+
   service: any;
   userId: string;
   serviceId: string;
   newSection: any = {};
+
   uploaderUpdate: FileUploader = new FileUploader({
     url: `${environment.baseURL}/api/section/image`,
     authToken: "Bearer " + this.session.token,
   });
-  url: string = environment.baseURL;
+  
 
   constructor(
     dialogService: DialogService,
@@ -85,7 +88,6 @@ export class ModalNewSectionComponent extends DialogComponent<ConfirmModel, bool
 
     this.uploaderUpdate.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
-
     };
   }
 

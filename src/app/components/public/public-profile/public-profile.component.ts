@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FreelancePublicService } from '../../../services/freelance-public.service'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { HelpersService } from '../../../services/helpers.service';
 
-import { ContactFormComponent } from '../../../components/public/contact-form/contact-form.component'
 
 @Component({
   selector: 'app-public-profile',
@@ -38,7 +37,8 @@ export class PublicProfileComponent implements OnInit {
   constructor(
     private freelancePublic: FreelancePublicService, 
     private route: ActivatedRoute, 
-    private helpers: HelpersService
+    private helpers: HelpersService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -69,6 +69,9 @@ export class PublicProfileComponent implements OnInit {
           this.contact.origin = "USER";
           this.contact.user = this.user._id;
         });
+      },
+      (err)=>{
+        this.router.navigate(['/e/error'])
       });
   }
 

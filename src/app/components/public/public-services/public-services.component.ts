@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { HelpersService } from '../../../services/helpers.service';
 
 
+
 @Component({
   selector: 'app-public-services',
   templateUrl: './public-services.component.html',
@@ -18,7 +19,6 @@ export class PublicServicesComponent implements OnInit {
   serviceDetail: any = {};
   userDetail: any = {};
   sectionDetail: Array<object>;
-  error404: boolean = false;
   contact: any = {
     name: "",
     tel: "",
@@ -44,19 +44,20 @@ export class PublicServicesComponent implements OnInit {
       });
     this.freelancePublicService.getServiceProfile(this.serviceId)
       .subscribe((service) => {
-        if (service.message === "error") {
-          this.error404 = true;
-        }
-        this.service = service;
-        this.serviceDetail = service.services;
-        this.userDetail = service.user;
-        this.sectionDetail = service.section;
+          this.service = service;
+          this.serviceDetail = service.services;
+          this.userDetail = service.user;
+          this.sectionDetail = service.section;
 
-        this.contact.userEmail = this.userDetail.email;
-        this.contact.origin = "SECTION";
-        this.contact.user = this.serviceDetail.user;
-        this.contact.service = this.serviceDetail._id;
-        console.log(this.contact)
+          this.contact.userEmail = this.userDetail.email;
+          this.contact.origin = "SECTION";
+          this.contact.user = this.serviceDetail.user;
+          this.contact.service = this.serviceDetail._id;
+        
+        
+      },
+      (err) =>{
+        this.router.navigate(['/e/error'])
       });
   }
 }
