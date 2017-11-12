@@ -9,7 +9,7 @@
   </div>
 
   <div class="card-body">
-    <h6 class="card-title">{{item.name}} {{item.surname}}</h6>
+    <h5 class="card-title">{{item.name}} {{item.surname}}</h5>
     <span *ngFor="let tag of item.tags; let i=index">
       <span class="badge badge-pill badge-info" *ngIf="i<3">
         {{ tag.value || tag }}

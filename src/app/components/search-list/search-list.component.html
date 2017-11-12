@@ -3,36 +3,40 @@
     <div class="gap-50"></div>
     <div class="row">
       <h1>Search by</h1>
+
       <div class="input-group">
         <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
-        <span class="input-group-btn">
-          <button class="btn btn-secondary pointer" type="button" (click)="newSearch()">Search</button>
-        </span>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-secondary" (click)="newSearchByUser()">
+            <input type="radio" name="options" id="searchByUser" autocomplete="off" checked> User
+          </label>
+          <label class="btn btn-secondary" (click)="newSearchByService()">
+            <input type="radio" name="options" id="searchByService" autocomplete="off"> Service
+          </label>
+          <label class="btn btn-secondary" (click)="newSearchBoth()">
+            <input type="radio" name="options" id="searchBoth" autocomplete="off"> Both
+          </label>
+        </div>
       </div>
-      
     </div>
   </div>
 </section>
-
-
 
 <section *ngIf="serviceList.length > 0">
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>{{ search }} services</h1>
+        <h1>Service results by {{ search }}</h1>
       </div>
     </div>
     <div class="row">
-
       <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let service of serviceList">
         <app-search-item [item]="service"></app-search-item>
       </div>
     </div>
 
-    <a class="btn btn-secondary pointer" (click)="loadSearchServiceFunction()">Load more</a>
-
+    <a class="btn btn-secondary pointer" (click)="loadMoreSearchServiceFunction()">Load more</a>
 
     <div class="gap-50"></div>
   </div>
@@ -43,7 +47,7 @@
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>{{ search }} freelances</h1>
+        <h1>Freelance results by {{ search }}</h1>
       </div>
     </div>
     <div class="row">

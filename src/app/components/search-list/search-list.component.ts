@@ -24,8 +24,8 @@ export class SearchListComponent implements OnInit {
   skipSection: number = 0;
   skipServiceLoadMore: number = 0;
   search: string;
-  i: number = 0;
-  j: number = 0;
+  loadUserMultiplier: number = 0;
+  loadServiceMultiplier: number = 0;
 
   constructor(private freelancePublicService: FreelancePublicService, private route: ActivatedRoute, private router: Router, private helpers: HelpersService) { }
 
@@ -44,21 +44,49 @@ export class SearchListComponent implements OnInit {
   
 // pendiente new search user y new search service
 
-  newSearch() {
+  newSearchByUser() {
+    // this.serviceList = [];
+    this.userList = [];
+    this.skipUser = 0;
+    // this.skipService = 0;
+    this.query = this.search;
+    this.searchUserFunction();
+    this.skipUser = 4;
+    // this.skipService = 4;
+    // this.skipServiceLoadMore = 4;
+    // this.loadServiceMultiplier = 1;
+    this.loadUserMultiplier = 1;
+  }
+
+  newSearchByService() {
+    this.serviceList = [];
+    // this.userList = [];
+    // this.skipUser = 0;
+    this.skipService = 0;
+    this.query = this.search;
+    this.searchServiceFunction();
+    // this.skipUser = 4;
+    this.skipService = 4;
+    this.skipServiceLoadMore = 4;
+    this.loadServiceMultiplier = 1;
+    // this.loadUserMultiplier = 1;
+  }
+
+  newSearchBoth() {
     this.serviceList = [];
     this.userList = [];
     this.skipUser = 0;
     this.skipService = 0;
     this.query = this.search;
-    this.searchUserFunction();
     this.searchServiceFunction();
+    this.searchUserFunction();    
     this.skipUser = 4;
     this.skipService = 4;
     this.skipServiceLoadMore = 4;
-    this.j = 1;
-    this.i = 1;
+    this.loadServiceMultiplier = 1;
+    this.loadUserMultiplier = 1;
   }
-
+  
 
   searchUserFunction() {
     this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser)
@@ -76,19 +104,20 @@ export class SearchListComponent implements OnInit {
         this.helpers.arrayReassign(this.services, this.serviceList);
       })
   }
-  loadSearchServiceFunction() {
-    this.freelancePublicService.searchServiceList(this.query, this.limit, this.skipServiceLoadMore * this.j)
+
+  loadMoreSearchServiceFunction() {
+    this.freelancePublicService.searchServiceList(this.query, this.limit, this.skipServiceLoadMore * this.loadServiceMultiplier)
       .subscribe((service) => {
         this.services = service;
-        this.j += 1;
+        this.loadServiceMultiplier += 1;
         this.helpers.arrayReassign(this.services, this.serviceList);
       })
   }
   loadMoreSearchUserFunction() {
-    this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser * this.i)
+    this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser * this.loadUserMultiplier)
       .subscribe((user) => {
         this.users = user;
-        this.i += 1;
+        this.loadUserMultiplier += 1;
         this.helpers.arrayReassign(this.users, this.userList);
       });
   }
