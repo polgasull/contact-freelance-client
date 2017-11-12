@@ -1,10 +1,10 @@
 <div class="card">
   <div class="crop-image">
     <a *ngIf="item.surname" [routerLink]="['/p', item.url]">
-      <img class="card-img-top" src="{{item.bigImage}}" alt="User Image">
+      <img class="card-img-top" src="{{item.userImage}}" alt="User Image">
     </a>
     <a *ngIf="!item.surname" [routerLink]="['/', item.url]">
-      <img class="card-img-top" src="{{item.bigImage}}" alt="User Image">
+      <img class="card-img-top" src="{{item.bigImage}}" alt="Service Image">
     </a>
   </div>
 

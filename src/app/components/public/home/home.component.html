@@ -5,8 +5,15 @@
         <div class="gap-50"></div>
         <a title="contacT-Freelance" href="/"><img src="./assets/images/contact-freelance-logo.png"/></a>
         <div class="gap-50"></div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <h4 class="c-w lead">What are you looking for?</h4>            
+            </div>
+        </div>
+       
         <div class="input-group">
-            <input type="text" name="search" [(ngModel)]="search" class="form-control main-search-bar" placeholder="Find your freelance...">
+            <input type="text" name="search" [(ngModel)]="search" class="form-control main-search-bar" placeholder="Search by name, job, tag or city">
             <span class="input-group-btn">
               <button class="btn btn-light pointer" type="button" [routerLink]="['/s/', search]">Go!</button>
             </span>

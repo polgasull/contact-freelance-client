@@ -5,7 +5,7 @@
       <h1>Search by</h1>
 
       <div class="input-group">
-        <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search for...">
+        <input type="text" name="search" [(ngModel)]="search" class="form-control" placeholder="Search by name, job, tag or city">
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-secondary" (click)="newSearchByUser()">
             <input type="radio" name="options" id="searchByUser" autocomplete="off" checked> User
@@ -27,7 +27,7 @@
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>Service results by {{ search }}</h1>
+        <h1> {{ search }} service results</h1>
       </div>
     </div>
     <div class="row">
@@ -47,7 +47,7 @@
     <div class="gap-50"></div>
     <div class="row">
       <div class="col-sm-12">
-        <h1>Freelance results by {{ search }}</h1>
+        <h1> {{ search }} profile results </h1>
       </div>
     </div>
     <div class="row">
