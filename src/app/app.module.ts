@@ -12,51 +12,54 @@ import { environment } from '../environments/environment';
 import { FileSelectDirective, FileUploadModule } from "ng2-file-upload";
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { SearchListComponent } from './components/search-list/search-list.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { SectionsComponent } from './components/sections/sections.component';
-import { ServicesComponent } from './components/services/services.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LogoutComponent } from './components/logout/logout.component';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
-import { PublicServicesComponent } from './components/public-services/public-services.component';
-import { PublicSectionsComponent } from './components/public-sections/public-sections.component';
-import { LayoutComponent } from './components/layout/layout.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
-import { HeaderComponent } from './components/header/header.component';
-import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
-import { ServicesListComponent } from './components/services-list/services-list.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { HomeComponent } from './components/public/home/home.component';
+import { LoginComponent } from './components/public/login/login.component';
+import { SignupComponent } from './components/public/signup/signup.component';
+import { SearchListComponent } from './components/public/search-list/search-list.component';
+import { ProfileComponent } from './components/private/profile/profile.component';
+import { SectionsComponent } from './components/private/sections/sections.component';
+import { ServicesComponent } from './components/private/services/services.component';
+import { DashboardComponent } from './components/private/dashboard/dashboard.component';
+import { PublicProfileComponent } from './components/public/public-profile/public-profile.component';
+import { PublicServicesComponent } from './components/public/public-services/public-services.component';
+import { PublicSectionsComponent } from './components/public/public-sections/public-sections.component';
+import { NavbarComponent } from './components/layout/navbar/navbar.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { DashboardMenuComponent } from './components/private/dashboard-menu/dashboard-menu.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { DashboardHomeComponent } from './components/private/dashboard-home/dashboard-home.component';
+import { ServicesListComponent } from './components/private/services-list/services-list.component';
+import { ChangePasswordComponent } from './components/private/change-password/change-password.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { ModalUpdateServiceComponent } from './components/modal-update-service/modal-update-service.component';
-import { ServiceUpdateComponent } from './components/service-update/service-update.component';
-import { ModalUpdateSectionComponent } from './components/modal-update-section/modal-update-section.component';
-import { SectionUpdateComponent } from './components/section-update/section-update.component';
-import { SearchItemComponent } from './components/search-item/search-item.component';
+import { ModalUpdateServiceComponent } from './components/private/modal-update-service/modal-update-service.component';
+import { ServiceUpdateComponent } from './components/private/service-update/service-update.component';
+import { ModalUpdateSectionComponent } from './components/private/modal-update-section/modal-update-section.component';
+import { SectionUpdateComponent } from './components/private/section-update/section-update.component';
+import { SearchItemComponent } from './components/public/search-item/search-item.component';
 
 import { FreelanceApiService } from './services/freelance-api.service';
 import { SessionService } from './services/session.service';
 import { HelpersService } from './services/helpers.service';
 import { FreelancePublicService } from './services/freelance-public.service';
-import { MapsComponent } from './components/maps/maps.component';
-import { NewServiceComponent } from './components/new-service/new-service.component';
-import { ModalNewServiceComponent } from './components/modal-new-service/modal-new-service.component';
-import { NewSectionComponent } from './components/new-section/new-section.component';
-import { ModalNewSectionComponent } from './components/modal-new-section/modal-new-section.component';
+import { MapsComponent } from './components/global/maps/maps.component';
+import { NewServiceComponent } from './components/private/new-service/new-service.component';
+import { ModalNewServiceComponent } from './components/private/modal-new-service/modal-new-service.component';
+import { NewSectionComponent } from './components/private/new-section/new-section.component';
+import { ModalNewSectionComponent } from './components/private/modal-new-section/modal-new-section.component';
+import { ContactFormComponent } from './components/public/contact-form/contact-form.component';
+import { NotFoundComponent } from './components/global/not-found/not-found.component';
+import { NotFoundPageComponent } from './components/public/not-found-page/not-found-page.component';
+import { CardBoxComponent } from './components/global/card-box/card-box.component';
+
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'logout', component: LogoutComponent },//delete
   { path: 'p/:id', component: PublicProfileComponent },  
   { path: 's/:query', component: SearchListComponent },
+  { path: 'e/error', component: NotFoundPageComponent }, 
   { 
     path: 'dashboard', component: DashboardComponent, canActivate: [SessionService],
     children: [
@@ -65,12 +68,12 @@ export const routes: Routes = [
       { path: 'services', component: ServicesComponent, canActivate: [SessionService] },
       { path: 'password', component: ChangePasswordComponent, canActivate: [SessionService] },
       { path: 'service/:id', component: SectionsComponent, canActivate: [SessionService] }
-      // { path: 'sections', component: SectionsComponent, canActivate: [SessionService] },
     ]
   },
-  { path: ':serviceId/:sectionId', component: PublicSectionsComponent },  
+  { path: ':serviceId/:sectionId', component: PublicSectionsComponent }, 
+  
   { path: ':url', component: PublicServicesComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({
@@ -84,11 +87,9 @@ export const routes: Routes = [
     SectionsComponent,
     ServicesComponent,
     DashboardComponent,
-    LogoutComponent,
     PublicProfileComponent,
     PublicServicesComponent,
     PublicSectionsComponent,
-    LayoutComponent,
     NavbarComponent,
     FooterComponent,
     DashboardMenuComponent,
@@ -105,7 +106,11 @@ export const routes: Routes = [
     NewServiceComponent,
     ModalNewServiceComponent,
     NewSectionComponent,
-    ModalNewSectionComponent
+    ModalNewSectionComponent,
+    ContactFormComponent,
+    NotFoundComponent,
+    NotFoundPageComponent,
+    CardBoxComponent,
   ],
   imports: [
     BrowserModule,

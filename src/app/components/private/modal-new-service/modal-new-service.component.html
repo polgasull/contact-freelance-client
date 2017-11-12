@@ -1,0 +1,59 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close pointer" (click)="close()">&times;</button>
+      <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div class="modal-body">
+      <p>{{ message }}</p>
+
+      <form #myForm="ngForm">
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input type="text" class="form-control" id="inputName" value="" placeholder="Your name" name="newService.name" [(ngModel)]="newService.name"
+            #name="ngModel" required>
+        </div>
+        <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+          <div *ngIf="name.errors && name.errors.required">
+            Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDescription">Description</label>
+          <textarea class="form-control" id="inputDescription" name="newService.description" [(ngModel)]="newService.description" #description="ngModel" required></textarea>
+        </div>
+        <div [hidden]="description.valid || description.untouched" class="alert alert-danger">
+          <div *ngIf="description.errors && description.errors.required">
+            Description is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputTags">Tags, hit enter to add tags</label>
+          <tag-input [(ngModel)]='newService.tags' name="newService.tags" #tags="ngModel" required></tag-input>
+        </div>
+        <div [hidden]="tags.valid || tags.untouched" class="alert alert-danger">
+          <div *ngIf="tags.errors && tags.errors.required">
+            Tags are required
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="inputBigImage">Image </label>
+          <input type="file" ng2FileSelect [uploader]="uploaderUpdate" class="form-control" id="serviceImage" value="" name="serviceImage"
+            required>
+        </div>
+
+
+        <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+        <button type="button" class="btn btn-danger pointer" (click)="close()">Cancel</button>
+        <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm(newService)" class="btn btn-secondary pointer">Submit</button>
+  
+        
+      </form>
+      {{feedback}}
+    </div>
+
+  </div>
+</div>

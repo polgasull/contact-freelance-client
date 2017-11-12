@@ -1,0 +1,96 @@
+<div>
+  <section *ngIf="serviceDetail.url" class="bigImageContent">
+    <div class="bigImage" [ngStyle]="{'background-image': 'url('+ serviceDetail.bigImage + ')'}">
+    </div>
+      <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+      
+        <div class="col-sm-9">
+          <h1>{{ serviceDetail.name }}</h1>
+          <div class="badge badge-pill badge-info" *ngFor="let tag of serviceDetail.tags">
+            <a [routerLink]="['/s/', tag]">{{tag}}</a>
+          </div>
+          <p>{{userDetail.city}} {{userDetail.country}}</p>
+          <p class="lead">{{ serviceDetail.description }}</p>
+          
+          <div>
+            <a *ngIf="userDetail.linkedin" href="{{userDetail.linkedin}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.facebook" href="{{userDetail.facebook}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.google" href="{{userDetail.google}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-google-plus" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.web" href="{{userDetail.web}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-link" aria-hidden="true"></i>
+            </a>
+          </div>
+        
+        
+        </div>
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+  <section class="form-section">
+    <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+        <div class="col-md-7">
+          <h2 class="med">Contact with
+            <span>{{ serviceDetail.name }}</span>
+            
+          </h2>
+          <div class="gap-40"></div>
+          <p>{{ serviceDetail.description }}</p>
+
+
+        </div>
+        <div class="col-md-5">
+          <app-contact-form [contact]="contact"></app-contact-form>
+        </div>
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+
+  <section *ngIf="sectionDetail && sectionDetail.length" class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <div class="gap-30"></div>
+          <h4>do you know my other services?</h4>
+          <div class="gap-20"></div>
+          <img src="./assets/images/arrow.png">
+          <div class="gap-30"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+        <div class="col-sm-4 text-center" *ngFor="let section of sectionDetail">
+          <h3>{{ section.name }}</h3>
+          
+          <div class="badge badge-pill badge-info" *ngFor="let tag of section.tags">
+            <a [routerLink]="['/s/', tag]">{{tag}}</a>
+          </div>
+          <p>{{ section.description }}</p>
+          <!-- <img [src]="url + service.bigImage" class="service-bigImage img-responsive" alt="Service bigImage"> -->
+          <button class="btn btn-secondary pointer" routerLink="/{{serviceDetail.url}}/{{section.url}}" role="button">View</button>
+        </div>
+        
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+</div>
+
+<div class="gap-50"></div>
+<div class="gap-50"></div>

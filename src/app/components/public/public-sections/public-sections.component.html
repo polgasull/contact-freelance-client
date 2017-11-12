@@ -1,0 +1,92 @@
+
+<div>
+  <section *ngIf="sectionDetail.bigImage" class="bigImageContent">
+    <div class="bigImage" [ngStyle]="{'background-image': 'url('+ sectionDetail.bigImage + ')'}">
+    </div>
+    <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+  
+        <div class="col-sm-9">
+          <h1> {{ sectionDetail.name }}</h1>
+          <div class="badge badge-pill badge-info" *ngFor="let tag of sectionDetail.tags">
+            <a [routerLink]="['/s/', tag]">{{tag}}</a>
+          </div>
+          <p>{{userDetail.city}} {{userDetail.country}}</p>
+          <p class="lead">{{ sectionDetail.description }}</p>
+  
+          <div>
+            <a *ngIf="userDetail.linkedin" href="{{userDetail.linkedin}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.facebook" href="{{userDetail.facebook}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.google" href="{{userDetail.google}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-google-plus" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="userDetail.web" href="{{userDetail.web}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-link" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+  <section class="form-section">
+    <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+        <div class="col-md-7">
+          <h2 class="med">Contact with
+            <span>{{ sectionDetail.name }}</span>
+            freelance
+          </h2>
+          <p>{{ sectionDetail.description}}</p>
+        </div>
+        <div class="col-md-5">
+  
+          <app-contact-form [contact]="contact"></app-contact-form>
+  
+        </div>
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+  
+          <div class="gap-30"></div>
+          <h4>do you know my other services?</h4>
+          <div class="gap-20"></div>
+          <img src="./assets/images/arrow.png">
+          <div class="gap-30"></div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="gap-40"></div>
+      <div class="row">
+        <div class="col-sm-4 text-center"></div>
+        <div class="col-sm-4 text-center" *ngIf="userDetail.userImage">
+          <img [src]="userDetail.userImage" class="rounded-circle userImage" alt="User Image">
+          <h3>{{userDetail.name}}</h3>
+          <span class="badge badge-pill badge-info" *ngFor="let tag of userDetail.tags"> {{ tag }}</span>
+          <div class="gap-20"></div>
+          <p>{{ userDetail.klaim }}</p>
+          <div class="gap-20"></div>
+          <button class="btn btn-secondary pointer" routerLink="/p/{{userDetail.url}}" role="button">View my profile</button>
+  
+        </div>
+  
+      </div>
+      <div class="gap-50"></div>
+    </div>
+  </section>
+</div>
