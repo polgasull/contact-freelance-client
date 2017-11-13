@@ -17,7 +17,7 @@ export class SearchListComponent implements OnInit {
   services: any = [];
   sectionList: any = [];
   sections: any = [];
-  query: string;
+  query: any;
   limit: number = 4;
   skipUser: number= 0;
   skipService: number = 0;
@@ -35,7 +35,7 @@ export class SearchListComponent implements OnInit {
         this.query = params['query'];
       });
       
-      this.search = this.query;
+      // this.search = this.query;
       this.searchUserFunction();
       this.searchServiceFunction();
       this.skipUser = 4;
@@ -82,6 +82,7 @@ export class SearchListComponent implements OnInit {
   
 
   searchUserFunction() {
+    ;
     this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser)
       .subscribe((user) => {
         this.users = user;
