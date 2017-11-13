@@ -43,7 +43,14 @@
 
   <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
   <button type="button" class="btn btn-danger pointer" (click)="close()">Cancel</button>
-  <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm()" class="btn btn-secondary pointer">Submit</button>
+  <button *ngIf="this.objectTo.apiAction === 'UPDATESECTION' || this.objectTo.apiAction === 'UPDATESERVICE'" type="submit" [disabled]="!myForm.form.valid" (click)="confirm()" class="btn btn-secondary pointer">
+    Update
+  </button>
+  <button *ngIf="this.objectTo.apiAction === 'NEWSECTION' || this.objectTo.apiAction === 'NEWSERVICE'" type="submit"
+    [disabled]="!myForm.form.valid" (click)="confirm()" class="btn btn-secondary pointer">
+    Add new
+  </button>
+
   <div class="gap-20"></div>
   <div [hidden]="!feedback" class="alert alert-danger">
       {{ feedback }}

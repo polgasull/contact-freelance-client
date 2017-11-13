@@ -5,6 +5,7 @@ export interface ConfirmModel {
   title: string;
   message: string;
   objectTo: object;
+  actionToDo: string;
 }
 @Component({
   selector: 'app-modal-update-service',
@@ -15,6 +16,7 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
   title: string;
   message: string;
   objectTo: any;
+  actionToDo: string;
 
   constructor(
     dialogService: DialogService,
@@ -23,14 +25,33 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
   }
 
   ngOnInit() {
-    if (!this.objectTo.apiAction) {
-      this.objectTo.apiAction = "UPDATESERVICE";
+    this.actionCase();
+    this.objectTo.apiAction = this.actionToDo;
+    
+    // this.objectTo.sections = this.objectTo.sections;
+    console.log('modal update before form',this.objectTo)
+    
+  }
+  actionCase(){
+    
+     switch (this.actionToDo) {
+      case "NEWSERVICE":
+         this.objectTo.apiUrl = "/service/image/";
+         this.title = "Create new service";
+        break;
+      case "NEWSECTION":
+         this.objectTo.apiUrl = "/section/image";
+         this.title = "Create new section";
+        break;
+      case "UPDATESERVICE":
+         this.objectTo.apiUrl = "/service-update/image";
+         this.title = "Update service";
+        break;
+      case "UPDATESECTION":
+         this.objectTo.apiUrl = "/section-update/image";
+         this.title = "Update section";
+        break;
     }
-    
-    this.objectTo.apiUrl = "/api/service-update/image";
-    this.objectTo.userId = this.objectTo.user;
-    this.objectTo.sections = this.objectTo.sections;
-    
   }
 
   confirm(event) {

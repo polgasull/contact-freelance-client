@@ -9,7 +9,7 @@ import { ModalUpdateServiceComponent } from "../../private/modal-update-service/
 })
 export class CallModalComponent implements OnInit {
   @Input() objectTo: any;
-  @Input() ob: any;
+  @Input() actionToDo: any;
   @Output() onSave = new EventEmitter<string>();
 
   constructor(
@@ -17,9 +17,8 @@ export class CallModalComponent implements OnInit {
   ) { }
   showConfirm() {
     let disposable = this.dialogService.addDialog(ModalUpdateServiceComponent, {
-      title: 'Update service',
-      message: 'Update service',
-      objectTo: this.objectTo
+      objectTo: this.objectTo,
+      actionToDo: this.actionToDo
     })
       .subscribe((isConfirmed) => {
         if (isConfirmed) {
@@ -29,8 +28,11 @@ export class CallModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ob:', this.ob)
+    console.log('objectToCall', this.objectTo)
   }
+
+  
+    
   goEmiterGo() {
     this.onSave.emit();
   }

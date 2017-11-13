@@ -16,10 +16,12 @@ export class SectionsComponent implements OnInit {
   serviceDetails: any = {};
   sectionsList: any = [];
   newSection: any = {};
-  ob:any = '100000';
+  updateSection: any = 'UPDATESECTION';
+  updateService: any = 'UPDATESERVICE';
+  createSection: any = 'NEWSECTION';
   
 
-//JORDI AQUÍ
+
   
 
   constructor(
@@ -31,6 +33,8 @@ export class SectionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
     this.route.params
       .subscribe((params) => {
         this.serviceId = params['id'];
@@ -38,13 +42,19 @@ export class SectionsComponent implements OnInit {
     this.serviceDetailsRender()
  
     this.sectionList();
-
+    this.newSection.user = this.userId;
+    this.newSection.userId = this.userId;
+    this.newSection.service = this.serviceId;
+    console.log('newsection',this.newSection);
+    this.serviceDetails.user = this.userId;
+    
   }
 
   serviceDetailsRender(){
     this.freelanceApi.serviceDetails(this.serviceId)
       .subscribe((details) => {
         this.serviceDetails = details;
+        console.log('servicedetails', this.serviceDetails)
       });
 
   }

@@ -7,6 +7,7 @@
     <div class="modal-body">
       <p>{{message }}</p>
       <app-form-create-update [objectTo]="objectTo" (onClose)="close()" (onSubmit)="confirm($event)"></app-form-create-update>
+      {{objectTo | json}}
       {{feedback}}
     </div>
     
