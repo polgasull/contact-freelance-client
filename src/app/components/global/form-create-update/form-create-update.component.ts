@@ -4,6 +4,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { FreelanceApiService } from '../../../services/freelance-api.service';
 import { SessionService } from '../../../services/session.service';
 import { HelpersService } from '../../../services/helpers.service';
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'app-form-create-update',
@@ -18,6 +19,7 @@ export class FormCreateUpdateComponent implements OnInit {
   feedback: any;
   uploaderUpdate: FileUploader;
   
+  
 
   constructor(
     private freelanceApi: FreelanceApiService,
@@ -25,8 +27,10 @@ export class FormCreateUpdateComponent implements OnInit {
     private helpers: HelpersService
   ) { }
 
-  ngOnInit() {   
-    console.log('obj',this.objectTo)
+  ngOnInit() {  
+    this.objectTo.description = !this.objectTo.description ? "" : this.objectTo.description; 
+    
+    
     this.uploaderUpdate = new FileUploader({
       url: `${environment.baseURL + this.objectTo.apiUrl}`,
       authToken: "Bearer " + this.session.token,
@@ -41,9 +45,11 @@ export class FormCreateUpdateComponent implements OnInit {
       this.feedback = JSON.parse(response).message;
     };
   }
+  
   close(){
     this.onClose.emit();
   }
+
   confirm() {
     let save = new Promise((resolve, reject) => {
       if (resolve) {
@@ -52,6 +58,7 @@ export class FormCreateUpdateComponent implements OnInit {
         reject(Error("It broke"));
       }
     });
+
     save.then((string) => {
       return this.helpers.convertToUrl(this.objectTo.name, null, null);
     })
@@ -63,9 +70,10 @@ export class FormCreateUpdateComponent implements OnInit {
           name: this.objectTo.name,
           description: this.objectTo.description,
           tags: this.objectTo.tags,
-          user: this.objectTo.userId,
-          service: this.objectTo.serviceId,
-          section: this.objectTo.sectionId,
+          user: this.objectTo.user,
+          service: this.objectTo.service,
+          section: this.objectTo.section,
+          sections:this.objectTo.sections,
           url: this.objectTo.url
         }
         
@@ -85,9 +93,10 @@ export class FormCreateUpdateComponent implements OnInit {
         form.append('name', this.objectTo.name);
         form.append('description', this.objectTo.description);
         form.append('tags', tags);
-        form.append('user', this.objectTo.userId);
-        form.append('service', this.objectTo.serviceId);
-        form.append('section', this.objectTo.sectionId);
+        form.append('user', this.objectTo.user);
+        form.append('service', this.objectTo.service);
+        form.append('section', this.objectTo.section);
+        form.append('sections', this.objectTo.sections);
         form.append('url', this.objectTo.url);
       };
       this.uploaderUpdate.uploadAll();
@@ -97,7 +106,6 @@ export class FormCreateUpdateComponent implements OnInit {
     });
   }
 
-  
   selectAction(objectTo){
     switch (this.objectTo.apiAction) {
       case "NEWSERVICE":
@@ -106,19 +114,15 @@ export class FormCreateUpdateComponent implements OnInit {
             this.close();
             this.onSubmit.emit();
           });
-        
         break;
       case "NEWSECTION":
-      console.log('obj',this.objectTo)
         this.freelanceApi.newSection(objectTo)
           .subscribe((sectionDetails) => {
             this.close();
             this.onSubmit.emit();
           });
-        
         break;
       case "UPDATESERVICE":
-          console.log('objectTo',objectTo)
         this.freelanceApi.updateService(objectTo)
           .subscribe((serviceDetails) => {
             this.close();

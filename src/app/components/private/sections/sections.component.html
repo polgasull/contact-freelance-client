@@ -10,6 +10,7 @@
       <a [routerLink]="['/s/', tag]">{{tag}}</a>
     </span>
     <p class="card-text">{{ serviceDetails.description }}</p>
+    
     <p>
       <a class="btn btn-danger pointer" (click)="removeService(serviceDetails._id)">
         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -26,8 +27,9 @@
 <div class="row">
   <div class="col-md-12">
       <hr>
-      <app-call-modal [objectTo]="newSection" [actionToDo]="createSection" (onSave)="sectionList()"></app-call-modal>
-      <!-- <app-new-section [userId]=""userId [serviceId]="serviceId" (onSave)="sectionList()"></app-new-section> -->
+      <app-call-modal [objectTo]="createNewSection" [actionToDo]="createSection" (onSave)="sectionList()"></app-call-modal>
+     
+      
       <hr>
   </div>
 </div>
@@ -35,25 +37,25 @@
 <div *ngIf="sectionsList.length >0">
   <h3>Products</h3>
   <div class="row">
-      <div *ngFor="let section of sectionsList"class="col-md-4">
+      <div *ngFor="let sectionRender of sectionsList"class="col-md-4">
         <div class="card">
           <div class="crop-img-card-section transition">
-            <img class="card-img-top" src="{{section.bigImage}}" />
+            <img class="card-img-top" src="{{sectionRender.bigImage}}" />
           </div>
           <div class="card-block">
-            <h4 class="card-title">{{section.name}}</h4>
-            <span class="badge badge-pill badge-info" *ngFor="let tag of section.tags">
+            <h4 class="card-title">{{sectionRender.name}}</h4>
+            <span class="badge badge-pill badge-info" *ngFor="let tag of sectionRender.tags">
               <a [routerLink]="['/s/', tag]">{{tag}}</a>
             </span>
-            <p class="card-text">{{section.description}}</p>
+            <p class="card-text">{{sectionRender.description}}</p>
             
             <div class="gap-20"></div>
             
             <p>
-              <a class="btn btn-danger pointer" (click)="removeSection(section._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
-              <app-call-modal [objectTo]="section" [actionToDo]="updateSection" (onSave)="sectionList()"></app-call-modal>
-              {{section | json}}
-              <a class="btn btn-secondary" routerLink="/{{serviceDetails.url}}/{{section.url}}"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+              <a class="btn btn-danger pointer" (click)="removeSection(sectionRender._id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              <app-call-modal [objectTo]="sectionRender" [actionToDo]="updateSection" (onSave)="sectionList()"></app-call-modal>
+              
+              <a class="btn btn-secondary" routerLink="/{{serviceDetails.url}}/{{sectionRender.url}}"><i class="fa fa-external-link" aria-hidden="true"></i></a>
             </p>
           </div>
 

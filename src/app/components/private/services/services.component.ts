@@ -12,7 +12,10 @@ import { HelpersService } from '../../../services/helpers.service'
 export class ServicesComponent implements OnInit {
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceId: String;
+  newService: any = {};
   servicesList: any = [];
+  updateService: any = 'UPDATESERVICE';
+  createService: any = 'NEWSERVICE';
  
   constructor(
     private freelanceApi: FreelanceApiService, 
@@ -22,12 +25,15 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit() {
     this.serviceList(this.userId);
+    this.newService.user = this.userId;
   }
 
   serviceList(id){
     this.freelanceApi.servicesList(id)
       .subscribe((list) => {
-        this.servicesList = list
+        this.servicesList = list;
+        this.cleanForm();
+       
       });
   }
 
@@ -36,6 +42,11 @@ export class ServicesComponent implements OnInit {
       .subscribe((details) => {
         this.serviceList(this.userId);
       });
+  }
+  cleanForm(){
+    this.newService.name = "";
+    this.newService.description = "";
+    this.newService.tags = [];
   }
   
 

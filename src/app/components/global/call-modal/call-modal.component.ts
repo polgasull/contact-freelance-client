@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DialogService } from "ng2-bootstrap-modal";
-import { ModalUpdateServiceComponent } from "../../private/modal-update-service/modal-update-service.component";
+import { ModalComponent } from "../../private/modal/modal.component";
 
 @Component({
   selector: 'app-call-modal',
@@ -15,10 +15,19 @@ export class CallModalComponent implements OnInit {
   constructor(
     private dialogService: DialogService
   ) { }
+  
+
+  ngOnInit() {
+  }
+
   showConfirm() {
-    let disposable = this.dialogService.addDialog(ModalUpdateServiceComponent, {
+
+    let disposable = this.dialogService.addDialog(ModalComponent, {
       objectTo: this.objectTo,
       actionToDo: this.actionToDo
+    }, 
+    { 
+      closeByClickingOutside : true
     })
       .subscribe((isConfirmed) => {
         if (isConfirmed) {
@@ -26,11 +35,6 @@ export class CallModalComponent implements OnInit {
         }
       });
   }
-
-  ngOnInit() {
-    console.log('objectToCall', this.objectTo)
-  }
-
   
     
   goEmiterGo() {

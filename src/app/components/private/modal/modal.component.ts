@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
+// import { Options } from 'ngx-chips/dist/modules/core';
 
 export interface ConfirmModel {
   title: string;
@@ -8,15 +9,18 @@ export interface ConfirmModel {
   actionToDo: string;
 }
 @Component({
-  selector: 'app-modal-update-service',
-  templateUrl: './modal-update-service.component.html',
-  styleUrls: ['./modal-update-service.component.css']
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css']
 })
-export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel { 
+
+
+export class ModalComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel { 
   title: string;
   message: string;
   objectTo: any;
   actionToDo: string;
+  
 
   constructor(
     dialogService: DialogService,
@@ -25,33 +29,28 @@ export class ModalUpdateServiceComponent extends DialogComponent<ConfirmModel, b
   }
 
   ngOnInit() {
-    this.actionCase();
-    this.objectTo.apiAction = this.actionToDo;
-    
-    // this.objectTo.sections = this.objectTo.sections;
-    console.log('modal update before form',this.objectTo)
-    
+    this.actionCase(this.actionToDo, this.objectTo);
   }
-  actionCase(){
-    
-     switch (this.actionToDo) {
+  actionCase(action, object){
+     switch (action) {
       case "NEWSERVICE":
-         this.objectTo.apiUrl = "/service/image/";
+         object.apiUrl = "/api/service/image/";
          this.title = "Create new service";
         break;
       case "NEWSECTION":
-         this.objectTo.apiUrl = "/section/image";
+         object.apiUrl = "/api/section/image";
          this.title = "Create new section";
         break;
       case "UPDATESERVICE":
-         this.objectTo.apiUrl = "/service-update/image";
+         object.apiUrl = "/api/service-update/image";
          this.title = "Update service";
         break;
       case "UPDATESECTION":
-         this.objectTo.apiUrl = "/section-update/image";
+         object.apiUrl = "/api/section-update/image";
          this.title = "Update section";
         break;
     }
+    object.apiAction = action;
   }
 
   confirm(event) {

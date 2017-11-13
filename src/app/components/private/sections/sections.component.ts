@@ -15,10 +15,11 @@ export class SectionsComponent implements OnInit {
   userId: any = JSON.parse(localStorage.getItem('user'))._id;
   serviceDetails: any = {};
   sectionsList: any = [];
-  newSection: any = {};
+  createNewSection: any = {};
   updateSection: any = 'UPDATESECTION';
   updateService: any = 'UPDATESERVICE';
   createSection: any = 'NEWSECTION';
+  
   
 
 
@@ -34,7 +35,8 @@ export class SectionsComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.serviceDetails.apiUrl= "";
+    this.serviceDetails.apiAction = "";
     this.route.params
       .subscribe((params) => {
         this.serviceId = params['id'];
@@ -42,11 +44,12 @@ export class SectionsComponent implements OnInit {
     this.serviceDetailsRender()
  
     this.sectionList();
-    this.newSection.user = this.userId;
-    this.newSection.userId = this.userId;
-    this.newSection.service = this.serviceId;
-    console.log('newsection',this.newSection);
-    this.serviceDetails.user = this.userId;
+    this.createNewSection.service = this.serviceId;
+    this.createNewSection.user = this.userId;
+   
+ 
+   
+  
     
   }
 
@@ -54,7 +57,7 @@ export class SectionsComponent implements OnInit {
     this.freelanceApi.serviceDetails(this.serviceId)
       .subscribe((details) => {
         this.serviceDetails = details;
-        console.log('servicedetails', this.serviceDetails)
+      
       });
 
   }
@@ -70,7 +73,7 @@ export class SectionsComponent implements OnInit {
     this.freelanceApi.removeSection(sectionId)
     .subscribe((details)=>{
       this.sectionList();
-      this.newSection = {};  
+      
     });
   }
 
