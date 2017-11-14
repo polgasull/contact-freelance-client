@@ -82,7 +82,7 @@ export class SearchListComponent implements OnInit {
   
 
   searchUserFunction() {
-    ;
+    
     this.freelancePublicService.searchUserList(this.query, this.limit, this.skipUser)
       .subscribe((user) => {
         this.users = user;
@@ -94,7 +94,6 @@ export class SearchListComponent implements OnInit {
     this.freelancePublicService.searchServiceList(this.query, this.limit, this.skipService)
       .subscribe((service) => {
         this.services = service;
-        this.skipService = 1;
         this.helpers.arrayReassign(this.services, this.serviceList);
       })
   }
