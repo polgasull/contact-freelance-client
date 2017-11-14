@@ -8,7 +8,7 @@ export class HelpersService {
   constructor() { }
 
   formatTags(tags, cb) {
-    console.log(tags)
+    
     this.tags = '';
     for (let i = 0; i < tags.length; i++) {
       if(tags[i].value && i === 0){
@@ -25,8 +25,9 @@ export class HelpersService {
       }  
       
     }
-    console.log(this.tags)
-    cb(this.tags);
+    if (cb) cb(this.tags);
+    return this.tags;
+    ;
   }
 
   // función que detecta 2 parametros, los junta, elimina espacio, minusculas y lo convierte en url

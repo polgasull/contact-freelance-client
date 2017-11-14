@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewSectionComponent } from './new-section.component';
+import { CallModalComponent } from './call-modal.component';
 
-describe('NewSectionComponent', () => {
-  let component: NewSectionComponent;
-  let fixture: ComponentFixture<NewSectionComponent>;
+describe('CallModalComponent', () => {
+  let component: CallModalComponent;
+  let fixture: ComponentFixture<CallModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewSectionComponent ]
+      declarations: [ CallModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewSectionComponent);
+    fixture = TestBed.createComponent(CallModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

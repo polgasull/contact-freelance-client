@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 
-import { FileSelectDirective, FileUploadModule } from "ng2-file-upload";
+import { FileSelectDirective, FileUploadModule, FileDropDirective } from "ng2-file-upload/ng2-file-upload";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/public/home/home.component';
@@ -28,13 +28,10 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { DashboardMenuComponent } from './components/private/dashboard-menu/dashboard-menu.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { DashboardHomeComponent } from './components/private/dashboard-home/dashboard-home.component';
-import { ServicesListComponent } from './components/private/services-list/services-list.component';
+import { ListItemComponent } from './components/private/list-item/list-item.component';
 import { ChangePasswordComponent } from './components/private/change-password/change-password.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { ModalUpdateServiceComponent } from './components/private/modal-update-service/modal-update-service.component';
-import { ServiceUpdateComponent } from './components/private/service-update/service-update.component';
-import { ModalUpdateSectionComponent } from './components/private/modal-update-section/modal-update-section.component';
-import { SectionUpdateComponent } from './components/private/section-update/section-update.component';
+import { ModalComponent } from './components/private/modal/modal.component';
 import { SearchItemComponent } from './components/public/search-item/search-item.component';
 
 import { FreelanceApiService } from './services/freelance-api.service';
@@ -42,14 +39,12 @@ import { SessionService } from './services/session.service';
 import { HelpersService } from './services/helpers.service';
 import { FreelancePublicService } from './services/freelance-public.service';
 import { MapsComponent } from './components/global/maps/maps.component';
-import { NewServiceComponent } from './components/private/new-service/new-service.component';
-import { ModalNewServiceComponent } from './components/private/modal-new-service/modal-new-service.component';
-import { NewSectionComponent } from './components/private/new-section/new-section.component';
-import { ModalNewSectionComponent } from './components/private/modal-new-section/modal-new-section.component';
 import { ContactFormComponent } from './components/public/contact-form/contact-form.component';
 import { NotFoundComponent } from './components/global/not-found/not-found.component';
 import { NotFoundPageComponent } from './components/public/not-found-page/not-found-page.component';
 import { CardBoxComponent } from './components/global/card-box/card-box.component';
+import { FormCreateUpdateComponent } from './components/global/form-create-update/form-create-update.component';
+import { CallModalComponent } from './components/global/call-modal/call-modal.component';
 
 
 
@@ -95,22 +90,17 @@ export const routes: Routes = [
     DashboardMenuComponent,
     HeaderComponent,
     DashboardHomeComponent,
-    ServicesListComponent,
+    ListItemComponent,
     ChangePasswordComponent,
-    ModalUpdateServiceComponent,
-    ServiceUpdateComponent,
-    ModalUpdateSectionComponent,
-    SectionUpdateComponent,
+    ModalComponent,
     SearchItemComponent,
     MapsComponent,
-    NewServiceComponent,
-    ModalNewServiceComponent,
-    NewSectionComponent,
-    ModalNewSectionComponent,
     ContactFormComponent,
     NotFoundComponent,
     NotFoundPageComponent,
     CardBoxComponent,
+    FormCreateUpdateComponent,
+    CallModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,10 +120,7 @@ export const routes: Routes = [
   ],
   providers: [SessionService, FreelanceApiService, FreelancePublicService, HelpersService],
   entryComponents: [
-    ModalUpdateServiceComponent,
-    ModalUpdateSectionComponent,
-    ModalNewServiceComponent,
-    ModalNewSectionComponent
+    ModalComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -40,12 +40,11 @@ export class FreelanceApiService {
       .map((res) => res.json());
   }
   updateService(service) {
-    console.log(service._id)
+    console.log()
     return this.http.put(`${this.BASE_URL}/api/service/${service._id}`, service, this.setOptionsApi())
       .map((res) => res.json());
   }
   removeService(serviceId) {
-    console.log(' go to api',serviceId)
     return this.http.delete(`${this.BASE_URL}/api/service/${serviceId}`, this.setOptionsApi())
       .map((res) => res.json());
   }

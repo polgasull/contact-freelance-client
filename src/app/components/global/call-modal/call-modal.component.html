@@ -1,0 +1,6 @@
+<button class="btn btn-secondary pointer" (click)=showConfirm()>
+  <i *ngIf="actionToDo === 'UPDATESERVICE' || actionToDo === 'UPDATESECTION'" class="fa fa-pencil" aria-hidden="true"></i>
+  <span *ngIf="actionToDo === 'NEWSERVICE'">Add new service</span>
+  <span *ngIf="actionToDo === 'NEWSECTION'">Add new product</span>
+</button>
+
