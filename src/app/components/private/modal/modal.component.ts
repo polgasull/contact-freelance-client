@@ -20,6 +20,7 @@ export class ModalComponent extends DialogComponent<ConfirmModel, boolean> imple
   message: string;
   objectTo: any;
   actionToDo: string;
+  feedback:string;
   
 
   constructor(
