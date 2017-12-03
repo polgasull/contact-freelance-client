@@ -38,7 +38,7 @@
 
     <a class="btn btn-secondary pointer" (click)="loadMoreSearchServiceFunction()">Load more</a>
 
-    <div class="gap-50"></div>
+    <div></div>
   </div>
 </section>
 
@@ -60,6 +60,30 @@
   </div>
 </section>
 
-<div class="gap-50"></div>
-<div class="gap-50"></div>
-<div class="gap-50"></div>
+<section *ngIf="this.searchResult === search">
+    <div class="container">
+        <div class="gap-50"></div>
+        <div class="row">
+            <p>Results here</p>
+        </div>
+      </div>
+</section>
+
+<section *ngIf="this.searchResult !== search && userList == 0">
+  <div class="container">
+    <div class="gap-50"></div>
+    <div class="row">
+        <p>No User results</p>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="this.searchResult !== search && serviceList == 0">
+    <div class="container">
+      <div class="gap-50"></div>
+      <div class="row">
+          <p>No Service results</p>
+      </div>
+    </div>
+  </section>
+  

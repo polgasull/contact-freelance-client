@@ -22,8 +22,8 @@ export class SearchListComponent implements OnInit {
   skipUser: number= 0;
   skipService: number = 0;
   skipSection: number = 0;
-  // skipServiceLoadMore: number = 0;
   search: string;
+  searchResult: string;
   loadUserMultiplier: number = 0;
   loadServiceMultiplier: number = 0;
 
@@ -33,13 +33,16 @@ export class SearchListComponent implements OnInit {
     this.route.params
       .subscribe((params) => {
         this.query = params['query'];
+        this.searchResult = this.query
       });
       
-      // this.search = this.query;
+      this.search = this.query;
       this.searchUserFunction();
       this.searchServiceFunction();
       this.skipUser = 4;
       this.skipService = 4;
+      this.loadUserMultiplier = 1;
+      this.loadServiceMultiplier = 1;
   }
   
 // pendiente new search user y new search service
@@ -61,7 +64,6 @@ export class SearchListComponent implements OnInit {
     this.query = this.search;
     this.searchServiceFunction();
     this.skipService = 4;
-    // this.skipServiceLoadMore = 4;
     this.loadServiceMultiplier = 1;
   }
 
@@ -75,7 +77,6 @@ export class SearchListComponent implements OnInit {
     this.searchUserFunction();    
     this.skipUser = 4;
     this.skipService = 4;
-    // this.skipServiceLoadMore = 4;
     this.loadServiceMultiplier = 1;
     this.loadUserMultiplier = 1;
   }
