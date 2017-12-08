@@ -61,6 +61,7 @@ export class PublicProfileComponent implements OnInit {
             this.firstService = {
               id: this.services[0]._id,
               name: this.services[0].name,
+              image: this.services[0].bigImage,
               description: this.services[0].description,
               url: this.services[0].url
             };
