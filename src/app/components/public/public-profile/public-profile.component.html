@@ -37,7 +37,7 @@
     <div class="row">
       <div class="col-md-7">
         <h2 class="med">Contact with
-          <span>{{user.name}} {{user.surname}}</span>
+          <span class="line">{{user.name}} {{user.surname}}</span>
         </h2>
         <div class="gap-20"></div>
         <h3>
@@ -60,9 +60,7 @@
         <p *ngIf="!this.services[0]">{{user.klaim}}</p>
       </div>
       <div class="col-md-5">
-
         <app-contact-form [contact]="contact"></app-contact-form>
-
       </div>
     </div>
     <div class="gap-50"></div>

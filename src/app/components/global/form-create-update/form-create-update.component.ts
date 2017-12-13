@@ -18,7 +18,7 @@ export class FormCreateUpdateComponent implements OnInit {
   newObject: any;
   feedback: any;
   uploaderUpdate: FileUploader;
-  error: any = {};
+  error: any;
   
   
 

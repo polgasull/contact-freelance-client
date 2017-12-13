@@ -27,7 +27,7 @@ export class ContactFormComponent implements OnInit {
       tel: this.contact.tel,
       message: this.contact.message,
       email: this.contact.email,
-      userEmail: this.contact.user,
+      userEmail: this.contact.userEmail,
       origin: this.contact.origin,
       user: this.contact.user,
       service: this.contact.service
