@@ -22,7 +22,7 @@ export class PublicSectionsComponent implements OnInit {
     message: "",
     email: "",
     userEmail: "",
-    origin: "SERVICE",
+    origin: "SECTION",
     user: "",
     service: "",
     section:""

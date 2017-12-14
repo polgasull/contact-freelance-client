@@ -50,7 +50,7 @@ export class PublicServicesComponent implements OnInit {
           this.sectionDetail = service.section;
 
           this.contact.userEmail = this.userDetail.email;
-          this.contact.origin = "SECTION";
+          this.contact.origin = "SERVICE";
           this.contact.user = this.serviceDetail.user;
           this.contact.service = this.serviceDetail._id;
         

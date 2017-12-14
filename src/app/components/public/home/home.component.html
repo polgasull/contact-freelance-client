@@ -1,18 +1,30 @@
 <section class="bk-home">
+  <div class="crop-video">
+    <video poster="./assets/images/contactfreelance-poster.jpg" id="bgvid" playsinline autoplay muted loop>
+      <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+      <source src="./assets/images/contactfreelance.webm" type="video/webm">
+      <source src="./assets/images/contactfreelance.mp4" type="video/mp4">
+      <source src="./assets/images/contactfreelance.ogg" type="video/ogg">
+    
+    </video>
+
+  </div>
+  
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10 text-center">
         <div class="gap-50"></div>
         <a title="contacT-Freelance" href="/"><img src="./assets/images/contact-freelance-logo.png"/></a>
         <div class="gap-50"></div>
         
         <div class="row">
-            <div class="col-sm-3">
-                <h4 class="c-w lead">What are you looking for?</h4>            
+            <div class="col-sm-8">
+                <p class="c-w lead text-center">What are you looking for?</p>            
             </div>
         </div>
        
-        <div class="input-group">
+        <div class="input-group search-box">
             <input type="text" name="search" [(ngModel)]="search" class="form-control main-search-bar" placeholder="Search by name, job, tag or city">
             <span class="input-group-btn">
               <button class="btn btn-light pointer" type="button" [routerLink]="['/s/', search]">Go!</button>
@@ -23,22 +35,12 @@
     <div class="gap-50"></div>
     
     <div class="row">
-      <div class="col-sm-6">
-        <p class="lead c-w">
+      <div class="col-sm-12">
+        <p class="lead c-w text-center">
            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc sapien.
         </p>
-        <h1 class="c-w">Contact Freelance</h1>
-       
-        <div class="gap-20"></div>
-        <p class="lead c-w">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc sapien.
-        </p>
-        <p class="c-w">Malesuada nec gravida lobortis, congue id tellus. Proin placerat tortor dapibus nisl faucibus hendrerit. Ut luctus, dolor
-          et vehicula mattis, augue sem fringilla nisi, a vestibulum nisi odio ac nulla. Integer vitae aliquam nunc. Suspendisse
-          potenti. Aliquam nec feugiat nunc. Pellentesque vitae arcu mi. Cras elementum lorem sit amet risus condimentum, sit amet
-          aliquam elit viverra. Cras quis rhoncus nulla.</p>
       </div>
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6">
         <p class="lead c-w">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc sapien.
         </p>
@@ -51,12 +53,12 @@
         Aliquam nec feugiat nunc. Pellentesque vitae arcu mi. Cras elementum lorem sit amet risus condimentum, sit amet aliquam elit
         viverra. Cras quis rhoncus nulla.</p>
         <a class="btn btn-primary" [routerLink]="['/signup']">Freelance Signup <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-      </div>
+      </div> -->
     </div>
     <div class="gap-50"></div>
   </div>
 </section>
-<section>
+<section class="position-relative bk-w">
   <div class="container">
     <div class="gap-50"></div>
     <div class="row">
@@ -90,57 +92,81 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3">
-        <ul>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-        </ul>
+      <div class="col-sm-8">
+        <div class="box-home-bk transition">
+          <div class="box-home tourism">
+          </div>
+          <div class="title text-center">
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <h4 class="c-w">Searchtourism freelance</h4>
+            <p class="c-w">Malesuada nec gravida lobortis, congue id tellus.</p>
+            <a class="btn btn-primary" [routerLink]="['/s', 'tourism']">Tourism</a>
+          </div>   
+        </div>
       </div>
-      <div class="col-sm-3">
-        <ul>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-        </ul>
+      <div class="col-sm-4">
+        <div class="box-home-bk transition">
+          <div class="box-home hotel">
+          </div>
+          <div class="title text-center">
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <h4 class="c-w">Hotels</h4>
+            <p class="c-w">Malesuada nec gravida lobortis, congue id tellus.</p>
+            <a class="btn btn-primary" [routerLink]="['/s', 'hotel']">Hotels</a>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <ul>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-        </ul>
+    </div>
+    <div class="gap-20"></div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="box-home-bk transition">
+          <div class="box-home artist">
+          </div>
+          <div class="title text-center">
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <h4 class="c-w">Art world</h4>
+            <p class="c-w">Malesuada nec gravida lobortis, congue id tellus.</p>
+            <a class="btn btn-primary" [routerLink]="['/s', 'artist']">Artist</a>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <ul>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-          <li>
-            <a class="search-query-link" [routerLink]="['/s', 'javascript']">Javascript</a>
-          </li>
-        </ul>
+      <div class="col-sm-8">
+        <div class="box-home-bk transition">
+          <div class="box-home java">
+          </div>
+          <div class="title text-center">
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <h4 class="c-w">Java freelance</h4>
+            <p class="c-w">Malesuada nec gravida lobortis, congue id tellus.</p>
+            <a class="btn btn-primary" [routerLink]="['/s', 'java']">Java freelance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gap-20"></div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="box-home-bk transition">
+          <div class="box-home event">
+          </div>
+          <div class="title text-center">
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <div class="gap-50"></div>
+            <h4 class="c-w">Events sector</h4>
+            <p class="c-w">Malesuada nec gravida lobortis, congue id tellus.</p>
+            <a class="btn btn-primary" [routerLink]="['/s', 'event']">Events</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="gap-50"></div>

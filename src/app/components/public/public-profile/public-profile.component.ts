@@ -27,10 +27,10 @@ export class PublicProfileComponent implements OnInit {
     message: "",
     email: "",
     userEmail: "",
-    origin: "",
-    user: "",
-    service: "",
+    origin: "USER",
+    user: ""
   }
+
 
   
 
@@ -66,9 +66,14 @@ export class PublicProfileComponent implements OnInit {
               url: this.services[0].url
             };
           }
+          // this.contact.userEmail = this.user.email;
+          // this.contact.user = this.user._id;
+
           this.contact.userEmail = this.user.email;
-          this.contact.origin = "USER";
+          // this.contact.origin = "SECTION";
           this.contact.user = this.user._id;
+          // this.contact.service = "5a01c842fc0e18a9fca4da1a";
+
         });
       },
       (err)=>{
