@@ -1,5 +1,10 @@
-.service-bigImage {
-  height: 100px;
-  width: 150px;
+.crop-image {
+  height: 120px;
+  overflow: hidden;
 }
+
+.line {
+  line-height: 110px;
+}
+
 

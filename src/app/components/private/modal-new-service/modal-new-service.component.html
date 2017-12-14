@@ -46,7 +46,7 @@
         </div>
 
 
-        <div *ngIf="error" class="alert alert-danger" role="alert">{{ error.statusText }}</div>
+        <div *ngIf="error" role="alert" class="alert alert-danger" >{{ error.statusText }}</div>
         <button type="button" class="btn btn-danger pointer" (click)="close()">Cancel</button>
         <button type="submit" [disabled]="!myForm.form.valid" (click)="confirm(newService)" class="btn btn-secondary pointer">Submit</button>
   
